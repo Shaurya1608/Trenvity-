@@ -20,13 +20,13 @@ export default function Hero() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="relative w-full h-[calc(100vh-90px)] min-h-[500px]"
+      className="relative w-full h-screen pt-20 md:pt-28"
     >
-      <motion.h1 variants={itemVariants} className="absolute left-[20px] md:left-[28px] lg:left-[80px] top-[10px] z-10 font-sans font-black text-[clamp(2.8rem,16vw,5rem)] md:text-[clamp(3.5rem,14vw,7rem)] lg:text-[clamp(4rem,9.5vw,11rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0">TRENVITY</motion.h1>
+      <motion.h1 variants={itemVariants} className="absolute left-[20px] md:left-[28px] lg:left-[80px] top-[clamp(6rem,18vw,10rem)] md:top-[clamp(7rem,14vw,13rem)] lg:top-[clamp(8rem,10vw,16rem)] z-10 font-sans font-black text-[clamp(2.8rem,16vw,5rem)] md:text-[clamp(3.5rem,14vw,7rem)] lg:text-[clamp(4rem,9.5vw,11rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0">TRENVITY</motion.h1>
 
-      <motion.span variants={itemVariants} className="absolute right-[20px] md:right-[28px] lg:right-[100px] top-[clamp(4rem,18vw,7rem)] md:top-[clamp(5rem,16vw,10rem)] lg:top-[clamp(4rem,10vw,12rem)] z-[2] font-sans font-black text-[clamp(2.4rem,14vw,4.5rem)] md:text-[clamp(3rem,12vw,6rem)] lg:text-[clamp(3rem,8.5vw,10rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0" aria-hidden="true">AGENCY</motion.span>
+      <motion.span variants={itemVariants} className="absolute right-[20px] md:right-[28px] lg:right-[100px] top-[clamp(10rem,30vw,16rem)] md:top-[clamp(11rem,24vw,20rem)] lg:top-[clamp(11rem,16vw,24rem)] z-[2] font-sans font-black text-[clamp(2.4rem,14vw,4.5rem)] md:text-[clamp(3rem,12vw,6rem)] lg:text-[clamp(3rem,8.5vw,10rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0" aria-hidden="true">AGENCY</motion.span>
 
-      <motion.div variants={itemVariants} className="absolute right-[20px] md:right-[28px] lg:left-[clamp(52vw,58vw,68vw)] top-[clamp(1rem,8vw,4rem)] md:top-[clamp(2rem,10vw,5rem)] lg:top-[clamp(0rem,3vw,6rem)] z-[15] max-w-[150px] md:max-w-[180px] lg:max-w-[240px]">
+      <motion.div variants={itemVariants} className="absolute right-[20px] md:right-[28px] lg:left-[clamp(52vw,58vw,68vw)] top-[clamp(7rem,18vw,11rem)] md:top-[clamp(8rem,16vw,14rem)] lg:top-[clamp(7rem,10vw,15rem)] z-[15] max-w-[150px] md:max-w-[180px] lg:max-w-[240px]">
         <p className="text-[11px] lg:text-[13px] leading-[1.7] text-white/65 m-0">
           We are a creative studio working at the
           intersection of design, technology &amp; innovation.
