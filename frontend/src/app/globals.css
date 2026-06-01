@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Dancing+Script:wght@600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --neon: #c8f000;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ============================================
+   BASE RESETS
+   ============================================ */
+html, body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background) !important;
+  color: var(--foreground);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* ============================================
+   3D TEXT CUBE
+   ============================================ */
+.cube-wrapper {
+  perspective: 2000px;
+  transform: scale(0.85); /* Slightly decreased scale */
+}
+
+@media (max-width: 768px) {
+  .cube-wrapper {
+    transform: scale(0.45); /* Slightly scaled down for mobile too */
+  }
+}
+
+.cube {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  transform-style: preserve-3d;
+  /* Exact isometric projection angles */
+  transform: rotateX(-35.264deg) rotateY(45deg);
+}
+
+.cube-face {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 85px; /* Scaled up to fill the face more */
+  line-height: 0.82;
+  letter-spacing: -4px;
+  background-color: transparent;
+  backface-visibility: hidden;
+}
+
+/* 
+  Top face (white text)
+*/
+.face-top {
+  transform: rotateX(90deg) translateZ(200px);
+  color: #e2e8f0;
+  align-items: flex-end; /* Align bottom */
+  justify-content: flex-end; /* Align right */
+  text-align: right;
+}
+
+/* 
+  Left face (green text)
+*/
+.face-left {
+  transform: rotateY(-90deg) translateZ(200px);
+  color: var(--neon); 
+  align-items: flex-start; /* Align top */
+  justify-content: flex-end; /* Align right to touch the center edge */
+  text-align: right;
+}
+
+/* 
+  Right face (white text)
+*/
+.face-right {
+  transform: rotateY(0deg) translateZ(200px);
+  color: #f8fafc;
+  align-items: flex-start; /* Align top */
+  justify-content: flex-start; /* Align left to touch the center edge */
+  text-align: left;
+}
+
+.face-content {
+  margin: 0; /* Removed the 20px gap so edges touch */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.face-left .face-content, .face-right .face-content {
+  justify-content: flex-start;
+}
+
+.face-top .face-content {
+  justify-content: flex-end;
+}
+
