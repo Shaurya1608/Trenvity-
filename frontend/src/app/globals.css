@@ -2,9 +2,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --neon: #c8f000;
+  --background: #0F1C2E;
+  --secondary-bg: #141C25;
+  --foreground: #FFFFFF;
+  --neon: #9BCE24;
+  --light-text: #D9D9D9;
 }
 
 @theme inline {
@@ -127,37 +129,5 @@ body {
 
 .face-top .face-content {
   justify-content: flex-end;
-}
-
-/* ============================================
-   PROBLEM SECTION ANIMATIONS
-   ============================================ */
-@keyframes borderGlow {
-  0%, 100% { border-color: rgba(200, 240, 0, 0.2); box-shadow: 0 0 15px rgba(200, 240, 0, 0.05); }
-  50% { border-color: rgba(200, 240, 0, 0.5); box-shadow: 0 0 30px rgba(200, 240, 0, 0.15); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.animate-border-glow {
-  animation: borderGlow 3s ease-in-out infinite;
-}
-
-.animate-pulse-slow {
-  animation: pulse 4s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(200, 240, 0, 0.1) 50%, transparent 100%);
-  background-size: 200% 100%;
-  animation: shimmer 3s ease-in-out infinite;
 }
 

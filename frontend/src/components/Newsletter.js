@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function Newsletter() {
   return (
-    <section className="relative w-full bg-[#070708] border-t border-white/5 py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section className="relative w-full bg-[var(--background)] border-t border-white/5 py-16 md:py-20 lg:py-24 overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] pointer-events-none opacity-80" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">

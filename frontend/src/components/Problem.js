@@ -104,7 +104,7 @@ export default function Problem() {
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] } },
               }}
               whileHover={{ x: -3 }}
-              className="group relative bg-white/[0.015] border border-white/[0.06] rounded-2xl p-8 md:p-10 lg:p-12 overflow-hidden"
+              className="group relative bg-white/[0.015] border border-white/[0.06] rounded-2xl p-5 md:p-6 lg:p-7 overflow-hidden"
             >
               {/* Animated red accent top border */}
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-400/30 to-transparent" />
@@ -113,20 +113,20 @@ export default function Problem() {
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-red-500/5 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-8">
+                <div className="flex items-center gap-3 mb-4">
                   <motion.span
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ type: 'spring', stiffness: 300, delay: 0.2 }}
-                    className="text-red-400/70 text-[18px] md:text-[20px] font-bold leading-none"
+                    className="text-red-400/70 text-[14px] md:text-[16px] font-bold leading-none"
                   >
                     ✕
                   </motion.span>
                   <span className="text-white/30 text-[11px] md:text-[12px] font-bold uppercase tracking-[2px]">Without Trenvity</span>
                 </div>
 
-                <ul className="flex flex-col gap-5 m-0 p-0 list-none">
+                <ul className="flex flex-col gap-2.5 m-0 p-0 list-none">
                   {withoutItems.map((item, i) => (
                     <motion.li
                       key={item}
@@ -138,7 +138,7 @@ export default function Problem() {
                       className="flex items-start gap-3"
                     >
                       <span className="text-white/10 text-[7px] mt-[7px] shrink-0 group-hover:text-red-400/30 transition-colors duration-500">◉</span>
-                      <span className="text-white/30 group-hover:text-white/40 transition-colors duration-500 text-[12px] md:text-[13px] leading-[1.7]">
+                      <span className="text-white/30 group-hover:text-white/40 transition-colors duration-500 text-[11px] md:text-[12px] leading-[1.6]">
                         {item}
                       </span>
                     </motion.li>
@@ -154,7 +154,7 @@ export default function Problem() {
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] } },
               }}
               whileHover={{ x: 3 }}
-              className="group relative bg-[var(--neon)]/[0.02] border border-[var(--neon)]/20 rounded-2xl p-8 md:p-10 lg:p-12 overflow-hidden animate-border-glow"
+              className="group relative bg-[var(--neon)]/[0.02] border border-[var(--neon)]/20 rounded-2xl p-5 md:p-6 lg:p-7 overflow-hidden animate-border-glow"
             >
               {/* Animated neon shimmer top border */}
               <div className="absolute top-0 left-0 right-0 h-[2px] animate-shimmer" />
@@ -164,20 +164,20 @@ export default function Problem() {
               <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[var(--neon)]/5 rounded-full blur-[60px] opacity-0 group-hover:opacity-60 transition-opacity duration-700" />
 
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-8">
+                <div className="flex items-center gap-3 mb-4">
                   <motion.span
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ type: 'spring', stiffness: 300, delay: 0.4 }}
-                    className="text-[var(--neon)] text-[16px] md:text-[18px] font-bold leading-none"
+                    className="text-[var(--neon)] text-[14px] md:text-[16px] font-bold leading-none"
                   >
                     ✓
                   </motion.span>
                   <span className="text-[var(--neon)] text-[11px] md:text-[12px] font-bold uppercase tracking-[2px]">With Trenvity</span>
                 </div>
 
-                <ul className="flex flex-col gap-5 m-0 p-0 list-none">
+                <ul className="flex flex-col gap-2.5 m-0 p-0 list-none">
                   {withItems.map((item, i) => (
                     <motion.li
                       key={item}
@@ -195,7 +195,7 @@ export default function Problem() {
                       >
                         ◉
                       </motion.span>
-                      <span className="text-white/60 group-hover:text-white/80 transition-colors duration-500 text-[12px] md:text-[13px] leading-[1.7]">
+                      <span className="text-white/60 group-hover:text-white/80 transition-colors duration-500 text-[11px] md:text-[12px] leading-[1.6]">
                         {item}
                       </span>
                     </motion.li>

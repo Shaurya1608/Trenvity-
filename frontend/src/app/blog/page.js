@@ -84,7 +84,7 @@ export default function BlogPage() {
   ];
 
   return (
-    <div className="relative w-full min-h-screen bg-[#070708] text-white overflow-hidden selection:bg-[var(--neon)] selection:text-black">
+    <div className="relative w-full min-h-screen bg-[var(--background)] text-white overflow-hidden selection:bg-[var(--neon)] selection:text-black">
       {/* Background Neon Glow Spheres */}
       <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[var(--neon)]/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#00f0ff]/5 blur-[150px] pointer-events-none" />
@@ -95,7 +95,7 @@ export default function BlogPage() {
       {/* ============================================
          1. HERO / LANDING SECTION (BRUTALIST REDESIGN)
          ============================================ */}
-      <section className="relative w-full min-h-[95vh] flex flex-col justify-between pt-8 pb-24 px-6 md:px-12 lg:px-20 z-10 overflow-hidden bg-[#070708]">
+      <section className="relative w-full min-h-[95vh] flex flex-col justify-between pt-8 pb-24 px-6 md:px-12 lg:px-20 z-10 overflow-hidden bg-[var(--background)]">
         
         {/* Decorative Grid texture */}
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-60" />
@@ -156,7 +156,7 @@ export default function BlogPage() {
             />
           </svg>
           {/* Solid filler to push the zig-zag up further into the hero */}
-          <div className="w-full h-[10px] sm:h-[15px] bg-[#060606]" />
+          <div className="w-full h-[10px] sm:h-[15px] bg-[var(--secondary-bg)]" />
         </div>
 
       </section>
@@ -164,7 +164,7 @@ export default function BlogPage() {
       {/* ============================================
          2. EDITORIAL ARTICLE FEED SECTION
          ============================================ */}
-      <section id="feed" className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 bg-[#060606]">
+      <section id="feed" className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 bg-[var(--secondary-bg)]">
         <div className="max-w-[1400px] mx-auto w-full">
           
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 md:mb-16 gap-6">

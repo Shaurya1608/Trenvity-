@@ -5,23 +5,23 @@ import Reveal, { StaggerContainer, StaggerItem } from '@/components/Reveal';
 const steps = [
   {
     num: '01',
-    title: 'Discovery',
-    desc: 'Deep-dive into your brand, audience, and goals. We analyze the competitive landscape and uncover opportunities others miss.',
+    title: 'Discover',
+    desc: 'We audit your brand, study your market, and define exactly what\'s holding back your growth.',
   },
   {
     num: '02',
-    title: 'Strategy',
-    desc: 'Craft a data-backed roadmap tailored to your objectives. Every tactic is purposeful, every channel deliberate.',
+    title: 'Strategize',
+    desc: 'A custom growth plan — creative direction, channels, messaging, and KPIs — built for your goals.',
   },
   {
     num: '03',
-    title: 'Execution',
-    desc: 'Pixel-perfect design meets flawless implementation. We build campaigns that captivate and convert at scale.',
+    title: 'Create',
+    desc: 'We produce all creative assets, launch campaigns, and set everything live — on brief, on time.',
   },
   {
     num: '04',
-    title: 'Optimize',
-    desc: 'Measure, learn, iterate. Real-time analytics drive continuous improvement so your ROI only grows.',
+    title: 'Scale',
+    desc: 'Data drives every decision. We double down on what works, cut what doesn\'t, and grow your results.',
   },
 ];
 
@@ -31,13 +31,19 @@ export default function Process() {
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
       <Reveal>
-        <p className="text-center text-[var(--neon)] text-[11px] md:text-[12px] tracking-[1.5px] mb-6 md:mb-10">[process]</p>
+        <p className="text-center text-[var(--neon)] text-[11px] md:text-[12px] tracking-[1.5px] mb-6 md:mb-10">[ how we work ]</p>
       </Reveal>
 
       <Reveal delay={0.1}>
-        <h2 className="text-center font-black italic uppercase text-[var(--neon)] text-[clamp(1.6rem,4vw,3.2rem)] leading-[1.05] tracking-[-1px] mb-16 md:mb-24">
-          HOW WE BRING<br />YOUR VISION TO LIFE
+        <h2 className="text-center font-black italic uppercase text-[var(--neon)] text-[clamp(1.6rem,4vw,3.2rem)] leading-[1.05] tracking-[-1px] mb-4">
+          FROM BRIEF TO<br />RESULTS.
         </h2>
+      </Reveal>
+
+      <Reveal delay={0.2}>
+        <p className="text-center text-white/50 text-[12px] md:text-[14px] leading-[1.8] max-w-[600px] mx-auto mb-14 md:mb-20">
+          No guesswork. Every engagement follows the same proven structure — so you always know what&apos;s happening and why.
+        </p>
       </Reveal>
 
       <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-white/5 max-w-[1200px] mx-auto">

@@ -22,19 +22,78 @@ export default function Hero() {
       animate="visible"
       className="relative w-full h-screen pt-20 md:pt-28"
     >
-      <motion.h1 variants={itemVariants} className="absolute left-[20px] md:left-[28px] lg:left-[80px] top-[clamp(6rem,18vw,10rem)] md:top-[clamp(7rem,14vw,13rem)] lg:top-[clamp(8rem,10vw,16rem)] z-10 font-sans font-black text-[clamp(2.8rem,16vw,5rem)] md:text-[clamp(3.5rem,14vw,7rem)] lg:text-[clamp(4rem,9.5vw,11rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0">TRENVITY</motion.h1>
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Main ambient glow orbs */}
+        <div className="absolute top-[10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-[var(--neon)]/5 blur-[120px]" />
+        <div className="absolute top-[50%] right-[-8%] w-[400px] h-[400px] rounded-full bg-[var(--neon)]/4 blur-[100px]" />
+        <div className="absolute bottom-[10%] left-[30%] w-[300px] h-[300px] rounded-full bg-white/[0.02] blur-[80px]" />
 
-      <motion.span variants={itemVariants} className="absolute right-[20px] md:right-[28px] lg:right-[100px] top-[clamp(10rem,30vw,16rem)] md:top-[clamp(11rem,24vw,20rem)] lg:top-[clamp(11rem,16vw,24rem)] z-[2] font-sans font-black text-[clamp(2.4rem,14vw,4.5rem)] md:text-[clamp(3rem,12vw,6rem)] lg:text-[clamp(3rem,8.5vw,10rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0" aria-hidden="true">AGENCY</motion.span>
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50" />
 
-      <motion.div variants={itemVariants} className="absolute right-[20px] md:right-[28px] lg:left-[clamp(52vw,58vw,68vw)] top-[clamp(7rem,18vw,11rem)] md:top-[clamp(8rem,16vw,14rem)] lg:top-[clamp(7rem,10vw,15rem)] z-[15] max-w-[150px] md:max-w-[180px] lg:max-w-[240px]">
-        <p className="text-[11px] lg:text-[13px] leading-[1.7] text-white/65 m-0">
+        {/* Decorative geometric shapes */}
+        <div className="absolute top-[8%] left-[6%] w-10 h-10 border border-[var(--neon)]/20 rotate-12" />
+        <div className="absolute top-[18%] right-[10%] w-14 h-14 border border-white/[0.06] rounded-full" />
+        <div className="absolute top-[35%] left-[4%] w-6 h-6 border border-[var(--neon)]/15 rotate-45" />
+        <div className="absolute top-[50%] right-[6%] w-20 h-20 border border-white/[0.04] rounded-full" />
+        <div className="absolute top-[12%] left-[40%] w-5 h-5 bg-[var(--neon)]/8 rotate-[20deg]" />
+        <div className="absolute top-[65%] left-[7%] w-12 h-12 border border-[var(--neon)]/10 rounded-full" />
+        <div className="absolute top-[28%] right-[4%] w-8 h-8 border border-[var(--neon)]/20 rotate-[30deg]" />
+        <div className="absolute top-[75%] right-[14%] w-10 h-10 border border-white/[0.06] rounded-full" />
+
+        {/* Small floating dots cluster */}
+        <div className="absolute top-[20%] left-[25%] w-1.5 h-1.5 rounded-full bg-[var(--neon)]/30" />
+        <div className="absolute top-[22%] left-[27%] w-1 h-1 rounded-full bg-[var(--neon)]/20" />
+        <div className="absolute top-[18%] left-[28%] w-1 h-1 rounded-full bg-white/20" />
+        <div className="absolute top-[55%] right-[20%] w-1.5 h-1.5 rounded-full bg-[var(--neon)]/25" />
+        <div className="absolute top-[57%] right-[22%] w-1 h-1 rounded-full bg-white/15" />
+        <div className="absolute top-[40%] right-[15%] w-2 h-2 rounded-full bg-[var(--neon)]/15" />
+
+        {/* Abstract line graph element */}
+        <svg className="absolute bottom-[18%] right-[8%] w-28 h-16 opacity-[0.07]" viewBox="0 0 100 50" fill="none">
+          <polyline points="0,40 20,35 35,20 55,30 70,10 85,15 100,5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <polyline points="0,45 20,40 35,30 55,38 70,22 85,28 100,18" stroke="var(--neon)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="70" cy="10" r="2" fill="white" />
+          <circle cx="100" cy="5" r="2" fill="var(--neon)" />
+        </svg>
+
+        {/* Abstract chart bars */}
+        <div className="absolute bottom-[22%] left-[6%] flex items-end gap-[3px] opacity-[0.06]">
+          <div className="w-[3px] h-8 bg-white rounded-full" />
+          <div className="w-[3px] h-12 bg-[var(--neon)] rounded-full" />
+          <div className="w-[3px] h-6 bg-white rounded-full" />
+          <div className="w-[3px] h-14 bg-white rounded-full" />
+          <div className="w-[3px] h-10 bg-[var(--neon)] rounded-full" />
+          <div className="w-[3px] h-7 bg-white rounded-full" />
+          <div className="w-[3px] h-11 bg-white rounded-full" />
+        </div>
+
+        {/* Diagonal stripe accent */}
+        <div className="absolute top-[45%] left-[-2%] w-[12%] h-[1px] bg-gradient-to-r from-transparent via-[var(--neon)]/20 to-transparent rotate-[25deg]" />
+        <div className="absolute top-[48%] left-[-2%] w-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-[25deg]" />
+      </div>
+
+      <motion.h1 variants={itemVariants} className="absolute left-1/2 -translate-x-1/2 top-[clamp(5rem,15vw,8rem)] md:top-[clamp(6rem,12vw,11rem)] lg:top-[clamp(7rem,9vw,14rem)] z-10 font-sans font-black text-[clamp(4.5rem,26vw,9rem)] md:text-[clamp(6rem,24vw,14rem)] lg:text-[clamp(7rem,16vw,18rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0 text-center w-full">TRENVITY</motion.h1>
+
+      <motion.div variants={itemVariants} className="absolute right-[20px] md:right-[28px] lg:right-[80px] top-[clamp(15rem,44vw,22rem)] md:top-[clamp(18rem,38vw,30rem)] lg:top-[clamp(20rem,26vw,34rem)] z-[15] max-w-[160px] md:max-w-[200px] lg:max-w-[260px] text-right">
+        <p className="text-[12px] lg:text-[14px] leading-[1.7] text-white/65 m-0">
           We are a creative studio working at the
           intersection of design, technology &amp; innovation.
         </p>
-        <span className="font-['Dancing_Script',cursive] text-[24px] text-white/50 mt-[1px] block">Since 2016</span>
+        <span className="font-['Dancing_Script',cursive] text-[24px] text-white/50 mt-[4px] block">Since 2016</span>
       </motion.div>
 
-      <motion.div variants={itemVariants} className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[clamp(420px,85vw,920px)] md:w-[clamp(420px,70vw,750px)] lg:w-[clamp(520px,58vw,920px)] h-[clamp(55vh,55vh,1080px)] md:h-[clamp(500px,65vh,850px)] lg:h-[clamp(700px,92vh,1080px)] bg-[url('/landing/trenvity-landing.png')] bg-contain bg-no-repeat bg-bottom z-20 pointer-events-none" aria-hidden="true" />
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: [0, -6, 0, 20, 0] }}
+        transition={{
+          opacity: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
+          y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.8 },
+        }}
+        className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[clamp(420px,85vw,920px)] md:w-[clamp(420px,70vw,750px)] lg:w-[clamp(520px,58vw,920px)] h-[clamp(55vh,55vh,1080px)] md:h-[clamp(500px,65vh,850px)] lg:h-[clamp(700px,92vh,1080px)] bg-[url('/landing/trenvity-landing.png')] bg-contain bg-no-repeat bg-bottom z-20 pointer-events-none"
+        aria-hidden="true"
+      />
 
       <motion.div variants={itemVariants} className="absolute left-[20px] md:left-[28px] lg:left-[48px] bottom-[30px] md:bottom-[40px] lg:bottom-[clamp(50px,8vh,100px)] z-[15] flex items-center gap-[8px] md:gap-[10px]">
         <div className="w-[36px] h-[36px] md:w-[42px] md:h-[42px] rounded-full border-[1.5px] border-white/25 inline-flex items-center justify-center text-white/55 transition-all duration-300 cursor-pointer bg-transparent p-0 hover:border-[var(--neon)] hover:text-[var(--neon)] hover:-translate-y-[2px]">

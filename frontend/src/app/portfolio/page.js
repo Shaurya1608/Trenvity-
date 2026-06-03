@@ -177,7 +177,7 @@ export default function PortfolioPage() {
       {/* ============================================
          2. LIVE STATS ROW
          ============================================ */}
-      <section className="relative w-full border-t border-b border-white/5 bg-[#0c0c0d]">
+      <section className="relative w-full border-t border-b border-white/5 bg-[var(--secondary-bg)]">
         <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4">
           {stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.1}>
@@ -350,7 +350,7 @@ export default function PortfolioPage() {
       {/* ============================================
          4. SKILLS & EXPERTISE SECTION
          ============================================ */}
-      <section className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[#0c0c0d]">
+      <section className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--secondary-bg)]">
         <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
 
           {/* Left Content */}
@@ -442,7 +442,7 @@ export default function PortfolioPage() {
       {/* ============================================
          6. TESTIMONIAL STRIP
          ============================================ */}
-      <section className="relative w-full py-20 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[#0c0c0d] overflow-hidden">
+      <section className="relative w-full py-20 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--secondary-bg)] overflow-hidden">
         <div className="max-w-[900px] mx-auto text-center">
           <Reveal>
             <div className="mb-6 flex justify-center gap-1">

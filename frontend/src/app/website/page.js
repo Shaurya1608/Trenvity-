@@ -85,7 +85,7 @@ export default function WebsitePage() {
   ];
 
   return (
-    <div className="relative w-full min-h-screen bg-[#070708] text-white overflow-hidden selection:bg-[var(--neon)] selection:text-black">
+    <div className="relative w-full min-h-screen bg-[var(--background)] text-white overflow-hidden selection:bg-[var(--neon)] selection:text-black">
       {/* Background Neon Glow Spheres */}
       <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[var(--neon)]/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#00f0ff]/5 blur-[150px] pointer-events-none" />
@@ -96,7 +96,7 @@ export default function WebsitePage() {
       {/* ============================================
          1. HERO / LANDING SECTION (BRUTALIST REDESIGN)
          ============================================ */}
-      <section className="relative w-full min-h-[105vh] flex flex-col justify-between pt-8 pb-38 px-6 md:px-12 lg:px-20 z-10 overflow-hidden bg-[#070708]">
+      <section className="relative w-full min-h-[105vh] flex flex-col justify-between pt-8 pb-38 px-6 md:px-12 lg:px-20 z-10 overflow-hidden bg-[var(--background)]">
         
         {/* Attractive Lines & Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] [background-size:4rem_4rem] pointer-events-none" />
@@ -160,7 +160,7 @@ export default function WebsitePage() {
             />
           </svg>
           {/* Solid filler to push the zig-zag up further into the hero */}
-          <div className="w-full h-[10px] sm:h-[15px] bg-[#060606]" />
+          <div className="w-full h-[10px] sm:h-[15px] bg-[var(--secondary-bg)]" />
         </div>
 
       </section>
@@ -168,7 +168,7 @@ export default function WebsitePage() {
       {/* ============================================
          2. DEVELOPMENT PIPELINE & PERFORMANCE SECTION
          ============================================ */}
-      <section id="performance" className="relative w-full py-14 lg:py-20 px-6 md:px-12 lg:px-20 bg-[#060606]">
+      <section id="performance" className="relative w-full py-14 lg:py-20 px-6 md:px-12 lg:px-20 bg-[var(--secondary-bg)]">
         <div className="max-w-[800px] mx-auto w-full text-center">
           
           <div className="w-full">
@@ -204,14 +204,14 @@ export default function WebsitePage() {
       {/* ============================================
          MARQUEE BAR
          ============================================ */}
-      <div className="relative w-full z-25 bg-[#060606]">
+      <div className="relative w-full z-25 bg-[var(--secondary-bg)]">
         <Marquee />
       </div>
 
       {/* ============================================
          3. DYNAMIC SCROLL FEATURES SHOWCASE
          ============================================ */}
-      <section id="features" className="relative w-full py-14 lg:py-20 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[#060606]">
+      <section id="features" className="relative w-full py-14 lg:py-20 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--secondary-bg)]">
         <div className="max-w-[1400px] mx-auto w-full">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
