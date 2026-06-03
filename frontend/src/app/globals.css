@@ -131,3 +131,18 @@ body {
   justify-content: flex-end;
 }
 
+/* ============================================
+   HEADER / NAVBAR
+   ============================================ */
+@keyframes navPing {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Smooth transition duration utility */
+.duration-400 {
+  transition-duration: 400ms;
+}
+
