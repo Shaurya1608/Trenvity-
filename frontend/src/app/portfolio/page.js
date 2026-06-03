@@ -201,29 +201,29 @@ export default function PortfolioPage() {
       {/* ============================================
          3. PROJECT SHOWCASE GRID
          ============================================ */}
-      <section className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 bg-[#0a0a0b]">
+      <section className="relative w-full py-14 md:py-16 px-6 md:px-12 lg:px-20 bg-[#0a0a0b]">
         <div className="max-w-[1400px] mx-auto w-full">
 
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
             <Reveal>
-              <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
+              <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-2 font-mono">
                 [ Selected Works ]
               </span>
-              <h2 className="text-[32px] md:text-[56px] font-extrabold tracking-[-2px] leading-[1] uppercase">
+              <h2 className="text-[24px] md:text-[36px] font-extrabold tracking-[-1.5px] leading-[1.1] uppercase">
                 WORK THAT <br />
                 SPEAKS IMPACT
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="max-w-[380px] text-white/50 text-sm md:text-base">
+              <p className="max-w-[380px] text-white/50 text-[11px] md:text-[12px] leading-relaxed">
                 Each project is uniquely conceived, designed, and developed to convert visitors into loyal advocates.
               </p>
             </Reveal>
           </div>
 
           {/* Projects Grid */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {projects.map((project, idx) => (
               <StaggerItem
                 key={project.id}
@@ -233,8 +233,8 @@ export default function PortfolioPage() {
                   onHoverStart={() => setHoveredProject(project.id)}
                   onHoverEnd={() => setHoveredProject(null)}
                   className="relative group rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02] cursor-pointer transition-all duration-300 hover:border-white/15"
-                  style={{ minHeight: project.span === 'col-span-2' ? 280 : 240 }}
-                  whileHover={{ y: -4 }}
+                  style={{ minHeight: project.span === 'col-span-2' ? 200 : 160 }}
+                  whileHover={{ y: -3 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 >
                   {/* Animated accent glow on hover */}
@@ -249,45 +249,45 @@ export default function PortfolioPage() {
                     }}
                   />
 
-                  <div className="relative z-10 p-8 md:p-10 h-full flex flex-col justify-between">
+                  <div className="relative z-10 p-5 md:p-6 h-full flex flex-col justify-between">
                     {/* Top row: ID + Year + Category */}
-                    <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-4">
-                        <span className="font-mono text-[11px] text-white/30 tracking-[2px]">
+                        <span className="font-mono text-[10px] text-white/30 tracking-[2px]">
                           {project.id}
                         </span>
                         <span
-                          className="text-[10px] font-bold uppercase tracking-[1.5px] px-3 py-1 rounded-full border"
+                          className="text-[9px] font-bold uppercase tracking-[1.5px] px-2.5 py-0.5 rounded-full border"
                           style={{
                             color: project.accent,
-                            borderColor: `${project.accent}30`,
-                            backgroundColor: `${project.accent}08`,
+                            borderColor: `${project.accent}20`,
+                            backgroundColor: `${project.accent}06`,
                           }}
                         >
                           {project.category}
                         </span>
                       </div>
-                      <span className="text-[11px] text-white/30 font-mono">{project.year}</span>
+                      <span className="text-[10px] text-white/30 font-mono">{project.year}</span>
                     </div>
 
                     {/* Project Title */}
                     <div className="flex-1 flex flex-col justify-center">
                       <h3
-                        className={`font-extrabold uppercase tracking-tight text-white leading-[0.9] mb-4 transition-colors duration-300 ${
+                        className={`font-extrabold uppercase tracking-tight text-white leading-[0.95] mb-2 transition-colors duration-300 ${
                           project.span === 'col-span-2'
-                            ? 'text-[28px] md:text-[42px]'
-                            : 'text-[24px] md:text-[32px]'
+                            ? 'text-[20px] md:text-[28px]'
+                            : 'text-[18px] md:text-[22px]'
                         }`}
                       >
                         {project.title}
                       </h3>
-                      <p className="text-white/50 text-sm leading-relaxed max-w-[560px]">
+                      <p className="text-white/50 text-[11px] leading-relaxed max-w-[560px]">
                         {project.description}
                       </p>
                     </div>
 
                     {/* Bottom tags + View arrow */}
-                    <div className="flex items-end justify-between mt-8">
+                    <div className="flex items-end justify-between mt-4">
                       <div className="flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
                           <span

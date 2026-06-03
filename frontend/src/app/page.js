@@ -10,7 +10,6 @@ import Stats from '@/components/Stats';
 import Testimonial from '@/components/Testimonial';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
-import Newsletter from '@/components/Newsletter';
 
 export default function Home() {
   return (
@@ -27,7 +26,6 @@ export default function Home() {
       <Testimonial />
       <CTA />
       <Footer />
-      <Newsletter />
     </div>
   );
 }

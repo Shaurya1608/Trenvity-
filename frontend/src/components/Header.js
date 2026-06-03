@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { label: 'Social Media', href: '/smm' },
+  { label: 'Performance', href: '/performance-marketing' },
   { label: 'Website', href: '/website' },
   { label: 'Blog', href: '/blog' },
   { label: 'Portfolio', href: '/portfolio' },
@@ -54,8 +55,8 @@ export default function Header() {
           fixed top-0 left-0 right-0 z-[100] w-full
           transition-all duration-500 ease-out
           ${scrolled
-            ? 'py-3 md:py-3.5'
-            : 'py-5 md:py-6'
+            ? 'py-0.5 md:py-1'
+            : 'py-1 md:py-2'
           }
         `}
         style={{
@@ -81,7 +82,7 @@ export default function Header() {
               width={320}
               height={80}
               priority
-              className="object-contain h-[70px] md:h-[90px] w-auto"
+              className="object-contain h-[70px] md:h-[85px] w-auto"
             />
           </Link>
 
@@ -327,7 +328,7 @@ export default function Header() {
       </div>
 
       {/* Spacer to prevent content from hiding behind fixed header */}
-      <div className="h-[72px] md:h-[80px]" />
+      <div className="h-[80px] md:h-[95px]" />
     </>
   );
 }
