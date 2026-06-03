@@ -4,9 +4,9 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
-  { label: 'Social Media', href: '/smm' },
   { label: 'Performance', href: '/performance-marketing' },
   { label: 'Website', href: '/website' },
   { label: 'Blog', href: '/blog' },
@@ -53,11 +53,8 @@ export default function Header() {
         id="main-header"
         className={`
           fixed top-0 left-0 right-0 z-[100] w-full
-          transition-all duration-500 ease-out
-          ${scrolled
-            ? 'py-0.5 md:py-1'
-            : 'py-1 md:py-2'
-          }
+          transition-all duration-500 ease-out flex items-center
+          h-[60px] md:h-[75px]
         `}
         style={{
           background: scrolled
@@ -69,94 +66,100 @@ export default function Header() {
           boxShadow: scrolled ? '0 8px 32px rgba(0,0,0,0.3)' : 'none',
         }}
       >
-        <div className="max-w-[1440px] mx-auto w-full flex items-center justify-between px-5 md:px-8 lg:px-12">
+        <div className="max-w-[1440px] mx-auto w-full flex items-center justify-between px-5 md:px-8 lg:px-12 relative">
 
           {/* ─── Logo ─── */}
-          <Link
-            href="/"
-            className="group relative flex items-center no-underline shrink-0 transition-transform duration-300 hover:scale-[1.03]"
-          >
-            <Image
-              src="/landing/logo-trenvity1.png"
-              alt="Trenvity"
-              width={320}
-              height={80}
-              priority
-              className="object-contain h-[70px] md:h-[85px] w-auto"
-            />
-          </Link>
+          <div className="w-[120px] md:w-[150px] shrink-0">
+            <Link
+              href="/"
+              className="absolute top-1/2 -translate-y-1/2 group flex items-center no-underline transition-transform duration-300 hover:scale-[1.03]"
+            >
+              <Image
+                src="/landing/logo-trenvity1.png"
+                alt="Trenvity"
+                width={320}
+                height={80}
+                priority
+                className="object-contain h-[70px] md:h-[85px] w-auto"
+              />
+            </Link>
+          </div>
 
           {/* ─── Desktop Navigation ─── */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
-            {navLinks.map((link) => {
-              const active = isActive(link.href);
-              const hovered = hoveredLink === link.href;
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2 relative">
+            <AnimatePresence>
+              {navLinks.map((link) => {
+                const active = isActive(link.href);
+                const hovered = hoveredLink === link.href;
 
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="relative px-4 py-2 text-[13px] font-medium tracking-[0.5px] no-underline transition-colors duration-300 cursor-pointer group"
-                  style={{
-                    color: active
-                      ? '#ffffff'
-                      : hovered
-                        ? 'rgba(255,255,255,0.9)'
-                        : 'rgba(255,255,255,0.55)',
-                  }}
-                  onMouseEnter={() => setHoveredLink(link.href)}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  {link.label}
-
-                  {/* Active underline indicator */}
-                  <span
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] rounded-full transition-all duration-400 ease-out"
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="relative px-5 py-2.5 text-[13px] font-medium tracking-[0.5px] no-underline transition-colors duration-300 cursor-pointer group rounded-lg"
                     style={{
-                      width: active ? '60%' : hovered ? '40%' : '0%',
-                      background: active
-                        ? 'linear-gradient(90deg, transparent, var(--neon), transparent)'
-                        : 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
-                      boxShadow: active ? '0 0 8px rgba(156, 190, 36, 0.4)' : 'none',
+                      color: active ? '#ffffff' : hovered ? '#ffffff' : 'rgba(255,255,255,0.6)',
                     }}
-                  />
+                    onMouseEnter={() => setHoveredLink(link.href)}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    <span className="relative z-10">{link.label}</span>
+                    
+                    {/* Hover background pill using framer-motion */}
+                    {hovered && (
+                      <motion.div
+                        layoutId="nav-hover-pill"
+                        className="absolute inset-0 bg-white/[0.06] rounded-lg z-0"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                      />
+                    )}
 
-                  {/* Hover background pill */}
-                  <span
-                    className="absolute inset-0 rounded-lg transition-all duration-300 -z-10"
-                    style={{
-                      background: hovered ? 'rgba(255,255,255,0.04)' : 'transparent',
-                    }}
-                  />
-                </Link>
-              );
-            })}
+                    {/* Active underline indicator */}
+                    {active && (
+                      <motion.div
+                        layoutId="nav-active-line"
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-[20px] bg-[var(--neon)] rounded-full shadow-[0_0_8px_rgba(156,190,36,0.6)] z-10"
+                        transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
+            </AnimatePresence>
           </nav>
 
           {/* ─── Desktop CTA Button ─── */}
-          <Link
-            href="/portfolio"
-            className="hidden md:inline-flex items-center justify-center group relative overflow-hidden px-7 py-3 text-[11px] font-bold tracking-[2px] uppercase no-underline rounded-full transition-all duration-400 shrink-0 cursor-pointer"
-            style={{
-              color: 'var(--neon)',
-              border: '1.5px solid var(--neon)',
-              background: 'transparent',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--neon)';
-              e.currentTarget.style.color = '#0F1C2E';
-              e.currentTarget.style.boxShadow = '0 0 24px rgba(156,190,36,0.3), 0 0 60px rgba(156,190,36,0.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.color = 'var(--neon)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {/* Shimmer sweep effect */}
-            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <span className="relative z-10">Contact Us</span>
-          </Link>
+            <Link
+              href="/contact"
+              className="hidden md:inline-flex items-center justify-center group relative overflow-hidden px-7 py-3 text-[11px] font-bold tracking-[2px] uppercase no-underline rounded-full transition-all duration-400 shrink-0 cursor-pointer"
+              style={{
+                color: 'var(--neon)',
+                border: '1.5px solid var(--neon)',
+                background: 'transparent',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'var(--neon)';
+                e.currentTarget.style.color = '#0F1C2E';
+                e.currentTarget.style.boxShadow = '0 0 24px rgba(156,190,36,0.3), 0 0 60px rgba(156,190,36,0.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = 'var(--neon)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              {/* Shimmer sweep effect */}
+              <span className="absolute inset-0 -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" />
+              <span className="relative z-10">Contact Us</span>
+            </Link>
+          </motion.div>
 
           {/* ─── Mobile Hamburger Button ─── */}
           <button
@@ -299,7 +302,7 @@ export default function Header() {
             }}
           >
             <Link
-              href="/portfolio"
+              href="/contact"
               className="flex items-center justify-center w-full py-4 text-[12px] font-bold tracking-[2px] uppercase no-underline rounded-full transition-all duration-300"
               style={{
                 background: 'var(--neon)',

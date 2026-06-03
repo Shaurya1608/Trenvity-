@@ -139,7 +139,7 @@ export default function PerformanceMarketingPage() {
       {/* ============================================
          1. HERO SECTION (REFERENCE MATCH)
          ============================================ */}
-      <section className="relative w-full bg-[var(--background)] pt-36 pb-12 px-6 md:px-12 lg:px-20 z-10 flex flex-col justify-between min-h-[75vh]">
+      <section className="relative w-full bg-[var(--background)] pt-24 pb-12 px-6 md:px-12 lg:px-20 z-10 flex flex-col justify-between min-h-screen">
         {/* Horizontal grid lines overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_40px] pointer-events-none" />
 
@@ -230,7 +230,7 @@ export default function PerformanceMarketingPage() {
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
             <Reveal>
-              
+            
               <h2 className="text-[22px] md:text-[32px] font-extrabold tracking-[-1.5px] leading-[1.1] uppercase">
                 ENGINEERED FOR<br />
                 UNRIVALED PERFORMANCE
@@ -417,12 +417,12 @@ export default function PerformanceMarketingPage() {
             <p className="text-white/50 text-sm max-w-[500px] mx-auto mb-12 leading-relaxed">
               We specialize across the entire digital landscape. Hop over to explore other growth-accelerating services.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-[600px] mx-auto">
+             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-[600px] mx-auto">
               <Link
-                href="/smm"
+                href="/portfolio"
                 className="w-full px-6 py-4 border border-white/10 hover:border-[var(--neon)]/50 hover:bg-white/[0.02] text-white font-mono text-[11px] tracking-[1.5px] uppercase rounded-xl transition-all duration-300"
               >
-                Social Media Marketing (SMM)
+                Portfolio Showcase
               </Link>
               <Link
                 href="/website"

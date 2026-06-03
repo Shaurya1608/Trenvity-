@@ -70,7 +70,7 @@ export default function PortfolioPage() {
   const [hoveredProject, setHoveredProject] = useState(null);
 
   return (
-    <div className="relative w-full min-h-screen bg-[#0a0a0b] text-white overflow-hidden selection:bg-[var(--neon)] selection:text-black">
+    <div className="relative w-full min-h-screen bg-[var(--background)] text-white overflow-hidden selection:bg-[var(--neon)] selection:text-black">
 
       <Header />
 
@@ -201,7 +201,7 @@ export default function PortfolioPage() {
       {/* ============================================
          3. PROJECT SHOWCASE GRID
          ============================================ */}
-      <section className="relative w-full py-14 md:py-16 px-6 md:px-12 lg:px-20 bg-[#0a0a0b]">
+      <section className="relative w-full py-14 md:py-16 px-6 md:px-12 lg:px-20 bg-[var(--background)]">
         <div className="max-w-[1400px] mx-auto w-full">
 
           {/* Section Header */}
@@ -350,8 +350,8 @@ export default function PortfolioPage() {
       {/* ============================================
          4. SKILLS & EXPERTISE SECTION
          ============================================ */}
-      <section className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--secondary-bg)]">
-        <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
+      <section className="relative w-full py-20 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--background)]">
+        <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Left Content */}
           <div className="lg:col-span-5">
@@ -359,44 +359,62 @@ export default function PortfolioPage() {
               <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
                 [ Core Competencies ]
               </span>
-              <h2 className="text-[32px] md:text-[48px] font-extrabold tracking-[-1.5px] leading-[1.05] uppercase mb-6">
+              <h2 className="text-[28px] md:text-[36px] font-extrabold tracking-[-1.5px] leading-[1.1] uppercase mb-6">
                 SKILLS THAT <br />
                 CONVERT
               </h2>
-              <p className="text-white/50 text-base leading-relaxed mb-8">
+              <p className="text-white/50 text-xs sm:text-sm leading-relaxed mb-8 max-w-[450px]">
                 Each discipline listed is field-proven. Every project is executed with speed, precision, and a relentless commitment to measurable results.
               </p>
               <Link
                 href="#"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[var(--neon)] text-black font-bold text-[12px] tracking-[1.5px] uppercase rounded-full hover:scale-[1.03] transition-transform duration-300 shadow-[0_0_30px_rgba(200,240,0,0.15)]"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-[var(--neon)] text-black font-bold text-[12px] tracking-[1.5px] uppercase rounded-full hover:scale-[1.03] transition-transform duration-300 shadow-[0_0_30px_rgba(156,190,36,0.15)]"
               >
                 Start a Project
               </Link>
             </Reveal>
           </div>
 
-          {/* Right Skill Bars */}
-          <div className="lg:col-span-7 space-y-7">
-            {skills.map((skill, idx) => (
-              <Reveal key={skill.name} delay={idx * 0.08}>
-                <div>
-                  <div className="flex justify-between items-center mb-2.5">
-                    <span className="text-sm font-semibold text-white tracking-[0.3px]">{skill.name}</span>
-                    <span className="text-xs font-bold text-[var(--neon)] font-mono">{skill.level}%</span>
+          {/* Right Skill Visualization (Premium Segmented Hardware Display) */}
+          <div className="lg:col-span-7 flex flex-col gap-6 w-full">
+            {skills.map((skill, idx) => {
+              const numSegments = 12; // Wider grid of segments for detail
+              const activeCount = Math.round((skill.level / 100) * numSegments);
+
+              return (
+                <div key={skill.name} className="w-full bg-white/[0.01] border border-white/5 rounded-xl p-5 hover:border-white/10 transition-colors duration-300">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-xs font-bold text-white tracking-[0.5px] uppercase">{skill.name}</span>
+                    <span className="text-[10px] font-bold text-[var(--neon)] font-mono tracking-wider">{skill.level}% LEVEL</span>
                   </div>
-                  <div className="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.4, delay: idx * 0.1, ease: 'easeOut' }}
-                      className="h-full rounded-full"
-                      style={{ background: `linear-gradient(to right, var(--neon), #00f0ff)` }}
-                    />
+
+                  {/* Custom animated hardware-style segments */}
+                  <div className="flex gap-1.5 w-full">
+                    {Array.from({ length: numSegments }).map((_, i) => {
+                      const isActive = i < activeCount;
+                      return (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0.15, scaleY: 0.8 }}
+                          whileInView={{ 
+                            opacity: isActive ? 1 : 0.15, 
+                            scaleY: 1,
+                            backgroundColor: isActive ? 'var(--neon)' : 'rgba(255,255,255,0.1)'
+                          }}
+                          viewport={{ once: true }}
+                          transition={{ 
+                            duration: 0.35, 
+                            delay: idx * 0.06 + i * 0.03,
+                            ease: 'easeOut'
+                          }}
+                          className="h-2 flex-1 rounded-[1px]"
+                        />
+                      );
+                    })}
                   </div>
                 </div>
-              </Reveal>
-            ))}
+              );
+            })}
           </div>
 
         </div>
@@ -405,7 +423,7 @@ export default function PortfolioPage() {
       {/* ============================================
          5. PROCESS TIMELINE
          ============================================ */}
-      <section className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 bg-[#0a0a0b] border-t border-white/5">
+      <section className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 bg-[var(--background)] border-t border-white/5">
         <div className="max-w-[1400px] mx-auto w-full">
 
           <Reveal className="text-center mb-16">
@@ -471,7 +489,7 @@ export default function PortfolioPage() {
       {/* ============================================
          7. FINAL CTA
          ============================================ */}
-      <section className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[#0a0a0b]">
+      <section className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--background)]">
         <div className="max-w-[1000px] mx-auto text-center relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[var(--neon)]/8 rounded-full blur-[120px] pointer-events-none" />
 

@@ -11,8 +11,21 @@ export default function About() {
         </h2>
       </div>
 
-      <div className="flex flex-col items-end">
-        <div className="max-w-[350px] lg:max-w-[320px] mb-8 lg:mb-0 mr-6 lg:mr-44">
+      <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10 lg:gap-0 mt-8 md:mt-16">
+        
+        {/* Image on the left */}
+        <div className="relative w-full max-w-[420px] lg:max-w-[500px] ml-0 md:ml-6 lg:ml-20">
+          <div className="border-[2px] border-[var(--neon)] overflow-hidden shadow-[0_0_30px_rgba(156,190,36,0.15)]">
+            <img
+              src="/landing/trenvity-aboutr.png"
+              alt="Our creative team"
+              className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500"
+            />
+          </div>
+        </div>
+
+        {/* Text on the right */}
+        <div className="max-w-[350px] lg:max-w-[380px] mr-0 md:mr-6 lg:mr-32">
           <p className="text-[11px] md:text-[12px] leading-[1.7] text-white/60 mb-4">
             Our mission is simple: deliver creative solutions that
             drive measurable results and elevate brands
@@ -35,16 +48,6 @@ export default function About() {
             create experiences that not only reach goals,
             but redefine what&apos;s possible.
           </p>
-        </div>
-
-        <div className="relative w-full max-w-[380px] lg:max-w-[340px]">
-          <div className="border-[2px] border-[var(--neon)] overflow-hidden">
-            <img
-              src="/landing/trenvity-aboutr.png"
-              alt="Our creative team"
-              className="w-full h-auto object-cover grayscale"
-            />
-          </div>
         </div>
       </div>
     </section>

@@ -12,7 +12,7 @@ const partners = [
 
 export default function Marquee() {
   return (
-    <section className="relative w-full bg-[var(--neon)] py-3 md:py-[18px] border-y-2 border-black flex overflow-hidden whitespace-nowrap group">
+    <section className="relative z-30 -mt-[7vh] md:-mt-[10vh] lg:-mt-[12vh] w-full bg-[var(--neon)] py-3 md:py-[18px] border-y-2 border-black flex overflow-hidden whitespace-nowrap group">
       <div className="flex w-max items-center" style={{ animation: 'marquee 25s linear infinite' }}>
         <div className="flex items-center gap-[40px] md:gap-[60px] lg:gap-[80px] px-[20px] md:px-[30px] lg:px-[40px] text-black uppercase">
           {partners.map((p) => (
