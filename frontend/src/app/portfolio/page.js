@@ -77,7 +77,7 @@ export default function PortfolioPage() {
       {/* ============================================
          1. EDITORIAL HERO SECTION
          ============================================ */}
-      <section className="relative w-full min-h-screen flex flex-col justify-between overflow-hidden">
+      <section className="relative w-full h-screen flex flex-col justify-between overflow-hidden -mt-[80px] md:-mt-[95px] pt-[80px] md:pt-[95px]">
 
         {/* Rich dark textured gradient background */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,240,0,0.04)_0%,transparent_50%),radial-gradient(ellipse_at_bottom_right,rgba(0,240,255,0.03)_0%,transparent_50%)] pointer-events-none" />
@@ -208,7 +208,7 @@ export default function PortfolioPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
             <Reveal>
               <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-2 font-mono">
-                [ Selected Works ]
+                Selected Works
               </span>
               <h2 className="text-[24px] md:text-[36px] font-extrabold tracking-[-1.5px] leading-[1.1] uppercase">
                 WORK THAT <br />
@@ -357,7 +357,7 @@ export default function PortfolioPage() {
           <div className="lg:col-span-5">
             <Reveal>
               <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-                [ Core Competencies ]
+                Core Competencies
               </span>
               <h2 className="text-[28px] md:text-[36px] font-extrabold tracking-[-1.5px] leading-[1.1] uppercase mb-6">
                 SKILLS THAT <br />
@@ -428,7 +428,7 @@ export default function PortfolioPage() {
 
           <Reveal className="text-center mb-16">
             <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-              [ Creative Process ]
+              Creative Process
             </span>
             <h2 className="text-[32px] md:text-[56px] font-extrabold tracking-[-2px] leading-[1] uppercase">
               HOW WE EXECUTE
@@ -494,7 +494,7 @@ export default function PortfolioPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[var(--neon)]/8 rounded-full blur-[120px] pointer-events-none" />
 
           <Reveal>
-            <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-4 font-mono">[ Let's Build ]</span>
+            <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-4 font-mono">Let's Build</span>
             <h2 className="text-[36px] sm:text-[52px] lg:text-[72px] font-extrabold tracking-[-2px] leading-none uppercase mb-6">
               YOUR PROJECT <br />
               DESERVES THIS

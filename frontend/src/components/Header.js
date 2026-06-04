@@ -7,7 +7,9 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
+  { label: 'Home', href: '/' },
   { label: 'Performance', href: '/performance-marketing' },
+  { label: 'Digital Marketing', href: '/digital-marketing' },
   { label: 'Website', href: '/website' },
   { label: 'Blog', href: '/blog' },
   { label: 'Portfolio', href: '/portfolio' },
@@ -205,130 +207,135 @@ export default function Header() {
       </header>
 
       {/* ─── Mobile Full-Screen Menu Overlay ─── */}
-      <div
-        id="mobile-menu-overlay"
-        className="fixed inset-0 z-[99] md:hidden pointer-events-none"
-        style={{
-          opacity: mobileOpen ? 1 : 0,
-          visibility: mobileOpen ? 'visible' : 'hidden',
-          transition: 'opacity 0.4s ease, visibility 0.4s ease',
-        }}
-      >
-        {/* Backdrop */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'rgba(10, 18, 30, 0.97)',
-            backdropFilter: 'blur(30px) saturate(1.5)',
-            WebkitBackdropFilter: 'blur(30px) saturate(1.5)',
-            pointerEvents: mobileOpen ? 'auto' : 'none',
-          }}
-          onClick={() => setMobileOpen(false)}
-        />
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            id="mobile-menu-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[99] md:hidden flex flex-col justify-between p-6 xs:p-8 bg-[#0F1C2E]/98 backdrop-blur-3xl"
+          >
+            {/* Ambient glow orbs */}
+            <div className="absolute top-[10%] left-[-15%] w-[320px] h-[320px] rounded-full bg-[var(--neon)]/5 blur-[100px] pointer-events-none" />
+            <div className="absolute bottom-[15%] right-[-15%] w-[280px] h-[280px] rounded-full bg-[#00f0ff]/5 blur-[90px] pointer-events-none" />
+            
+            {/* Elegant fine grid lines */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:40px_40px]" />
 
-        {/* Ambient glow orbs */}
-        <div className="absolute top-[15%] left-[-20%] w-[300px] h-[300px] rounded-full bg-[var(--neon)]/5 blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-[20%] right-[-15%] w-[250px] h-[250px] rounded-full bg-[#00f0ff]/5 blur-[80px] pointer-events-none" />
+            {/* Menu Header Area */}
+            <div className="flex items-center justify-between w-full z-10 pt-4">
+              <span className="text-[10px] font-mono tracking-[4px] text-white/40 uppercase">Navigation Menu</span>
+              <span className="text-[10px] font-mono tracking-[4px] text-[var(--neon)] uppercase">Trenvity ©</span>
+            </div>
 
-        {/* Menu content */}
-        <nav
-          className="relative h-full flex flex-col justify-center items-center gap-2 px-8"
-          style={{ pointerEvents: mobileOpen ? 'auto' : 'none' }}
-        >
-          {navLinks.map((link, idx) => {
-            const active = isActive(link.href);
+            {/* Main Links Area */}
+            <nav className="flex flex-col my-auto z-10 w-full">
+              {navLinks.map((link, idx) => {
+                const active = isActive(link.href);
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.05 + 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative group w-full border-b border-white/5 py-3.5 first:pt-1"
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="inline-flex items-baseline gap-4 no-underline group w-full"
+                    >
+                      {/* Premium Index Number */}
+                      <span className="text-[11px] font-mono font-bold text-white/20 group-hover:text-[var(--neon)] transition-colors duration-300">
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
+                      
+                      {/* Big elegant text */}
+                      <span className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white/80 group-hover:text-white transition-all duration-300 group-hover:translate-x-2 inline-block">
+                        {link.label}
+                      </span>
 
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="group relative w-full max-w-[320px] no-underline"
-                onClick={() => setMobileOpen(false)}
-                style={{
-                  opacity: mobileOpen ? 1 : 0,
-                  transform: mobileOpen ? 'translateY(0)' : 'translateY(24px)',
-                  transition: `opacity 0.4s ease ${idx * 0.08 + 0.15}s, transform 0.4s ease ${idx * 0.08 + 0.15}s`,
-                }}
+                      {/* Active dot or hover line */}
+                      {active ? (
+                        <span className="h-2 w-2 rounded-full bg-[var(--neon)] shadow-[0_0_8px_var(--neon)] self-center ml-2" />
+                      ) : (
+                        <span className="h-[2px] w-0 group-hover:w-8 bg-white/40 transition-all duration-300 self-center ml-2 rounded-full" />
+                      )}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+
+              {/* Special Contact Us Link directly below Portfolio */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.05 + 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="relative group w-full border-b border-white/5 last:border-b-0 py-3.5 last:pb-1"
               >
-                <div
-                  className="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300"
-                  style={{
-                    background: active ? 'rgba(156,190,36,0.08)' : 'rgba(255,255,255,0.02)',
-                    border: `1px solid ${active ? 'rgba(156,190,36,0.2)' : 'rgba(255,255,255,0.04)'}`,
-                  }}
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-baseline gap-4 no-underline group w-full"
                 >
-                  {/* Index number */}
-                  <span
-                    className="text-[11px] font-mono font-bold tracking-wider"
-                    style={{ color: active ? 'var(--neon)' : 'rgba(255,255,255,0.2)' }}
-                  >
-                    0{idx + 1}
+                  <span className="text-[11px] font-mono font-bold text-[var(--neon)]">
+                    07
+                  </span>
+                  
+                  <span className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-[var(--neon)] group-hover:text-white transition-all duration-300 group-hover:translate-x-2 inline-block">
+                    Contact Us
                   </span>
 
-                  {/* Link text */}
-                  <span
-                    className="text-[22px] font-bold tracking-[-0.5px]"
-                    style={{ color: active ? '#ffffff' : 'rgba(255,255,255,0.65)' }}
-                  >
-                    {link.label}
-                  </span>
-
-                  {/* Active dot */}
-                  {active && (
-                    <span className="ml-auto flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-[var(--neon)] opacity-50" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--neon)]" />
-                    </span>
+                  {isActive('/contact') ? (
+                    <span className="h-2 w-2 rounded-full bg-[var(--neon)] shadow-[0_0_8px_var(--neon)] self-center ml-2" />
+                  ) : (
+                    <span className="h-[2px] w-0 group-hover:w-8 bg-[var(--neon)] transition-all duration-300 self-center ml-2 rounded-full" />
                   )}
+                </Link>
+              </motion.div>
+            </nav>
 
-                  {/* Arrow on hover */}
-                  {!active && (
-                    <span className="ml-auto text-white/20 text-lg transition-all duration-300 group-hover:text-white/50 group-hover:translate-x-1">
-                      →
-                    </span>
-                  )}
-                </div>
-              </Link>
-            );
-          })}
-
-          {/* Mobile CTA */}
-          <div
-            className="mt-6 w-full max-w-[320px]"
-            style={{
-              opacity: mobileOpen ? 1 : 0,
-              transform: mobileOpen ? 'translateY(0)' : 'translateY(24px)',
-              transition: `opacity 0.4s ease ${navLinks.length * 0.08 + 0.2}s, transform 0.4s ease ${navLinks.length * 0.08 + 0.2}s`,
-            }}
-          >
-            <Link
-              href="/contact"
-              className="flex items-center justify-center w-full py-4 text-[12px] font-bold tracking-[2px] uppercase no-underline rounded-full transition-all duration-300"
-              style={{
-                background: 'var(--neon)',
-                color: '#0F1C2E',
-                boxShadow: '0 0 30px rgba(156,190,36,0.2)',
-              }}
-              onClick={() => setMobileOpen(false)}
+            {/* Bottom Panel (Socials & Contacts) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: (navLinks.length + 1) * 0.05 + 0.15, duration: 0.5 }}
+              className="flex flex-col gap-6 z-10 border-t border-white/5 pt-6 pb-12"
             >
-              Contact Us
-            </Link>
-          </div>
+              {/* Contact info grid */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <span className="block text-[9px] font-mono tracking-[2px] text-white/35 uppercase mb-1">Get In Touch</span>
+                  <a href="mailto:hello@trenvity.com" className="text-xs font-semibold text-white/70 hover:text-[var(--neon)] no-underline transition-colors duration-300">
+                    hello@trenvity.com
+                  </a>
+                </div>
+                <div>
+                  <span className="block text-[9px] font-mono tracking-[2px] text-white/35 uppercase mb-1">Office</span>
+                  <span className="text-xs text-white/60 font-medium">New Delhi, India</span>
+                </div>
+              </div>
 
-          {/* Bottom decorative line */}
-          <div
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-3"
-            style={{
-              opacity: mobileOpen ? 1 : 0,
-              transition: 'opacity 0.4s ease 0.5s',
-            }}
-          >
-            <span className="w-8 h-[1px] bg-white/10" />
-            <span className="text-[9px] font-mono tracking-[3px] text-white/20 uppercase">no limits studio</span>
-            <span className="w-8 h-[1px] bg-white/10" />
-          </div>
-        </nav>
-      </div>
+              {/* Socials / Secondary links */}
+              <div className="flex items-center justify-between gap-4 mt-2">
+                <div className="flex items-center gap-4">
+                  {['Instagram', 'LinkedIn', 'Dribbble'].map((soc) => (
+                    <a 
+                      key={soc}
+                      href="#" 
+                      className="text-[11px] font-mono tracking-[1px] text-white/40 hover:text-white transition-colors duration-300 no-underline"
+                    >
+                      {soc}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Spacer to prevent content from hiding behind fixed header */}
       <div className="h-[80px] md:h-[95px]" />

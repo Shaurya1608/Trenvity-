@@ -3,183 +3,165 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.25, 0.4, 0.25, 1], delay },
-  }),
-};
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Performance', href: '/performance-marketing' },
+  { label: 'Digital Marketing', href: '/digital-marketing' },
+  { label: 'Website', href: '/website' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Contact', href: '/contact' },
+];
 
-const slideIn = {
-  hidden: { scaleX: 0, originX: 0 },
-  visible: {
-    scaleX: 1,
-    transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.3 },
-  },
-};
+const contactItems = [
+  { label: 'New Projects', value: 'sales@trenvity.com', href: 'mailto:sales@trenvity.com' },
+  { label: 'Support', value: 'support@trenvity.com', href: 'mailto:support@trenvity.com' },
+  { label: 'General', value: 'info@trenvity.com', href: 'mailto:info@trenvity.com' },
+];
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[var(--background)] px-3 md:px-6 pb-3 md:pb-6">
-      {/* The neon border frame */}
-      <div className="w-full border-[6px] md:border-[12px] border-[var(--neon)] flex flex-col overflow-hidden bg-[var(--background)]">
+    <footer className="relative w-full bg-[var(--background)] overflow-hidden">
 
-        {/* ─── "TRENVITY" Heading ─── */}
-        <div className="flex flex-col relative z-10 pt-8 md:pt-12">
-          <motion.h2
-            className="font-sans font-black uppercase text-[clamp(3rem,10vw,9rem)] leading-[0.8] tracking-[-2px] md:tracking-[-4px] text-center w-full select-none relative z-10"
-            style={{
-              background: 'linear-gradient(90deg, #ffffff 0%, #cccccc 60%, #aaaaaa 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.9, ease: [0.25, 0.4, 0.25, 1] }}
-          >
-            TRENVITY
-          </motion.h2>
+      {/* ── Top neon separator line ── */}
+      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--neon)] to-transparent opacity-60" />
 
-          {/* ─── Neon Info Bar ─── */}
+      {/* ── Main Content ── */}
+      <div className="px-6 md:px-12 lg:px-20 pt-16 md:pt-20 pb-10 md:pb-12">
+
+        {/* Upper grid: CTA left, Nav right */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 mb-16 md:mb-24">
+
+          {/* Left: CTA block */}
           <motion.div
-            className="w-full bg-[var(--neon)] text-[#0A1118] grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 px-5 md:px-10 py-4 md:py-6 relative z-20 mt-1"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+            className="lg:col-span-1"
           >
-            {[
-              { label: 'New project:', value: 'sales@trenvity.com', href: 'mailto:sales@trenvity.com' },
-              { label: 'Support:', value: 'support@trenvity.com', href: 'mailto:support@trenvity.com' },
-              { label: 'Location:', value: null, address: ['123 Creative Street', 'Tech Hub District', 'United Kingdom'] },
-              { label: 'General:', value: 'info@trenvity.com', href: 'mailto:info@trenvity.com' },
-              { label: 'Call us:', value: '+44 123 456 7890', href: 'tel:+441234567890' },
-            ].map((item, i) => (
-              <motion.div
-                key={item.label}
-                custom={i * 0.07}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className={item.address ? 'col-span-2 md:col-span-1' : ''}
-              >
-                <h3 className="font-bold text-[12px] md:text-[13px] mb-0.5">{item.label}</h3>
-                {item.address ? (
-                  <p className="text-[11px] md:text-[12px] leading-tight font-medium">
-                    {item.address.map((line, j) => (
-                      <span key={j}>{line}{j < item.address.length - 1 && <br />}</span>
-                    ))}
-                  </p>
-                ) : (
-                  <a href={item.href} className="text-[11px] md:text-[12px] hover:underline font-medium">{item.value}</a>
-                )}
-              </motion.div>
-            ))}
+            <p className="text-[var(--neon)] text-[11px] tracking-[3px] uppercase font-mono mb-4">
+              Ready to grow?
+            </p>
+            <h3 className="font-black italic uppercase text-white text-[clamp(1.6rem,3vw,2.4rem)] leading-[1.0] tracking-[-1px] mb-6">
+              LET&apos;S BUILD<br />
+              <span className="text-[var(--neon)]">SOMETHING</span><br />
+              GREAT.
+            </h3>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-3 text-[12px] font-bold uppercase tracking-[2px] text-[var(--neon)] no-underline hover:gap-6 transition-all duration-300 group"
+            >
+              Start a Project
+              <span className="w-8 h-[1.5px] bg-[var(--neon)] group-hover:w-14 transition-all duration-300 inline-block" />
+            </Link>
+          </motion.div>
+
+          {/* Middle: Navigation */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1], delay: 0.1 }}
+          >
+            <p className="text-white/30 text-[10px] tracking-[3px] uppercase font-mono mb-6">Navigation</p>
+            <ul className="flex flex-col gap-3 list-none m-0 p-0">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-white/60 hover:text-[var(--neon)] text-[13px] font-medium tracking-[0.5px] no-underline transition-colors duration-300 flex items-center gap-2 group"
+                  >
+                    <span className="w-0 group-hover:w-3 h-[1px] bg-[var(--neon)] transition-all duration-300 inline-block" />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Right: Contact */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1], delay: 0.2 }}
+          >
+            <p className="text-white/30 text-[10px] tracking-[3px] uppercase font-mono mb-6">Get In Touch</p>
+            <ul className="flex flex-col gap-5 list-none m-0 p-0 mb-8">
+              {contactItems.map((item) => (
+                <li key={item.label}>
+                  <span className="block text-white/30 text-[10px] tracking-[2px] uppercase font-mono mb-1">{item.label}</span>
+                  <a
+                    href={item.href}
+                    className="text-white/70 hover:text-[var(--neon)] text-[13px] font-medium no-underline transition-colors duration-300"
+                  >
+                    {item.value}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <div>
+              <span className="block text-white/30 text-[10px] tracking-[2px] uppercase font-mono mb-1">Office</span>
+              <span className="text-white/60 text-[13px] font-medium">New Delhi, India</span>
+            </div>
           </motion.div>
         </div>
 
-        {/* ─── Inquiries Section ─── */}
-        <div className="px-5 md:px-10 lg:px-16 mt-10 md:mt-16 mb-8 flex flex-col md:flex-row items-start md:items-stretch gap-8 md:gap-12">
-
-          {/* Animated Arrow */}
-          <div className="flex-1 w-full md:w-auto flex items-center pt-2 md:pt-8">
-            <div className="w-full relative">
-              <motion.div
-                className="h-[5px] md:h-[8px] bg-[var(--neon)] origin-left"
-                variants={slideIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.8 }}
-              />
-              <motion.div
-                className="absolute right-0 top-1/2 -translate-y-[60%] w-5 h-5 md:w-10 md:h-10 border-t-[5px] border-r-[5px] md:border-t-[8px] md:border-r-[8px] border-[var(--neon)] rotate-45 translate-x-[2px] md:translate-x-[4px]"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.9, duration: 0.3 }}
-              />
-            </div>
-          </div>
-
-          {/* Inquiries Text */}
-          <div className="flex-1 md:max-w-[600px] text-white">
-            <motion.h3
-              className="font-sans font-black uppercase text-[clamp(2.5rem,5vw,4rem)] leading-[0.9] tracking-[-1px] mb-5 text-[var(--neon)]"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1], delay: 0.2 }}
+        {/* ── Massive TRENVITY wordmark ── */}
+        <div className="relative overflow-hidden">
+          <div className="w-full h-[1px] bg-white/5 mb-6" />
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.25, 0.4, 0.25, 1] }}
+          >
+            <h2
+              className="font-black uppercase leading-[0.82] tracking-[-3px] md:tracking-[-6px] lg:tracking-[-10px] w-full text-center select-none"
+              style={{
+                fontSize: 'clamp(4.5rem, 15vw, 16rem)',
+                background: 'linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
             >
-              INQUIRIES
-            </motion.h3>
-
-            <motion.p
-              className="font-bold text-[13px] md:text-[15px] leading-[1.3] uppercase mb-5 max-w-[500px] text-white/90"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-            >
-              TRENVITY IS AN AWARD-WINNING AGENCY, SPECIALISED IN CREATIVE DESIGN, DEVELOPMENT AND STRATEGY.
-            </motion.p>
-
-            <motion.p
-              className="text-[11px] md:text-[13px] leading-[1.6] text-white/50 mb-7 max-w-[460px]"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-            >
-              If you're ready to build a scalable, data-driven digital presence, fill out an inquiry form. Still need some advice, or another opinion to sound out some ideas? Just drop us a line.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row gap-3"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-            >
-              <Link
-                href="/contact"
-                className="bg-[var(--neon)] text-[#0A1118] font-black text-[11px] tracking-[1px] px-6 py-2.5 uppercase hover:bg-white transition-colors duration-300 w-fit no-underline"
-              >
-                Project Inquiry
-              </Link>
-              <Link
-                href="/contact"
-                className="border-[2px] border-[var(--neon)] text-[var(--neon)] font-black text-[11px] tracking-[1px] px-6 py-2.5 uppercase hover:bg-[var(--neon)] hover:text-[#0A1118] transition-colors duration-300 w-fit no-underline"
-              >
-                Working at Trenvity
-              </Link>
-            </motion.div>
-          </div>
+              TRENVITY
+            </h2>
+          </motion.div>
         </div>
 
-        {/* ─── Bottom Copyright Bar ─── */}
+        {/* ── Bottom bar ── */}
         <motion.div
-          className="px-5 md:px-10 py-4 border-t border-[var(--neon)]/20 flex flex-col md:flex-row items-center justify-between gap-3 text-[10px] font-mono uppercase tracking-[1.5px] text-white/30"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-white/[0.05] mt-2"
         >
-          <span>© {new Date().getFullYear()} Trenvity — All Rights Reserved</span>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-[var(--neon)] transition-colors duration-300">Privacy Policy</a>
-            <a href="#" className="hover:text-[var(--neon)] transition-colors duration-300">Terms of Service</a>
+          <span className="text-white/20 text-[10px] font-mono uppercase tracking-[2px]">
+            © {new Date().getFullYear()} Trenvity — All Rights Reserved
+          </span>
+
+          <div className="flex items-center gap-6">
+            {['Instagram', 'LinkedIn', 'Dribbble'].map((s) => (
+              <a
+                key={s}
+                href="#"
+                className="text-white/25 hover:text-[var(--neon)] text-[10px] font-mono uppercase tracking-[2px] no-underline transition-colors duration-300"
+              >
+                {s}
+              </a>
+            ))}
           </div>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-[var(--neon)] transition-colors duration-300">Instagram</a>
-            <a href="#" className="hover:text-[var(--neon)] transition-colors duration-300">LinkedIn</a>
+
+          <div className="flex items-center gap-5">
+            <a href="#" className="text-white/20 hover:text-[var(--neon)] text-[10px] font-mono uppercase tracking-[2px] no-underline transition-colors duration-300">Privacy</a>
+            <a href="#" className="text-white/20 hover:text-[var(--neon)] text-[10px] font-mono uppercase tracking-[2px] no-underline transition-colors duration-300">Terms</a>
           </div>
         </motion.div>
-
       </div>
     </footer>
   );

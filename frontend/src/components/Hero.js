@@ -20,27 +20,27 @@ export default function Hero() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="relative w-full h-screen pt-20 md:pt-28"
+      className="relative w-full min-h-[85vh] md:h-screen pt-16 md:pt-20"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Main ambient glow orbs */}
-        <div className="absolute top-[10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-[var(--neon)]/5 blur-[120px]" />
-        <div className="absolute top-[50%] right-[-8%] w-[400px] h-[400px] rounded-full bg-[var(--neon)]/4 blur-[100px]" />
-        <div className="absolute bottom-[10%] left-[30%] w-[300px] h-[300px] rounded-full bg-white/[0.02] blur-[80px]" />
+        <div className="absolute top-[10%] left-[-5%] w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] rounded-full bg-[var(--neon)]/5 blur-[120px]" />
+        <div className="absolute top-[50%] right-[-8%] w-[260px] h-[260px] sm:w-[400px] sm:h-[400px] rounded-full bg-[var(--neon)]/4 blur-[100px]" />
+        <div className="absolute bottom-[10%] left-[30%] w-[220px] h-[220px] sm:w-[300px] sm:h-[300px] rounded-full bg-white/[0.02] blur-[80px]" />
 
         {/* Grid pattern overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50" />
 
         {/* Decorative geometric shapes */}
-        <div className="absolute top-[8%] left-[6%] w-10 h-10 border border-[var(--neon)]/20 rotate-12" />
-        <div className="absolute top-[18%] right-[10%] w-14 h-14 border border-white/[0.06] rounded-full" />
-        <div className="absolute top-[35%] left-[4%] w-6 h-6 border border-[var(--neon)]/15 rotate-45" />
-        <div className="absolute top-[50%] right-[6%] w-20 h-20 border border-white/[0.04] rounded-full" />
-        <div className="absolute top-[12%] left-[40%] w-5 h-5 bg-[var(--neon)]/8 rotate-[20deg]" />
-        <div className="absolute top-[65%] left-[7%] w-12 h-12 border border-[var(--neon)]/10 rounded-full" />
-        <div className="absolute top-[28%] right-[4%] w-8 h-8 border border-[var(--neon)]/20 rotate-[30deg]" />
-        <div className="absolute top-[75%] right-[14%] w-10 h-10 border border-white/[0.06] rounded-full" />
+        <div className="absolute top-[8%] left-[6%] w-10 h-10 border border-[var(--neon)]/20 rotate-12 hidden sm:block" />
+        <div className="absolute top-[18%] right-[10%] w-14 h-14 border border-white/[0.06] rounded-full hidden md:block" />
+        <div className="absolute top-[35%] left-[4%] w-6 h-6 border border-[var(--neon)]/15 rotate-45 hidden sm:block" />
+        <div className="absolute top-[50%] right-[6%] w-20 h-20 border border-white/[0.04] rounded-full hidden md:block" />
+        <div className="absolute top-[12%] left-[40%] w-5 h-5 bg-[var(--neon)]/8 rotate-[20deg] hidden sm:block" />
+        <div className="absolute top-[65%] left-[7%] w-12 h-12 border border-[var(--neon)]/10 rounded-full hidden md:block" />
+        <div className="absolute top-[28%] right-[4%] w-8 h-8 border border-[var(--neon)]/20 rotate-[30deg] hidden sm:block" />
+        <div className="absolute top-[75%] right-[14%] w-10 h-10 border border-white/[0.06] rounded-full hidden md:block" />
 
         {/* Small floating dots cluster */}
         <div className="absolute top-[20%] left-[25%] w-1.5 h-1.5 rounded-full bg-[var(--neon)]/30" />
@@ -74,9 +74,9 @@ export default function Hero() {
         <div className="absolute top-[48%] left-[-2%] w-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-[25deg]" />
       </div>
 
-      <motion.h1 variants={itemVariants} className="absolute left-1/2 -translate-x-1/2 top-[clamp(2rem,6vw,4rem)] md:top-[clamp(3rem,5vw,5rem)] lg:top-[clamp(3rem,4vw,6rem)] z-10 font-sans font-black text-[clamp(4.5rem,26vw,9rem)] md:text-[clamp(6rem,24vw,14rem)] lg:text-[clamp(7rem,16vw,18rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0 text-center w-full">TRENVITY</motion.h1>
+      <motion.h1 variants={itemVariants} className="absolute left-1/2 -translate-x-1/2 top-[clamp(5rem,9vw,7rem)] md:top-[clamp(6rem,8vw,8rem)] lg:top-[clamp(6rem,7vw,9rem)] z-10 font-sans font-black text-[clamp(3.8rem,20vw,7rem)] md:text-[clamp(5.5rem,24vw,10rem)] lg:text-[clamp(7rem,16vw,18rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0 text-center w-full">TRENVITY</motion.h1>
 
-      <motion.div variants={itemVariants} className="absolute right-[20px] md:right-[28px] lg:right-[80px] top-[clamp(11rem,26vw,14rem)] md:top-[clamp(14rem,22vw,18rem)] lg:top-[clamp(15rem,18vw,21rem)] z-[15] max-w-[160px] md:max-w-[200px] lg:max-w-[260px] text-right">
+      <motion.div variants={itemVariants} className="absolute right-[12px] md:right-[28px] lg:right-[80px] top-[clamp(12rem,25vw,16rem)] md:top-[clamp(18rem,25vw,22rem)] lg:top-[clamp(19rem,22vw,25rem)] z-[15] max-w-[140px] md:max-w-[200px] lg:max-w-[260px] text-right">
         <p className="text-[12px] lg:text-[14px] leading-[1.7] text-white/65 m-0">
           We are a creative studio working at the
           intersection of design, technology &amp; innovation.
@@ -91,14 +91,14 @@ export default function Hero() {
           opacity: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
           y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.8 },
         }}
-        className="absolute left-1/2 bottom-[8vh] md:bottom-[10vh] lg:bottom-[12vh] -translate-x-1/2 w-[clamp(420px,85vw,920px)] md:w-[clamp(420px,70vw,750px)] lg:w-[clamp(520px,58vw,920px)] h-[clamp(55vh,55vh,1080px)] md:h-[clamp(500px,65vh,850px)] lg:h-[clamp(700px,92vh,1080px)] bg-[url('/landing/trenvity-landing.png')] bg-contain bg-no-repeat bg-bottom z-20 pointer-events-none"
+        className="absolute left-[35%] md:left-1/2 bottom-[8vh] md:bottom-[10vh] lg:bottom-[12vh] -translate-x-1/2 w-[clamp(550px,160vw,950px)] md:w-[clamp(420px,70vw,750px)] lg:w-[clamp(520px,58vw,920px)] h-[clamp(75vh,82vh,1000px)] md:h-[clamp(500px,65vh,850px)] lg:h-[clamp(700px,92vh,1080px)] bg-[url('/landing/trenvity-landing.png')] bg-contain bg-no-repeat bg-bottom z-20 pointer-events-none"
         aria-hidden="true"
       />
 
-      <motion.div variants={itemVariants} className="absolute left-[20px] md:left-[28px] lg:left-[48px] bottom-[12vh] md:bottom-[16vh] lg:bottom-[clamp(14vh,18vh,22vh)] z-[15] flex items-center gap-[8px] md:gap-[10px]">
+      <motion.div variants={itemVariants} className="hidden md:flex absolute left-[20px] md:left-[28px] lg:left-[48px] bottom-[12vh] md:bottom-[16vh] lg:bottom-[clamp(14vh,18vh,22vh)] z-[15] items-center gap-[8px] md:gap-[10px]">
         <div className="w-[36px] h-[36px] md:w-[42px] md:h-[42px] rounded-full border-[1.5px] border-white/25 inline-flex items-center justify-center text-white/55 transition-all duration-300 cursor-pointer bg-transparent p-0 hover:border-[var(--neon)] hover:text-[var(--neon)] hover:-translate-y-[2px]">
           <svg className="w-[14px] h-[14px] md:w-[17px] md:h-[17px] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.245.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" />
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5.A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.245.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" />
           </svg>
         </div>
 

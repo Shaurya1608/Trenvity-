@@ -31,11 +31,11 @@ export default function Process() {
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
       <Reveal>
-        <p className="text-center text-[var(--neon)] text-[11px] md:text-[12px] tracking-[1.5px] mb-6 md:mb-10">[ how we work ]</p>
+        <p className="text-center text-[var(--neon)] text-[11px] md:text-[12px] tracking-[3px] uppercase font-mono mb-6 md:mb-10">How We Work</p>
       </Reveal>
 
       <Reveal delay={0.1}>
-        <h2 className="text-center font-black italic uppercase text-[var(--neon)] text-[clamp(1.6rem,4vw,3.2rem)] leading-[1.05] tracking-[-1px] mb-4">
+        <h2 className="text-center font-black italic uppercase text-white text-[clamp(1.6rem,4vw,3.2rem)] leading-[1.05] tracking-[-1px] mb-4">
           FROM BRIEF TO<br />RESULTS.
         </h2>
       </Reveal>

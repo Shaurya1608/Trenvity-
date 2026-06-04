@@ -136,19 +136,24 @@ export default function PerformanceMarketingPage() {
 
       <Header />
 
-      {/* ============================================
-         1. HERO SECTION (REFERENCE MATCH)
-         ============================================ */}
       <section className="relative w-full bg-[var(--background)] pt-24 pb-12 px-6 md:px-12 lg:px-20 z-10 flex flex-col justify-between min-h-screen">
         {/* Horizontal grid lines overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_40px] pointer-events-none" />
 
-        <div className="relative w-full max-w-[1400px] mx-auto flex-1 flex flex-col justify-center">
+        {/* Abstract background performance grid lines */}
+        <div className="absolute right-[5%] top-[30%] w-[35%] h-[35%] opacity-[0.06] pointer-events-none hidden lg:block">
+          <svg className="w-full h-full" viewBox="0 0 500 200" fill="none">
+            <path d="M0 150 Q100 80 200 130 T400 50 T500 20" stroke="white" strokeWidth="2" strokeLinecap="round" />
+            <path d="M0 160 Q100 90 200 140 T400 60 T500 30" stroke="var(--neon)" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        </div>
+
+        <div className="relative w-full max-w-[1400px] mx-auto flex-1 flex flex-col justify-center relative">
           <div className="w-full text-left font-sans select-none">
-            {/* Row 1: WE HELP NFT + EYE */}
+            {/* Row 1: WE HELP BRANDS + EYE */}
             <h1 className="text-[7.8vw] font-black tracking-[-0.04em] uppercase text-white leading-[0.85] flex flex-wrap items-center gap-x-[1.5vw] font-sans">
               <span>WE HELP</span>
-              <span className="text-[var(--neon)]">NFT</span>
+              <span className="text-[var(--neon)]">BRANDS</span>
               <span className="inline-flex items-center">
                 <svg className="w-[12vw] h-auto" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                   {/* Outer eye shape */}
@@ -163,11 +168,63 @@ export default function PerformanceMarketingPage() {
               </span>
             </h1>
 
-            {/* Row 2: PROJECTS LAUNCH */}
+            {/* Row 2: SCALE FAST */}
             <h1 className="text-[7.8vw] font-black tracking-[-0.04em] uppercase text-white leading-[0.85] font-sans mt-[0.5vw]">
-              PROJECTS LAUNCH.
+              SCALE FAST.
             </h1>
           </div>
+
+          {/* Floating Glassmorphic Performance Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="absolute right-0 bottom-[-5vh] z-20 backdrop-blur-xl bg-white/[0.01] border border-white/5 p-6 rounded-2xl w-[280px] md:w-[320px] shadow-[0_20px_50px_rgba(0,0,0,0.4)] hidden md:block"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-[var(--neon)] animate-pulse" />
+                <span className="text-[10px] font-mono tracking-[2px] text-white/50 uppercase">LIVE ATTRIBUTION</span>
+              </div>
+              <span className="text-[10px] font-mono text-[var(--neon)] font-bold">ROAS 4.8x</span>
+            </div>
+
+            {/* Data Row */}
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <span className="block text-[9px] font-mono text-white/35 uppercase tracking-[1.5px] mb-1">CONVERSIONS</span>
+                <span className="text-xl font-bold tracking-tight text-white">4,812 / mo</span>
+              </div>
+              <div>
+                <span className="block text-[9px] font-mono text-white/35 uppercase tracking-[1.5px] mb-1">VELOCITY</span>
+                <span className="text-xl font-bold tracking-tight text-[var(--neon)]">+98.2%</span>
+              </div>
+            </div>
+
+            {/* Sparkline chart */}
+            <div className="h-16 w-full flex items-end">
+              <svg className="w-full h-full" viewBox="0 0 200 60" fill="none">
+                <path
+                  d="M0 45 C20 40, 40 20, 60 30 C80 40, 100 10, 120 25 C140 40, 160 5, 180 15 L200 2"
+                  stroke="var(--neon)"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M0 45 C20 40, 40 20, 60 30 C80 40, 100 10, 120 25 C140 40, 160 5, 180 15 L200 2 L200 60 L0 60 Z"
+                  fill="url(#sparkline-grad)"
+                  opacity="0.1"
+                />
+                <defs>
+                  <linearGradient id="sparkline-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="var(--neon)" />
+                    <stop offset="100%" stopColor="transparent" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </motion.div>
         </div>
 
         {/* Bottom Sub-bar */}
@@ -196,7 +253,7 @@ export default function PerformanceMarketingPage() {
         <div className="max-w-[850px] mx-auto w-full text-center relative z-10">
           <Reveal>
             <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-              [ SEO INTEGRATION PIPELINE ]
+              SEO INTEGRATION PIPELINE
             </span>
             <h2 className="text-[32px] md:text-[48px] font-extrabold tracking-[-1.5px] leading-[1.05] uppercase mb-8 text-center text-white">
               Organic Authority Meets Paid Velocity
@@ -208,7 +265,7 @@ export default function PerformanceMarketingPage() {
               </p>
               
               <div className="my-10 p-5 bg-white/[0.02] border border-white/5 rounded-2xl text-center max-w-[550px] mx-auto backdrop-blur-md">
-                <p className="text-[11px] font-mono text-[var(--neon)] mb-2 uppercase tracking-[2px]">{'// Attribution velocity'}</p>
+                <p className="text-[11px] font-mono text-[var(--neon)] mb-2 uppercase tracking-[2px]">Attribution velocity</p>
                 <p className="italic text-white/95 text-sm">
                   "Targeting paid ads directly to high-authority, SEO-optimized landing pages boosts relevance scores, decreases cost-per-click by up to 34%, and speeds up crawling indexing cycles."
                 </p>
@@ -286,7 +343,7 @@ export default function PerformanceMarketingPage() {
           <div className="flex flex-col items-center text-center mb-16">
             <Reveal>
               <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-                [ ROI Pricing Models ]
+                ROI Pricing Models
               </span>
               <h2 className="text-[28px] md:text-[44px] font-extrabold tracking-[-2px] leading-[1.05] uppercase mb-6">
                 PLANS FITTED FOR<br />
@@ -409,7 +466,7 @@ export default function PerformanceMarketingPage() {
           
           <Reveal>
             <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-4 font-mono">
-              [ Explore Further Capabilities ]
+              Explore Further Capabilities
             </span>
             <h2 className="text-[36px] sm:text-[48px] font-extrabold tracking-tight uppercase mb-8">
               CHOOSE ANOTHER DOCK

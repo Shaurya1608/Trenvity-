@@ -52,7 +52,7 @@ export default function Problem() {
 
       <div className="relative z-10">
         <Reveal>
-          <p className="text-center text-[var(--neon)] text-[11px] md:text-[12px] tracking-[1.5px] mb-6 md:mb-10">[the problem]</p>
+          <p className="text-center text-[var(--neon)] text-[11px] md:text-[12px] tracking-[3px] uppercase font-mono mb-6 md:mb-10">The Problem</p>
         </Reveal>
 
         <Reveal delay={0.1}>

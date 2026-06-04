@@ -170,7 +170,7 @@ export default function BlogPage() {
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 md:mb-16 gap-6">
             <Reveal>
               <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-                [ Editorial Library ]
+                Editorial Library
               </span>
               <h2 className="text-[28px] md:text-[44px] font-extrabold tracking-[-2px] leading-[1] uppercase">
                 AMPLIFIED IDEAS & <br />
@@ -259,7 +259,7 @@ export default function BlogPage() {
                           className="text-xs font-bold uppercase tracking-[2px] font-mono"
                           style={{ color: articles[activeArticle].color }}
                         >
-                          [ {articles[activeArticle].category} ]
+                          {articles[activeArticle].category}
                         </span>
                         <span className="text-xs text-white/40 uppercase tracking-[1px]">
                           {articles[activeArticle].readTime}
@@ -310,7 +310,7 @@ export default function BlogPage() {
           <div className="flex flex-col items-center text-center mb-16">
             <Reveal>
               <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-                [ Editorial Insider Circles ]
+                Editorial Insider Circles
               </span>
               <h2 className="text-[32px] md:text-[56px] font-extrabold tracking-[-2px] leading-[1] uppercase mb-6">
                 SUBSCRIBE TO DIRECT <br />

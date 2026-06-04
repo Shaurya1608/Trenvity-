@@ -25,11 +25,36 @@ html, body {
   padding: 0;
 }
 
+/* Enable smooth scrolling for in-page navigation */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background) !important;
+  background-color: var(--background);
+  /* layered subtle lighting for depth */
+  background-image:
+    radial-gradient(1200px 600px at 10% 8%, rgba(156,190,36,0.03), transparent 12%),
+    radial-gradient(1000px 600px at 90% 70%, rgba(0,168,255,0.02), transparent 18%),
+    linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0));
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--foreground);
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Fixed site-wide grid overlay to match the design reference */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
 /* ============================================
@@ -44,42 +69,82 @@ body {
   animation: marquee 30s linear infinite;
 }
 
+/* Apply subtle boxed/grid overlay and separators to all sections */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Thin separator between sections */
+section + section {
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
 /* ============================================
    3D TEXT CUBE
    ============================================ */
 .cube-wrapper {
   perspective: 2000px;
-  transform: scale(0.85); /* Slightly decreased scale */
+  transform: scale(0.85);
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
   .cube-wrapper {
-    transform: scale(0.45); /* Slightly scaled down for mobile too */
+    transform: scale(0.55);
+  }
+}
+
+@media (max-width: 480px) {
+  .cube-wrapper {
+    transform: scale(0.45);
   }
 }
 
 .cube {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: min(90vw, 400px);
+  height: min(90vw, 400px);
+  --cube-size: min(90vw, 400px);
   transform-style: preserve-3d;
-  /* Exact isometric projection angles */
   transform: rotateX(-35.264deg) rotateY(45deg);
 }
 
 .cube-face {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: var(--cube-size);
+  height: var(--cube-size);
   display: flex;
   font-family: 'Inter', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: 85px; /* Scaled up to fill the face more */
+  font-size: clamp(2.8rem, 7vw, 5rem);
   line-height: 0.82;
-  letter-spacing: -4px;
+  letter-spacing: -0.08em;
   background-color: transparent;
   backface-visibility: hidden;
+}
+
+.face-top {
+  transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.face-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.face-right {
+  transform: rotateY(0deg) translateZ(calc(var(--cube-size) / 2));
 }
 
 /* 
