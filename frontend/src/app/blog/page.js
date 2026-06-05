@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
@@ -9,8 +8,8 @@ import Footer from '@/components/Footer';
 import Reveal, { StaggerContainer, StaggerItem } from '@/components/Reveal';
 
 export default function BlogPage() {
-  const [billingCycle, setBillingCycle] = useState('monthly'); // 'monthly' or 'yearly'
-  const [activeArticle, setActiveArticle] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const articles = [
     {
@@ -19,434 +18,311 @@ export default function BlogPage() {
       readTime: '4 min read',
       title: 'Unraveling the 2026 Core Algorithm Shift',
       description: 'Search engines have restructured how organic citations are handled. Discover how real-time brand citations, active social media mentions, and semantic authority loops completely bypass traditional backlink models.',
-      color: '#c8f000',
     },
     {
       id: '02',
-      category: 'Brutalist Design',
+      category: 'Design & UX',
       readTime: '6 min read',
       title: 'Brutalist Web Aesthetics: Converting Ambitious Audiences',
       description: 'Why do flat, generic layouts fail to convert high-value clients? Analyze the psychology behind massive, high-contrast condensed typography, layered Z-depth masks, and aggressive micro-animations.',
-      color: '#00f0ff',
     },
     {
       id: '03',
-      category: 'Headless Systems',
+      category: 'Engineering',
       readTime: '5 min read',
       title: 'Headless Content Pipelines: Bypassing Legacy Caches',
       description: 'WordPress is static bloat. Explore how decoupled React structures connected to direct database content engines result in immediate sub-millisecond response rates around the globe.',
-      color: '#ff007f',
+    },
+    {
+      id: '04',
+      category: 'Search & SEO',
+      readTime: '7 min read',
+      title: 'Zero-Click Searches and the AI Revolution',
+      description: 'As AI overviews dominate search results, the traditional click-through model is dying. Learn how to optimize for AI aggregation and secure brand presence in zero-click environments.',
+    },
+    {
+      id: '05',
+      category: 'Design & UX',
+      readTime: '4 min read',
+      title: 'The Return of Skeuomorphism in Dark Mode',
+      description: 'Glassmorphism is evolving. We explore how subtle 3D textures, realistic lighting, and tactile feedback in dark mode interfaces are increasing user engagement times by 40%.',
     },
   ];
 
-  const subscriptionTiers = [
+  const categories = ['All', ...new Set(articles.map(article => article.category))];
+
+  const filteredArticles = useMemo(() => {
+    return articles.filter(article => {
+      const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                            article.description.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = selectedCategory === 'All' || article.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, selectedCategory, articles]);
+
+  const seoKeywordBlogs = [
     {
-      name: 'Standard Digest',
-      price: billingCycle === 'monthly' ? 0 : 0,
-      description: 'Get our weekly curated marketing insights and custom case studies straight to your inbox.',
-      features: [
-        'Weekly Article Dispatch',
-        'Initial Case Studies access',
-        'Basic Design Trend updates',
-        'Public Slack Community',
-      ],
-      popular: false,
-      cta: 'Subscribe Free',
+      title: 'High-Intent Blogging for Conversion',
+      keyword: 'best SEO keywords for lead generation',
+      description: 'Build content around search phrases that target buyers ready to purchase and generate qualified traffic for marketing services.',
     },
     {
-      name: 'Insider Intel',
-      price: billingCycle === 'monthly' ? 19 : 15,
-      description: 'Our most valued tier. Deep-dive algorithm breakdowns, private templates, and custom code modules.',
-      features: [
-        'All Public Articles (Early Access)',
-        'Private Next.js/CSS Templates',
-        'Algorithm Change Alert notifications',
-        'Direct Strategist Q&A desk',
-        'Interactive Figma Mockup Assets',
-      ],
-      popular: true,
-      cta: 'Access Intel',
+      title: 'Authority Topics for Brand Visibility',
+      keyword: 'SEO blog ideas for digital marketing',
+      description: 'Create authority-rich posts that position your brand as the go-to resource for marketing strategy and growth optimization.',
     },
     {
-      name: 'Corporate Brain',
-      price: billingCycle === 'monthly' ? 89 : 69,
-      description: 'Enterprise intelligence suite. Designed for scaling marketing agencies, engineering teams, and digital heads.',
-      features: [
-        'Unlimited Team Seats',
-        'Custom Curated Competitor audits',
-        'Monthly Live Strategic Audits',
-        'Direct Edge Deployment pipelines',
-        'All Premium Code & Theme modules',
-      ],
-      popular: false,
-      cta: 'Get Corporate Brain',
+      title: 'Local Search Capture Content',
+      keyword: 'local SEO keywords for marketing agencies',
+      description: 'Target local buyers with content designed to rank for proximity-driven and service-focused search intent.',
+    },
+    {
+      title: 'Intent-Based Conversion Funnels',
+      keyword: 'best SEO keywords for conversion',
+      description: 'Use keyword clusters that match each stage of the funnel, from awareness to purchase-ready search queries.',
+    },
+    {
+      title: 'Performance Blog Frameworks',
+      keyword: 'SEO blog topics for performance marketing',
+      description: 'Publish content that speaks directly to paid media, CRO, and measurable growth outcomes for modern brands.',
+    },
+    {
+      title: 'Evergreen Content with Momentum',
+      keyword: 'long-term SEO keywords for blogs',
+      description: 'Create blog posts that keep attracting traffic month after month by focusing on evergreen search themes and structured authority signals.',
     },
   ];
 
   return (
-    <div className="relative w-full min-h-screen bg-[var(--background)] text-white overflow-hidden selection:bg-[var(--neon)] selection:text-black">
-      {/* Background Neon Glow Spheres */}
-      <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[var(--neon)]/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#00f0ff]/5 blur-[150px] pointer-events-none" />
-      <div className="absolute top-[40%] right-[25%] w-[400px] h-[400px] rounded-full bg-[#ff007f]/5 blur-[130px] pointer-events-none" />
-
+    <div className="relative w-full min-h-screen bg-[var(--background)] text-[var(--foreground)] overflow-hidden selection:bg-[var(--neon)] selection:text-black">
+      {/* Background Neon Glow Spheres using global variable */}
+      <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[var(--neon)]/10 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[var(--neon)]/5 blur-[150px] pointer-events-none" />
+      
       <Header />
 
       {/* ============================================
-         1. HERO / LANDING SECTION (BRUTALIST REDESIGN)
+         1. HERO SECTION (REFINED)
          ============================================ */}
-      <section className="relative w-full min-h-[95vh] flex flex-col justify-between pt-8 pb-24 px-6 md:px-12 lg:px-20 z-10 overflow-hidden bg-[var(--background)]">
-        
-        {/* Decorative Grid texture */}
-        <div className="absolute inset-0 bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-60" />
+      <section className="relative w-full pt-32 pb-24 px-6 md:px-12 lg:px-20 z-10 overflow-hidden bg-[var(--background)]">
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-60" />
 
-        {/* Top Spacer */}
-        <div className="h-4 md:h-8" />
-
-        {/* Central Core: Giant Background Typography & Overlay Character */}
-        <div className="relative w-full max-w-[1400px] mx-auto flex-1 flex items-center justify-center py-6 min-h-[50vh]">
-          
-          {/* HUGE BACKGROUND TEXT */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center select-none pointer-events-none z-0 -translate-y-4 sm:-translate-y-8 md:-translate-y-12 px-6 sm:px-16 md:px-24 lg:px-32">
-            <h1 className="text-[10.5vw] font-black tracking-[-0.04em] uppercase text-white leading-[0.78] text-center w-full font-sans select-none opacity-[0.98] flex flex-col items-center justify-center">
-              <span className="block truncate scale-x-[1.05] tracking-[-0.05em] origin-center">DON'T BE SILENT</span>
-              <span className="block text-[6vw] tracking-[0.14em] font-medium text-white/95 mt-4">SHARE THE INSIGHT</span>
+        <div className="relative w-full max-w-[1400px] mx-auto flex flex-col items-center justify-center text-center">
+          <Reveal>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter mb-6 leading-tight">
+              INSIGHTS <span className="text-[var(--neon)] italic">&</span> STRATEGY
             </h1>
-          </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="max-w-[600px] mx-auto text-[var(--light-text)] md:text-lg mb-12">
+              Deep dives into search architecture, brutalist design psychology, and performance engineering.
+            </p>
+          </Reveal>
 
-          {/* FOREGROUND: Floating Blog Character Image resting behind the torn paper divider */}
-          <motion.div
-            initial={{ opacity: 0, y: 80, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
-            className="absolute bottom-[-96px] sm:bottom-[-96px] left-1/2 -translate-x-1/2 z-15 w-[280px] sm:w-[380px] md:w-[420px] aspect-square pointer-events-none select-none"
-          >
-            <Image
-              src="/landing/trenvity-aboutr.png"
-              alt="Trenvity Blog Character"
-              fill
-              priority
-              className="object-contain object-bottom filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.7)]"
-            />
-          </motion.div>
+          {/* Logical Section: Search and Filter Bar */}
+          <Reveal delay={0.2} className="w-full max-w-3xl flex flex-col gap-6 z-20 relative">
+            <div className="relative w-full group">
+              <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                <svg className="w-5 h-5 text-white/40 group-focus-within:text-[var(--neon)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="Search articles by keyword..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-white/5 border border-white/10 text-white rounded-full py-4 pl-12 pr-6 focus:outline-none focus:border-[var(--neon)] focus:ring-1 focus:ring-[var(--neon)] transition-all placeholder:text-white/30 backdrop-blur-md shadow-lg"
+              />
+            </div>
 
-        </div>
-
-        {/* Removed BOTTOM NAVIGATION */}
-
-        {/* JAGGED TORN PAPER DIVIDER SVG */}
-        <div className="absolute bottom-0 left-0 right-0 w-full z-20 pointer-events-none flex flex-col">
-          <svg
-            viewBox="0 0 1440 80"
-            fill="none"
-            preserveAspectRatio="none"
-            className="w-full h-[60px] md:h-[80px]"
-          >
-            <path
-              d="M0,45 L60,10 L110,50 L200,5 L280,45 L350,15 L410,55 L490,10 L580,40 L640,5 L710,50 L790,20 L850,60 L940,15 L1020,55 L1090,10 L1170,45 L1250,5 L1320,50 L1390,20 L1440,45 L1440,80 L0,80 Z"
-              fill="#060606"
-            />
-            {/* The white border stroke, unclosed so it only strokes the top edge */}
-            <path
-              d="M0,45 L60,10 L110,50 L200,5 L280,45 L350,15 L410,55 L490,10 L580,40 L640,5 L710,50 L790,20 L850,60 L940,15 L1020,55 L1090,10 L1170,45 L1250,5 L1320,50 L1390,20 L1440,45"
-              fill="none"
-              stroke="#ffffff"
-              strokeOpacity="0.3"
-              strokeWidth="2"
-            />
-          </svg>
-          {/* Solid filler to push the zig-zag up further into the hero */}
-          <div className="w-full h-[10px] sm:h-[15px] bg-[var(--secondary-bg)]" />
-        </div>
-
-      </section>
-
-      {/* ============================================
-         2. EDITORIAL ARTICLE FEED SECTION
-         ============================================ */}
-      <section id="feed" className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 bg-[var(--secondary-bg)]">
-        <div className="max-w-[1400px] mx-auto w-full">
-          
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 md:mb-16 gap-6">
-            <Reveal>
-              <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-                Editorial Library
-              </span>
-              <h2 className="text-[28px] md:text-[44px] font-extrabold tracking-[-2px] leading-[1] uppercase">
-                AMPLIFIED IDEAS & <br />
-                ALGORITHM FORECASTS
-              </h2>
-            </Reveal>
-            <Reveal delay={0.2} className="max-w-[380px] text-white/50 text-sm">
-              No generic fluff pieces. We audit direct data shifts, layout conversion metrics, and codebase optimizations.
-            </Reveal>
-          </div>
-
-          {/* Interactive Morphing Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-            
-            {/* Left Nav Toggles */}
-            <div className="lg:col-span-5 flex flex-col justify-center space-y-4">
-              {articles.map((article, idx) => (
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {categories.map(category => (
                 <button
-                  key={article.id}
-                  onClick={() => setActiveArticle(idx)}
-                  className={`text-left p-6 sm:p-8 rounded-2xl border transition-all duration-300 relative overflow-hidden group cursor-pointer ${
-                    activeArticle === idx
-                      ? 'bg-white/[0.03] border-white/10 shadow-lg'
-                      : 'bg-transparent border-transparent opacity-40 hover:opacity-75'
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border ${
+                    selectedCategory === category 
+                      ? 'bg-[var(--neon)] text-black border-[var(--neon)] shadow-[0_0_15px_rgba(155,206,36,0.3)]' 
+                      : 'bg-transparent text-white/60 border-white/10 hover:border-white/30 hover:text-white'
                   }`}
                 >
-                  {/* Indicator Line */}
-                  {activeArticle === idx && (
-                    <motion.div
-                      layoutId="activeArticleBarBlog"
-                      className="absolute left-0 top-0 bottom-0 w-[3px]"
-                      style={{ backgroundColor: article.color }}
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-
-                  <div className="flex gap-4 items-start">
-                    <span
-                      className="font-mono text-xs font-bold px-2.5 py-0.5 rounded border border-white/10 bg-white/5"
-                      style={{ color: activeArticle === idx ? article.color : 'inherit' }}
-                    >
-                      {article.id}
-                    </span>
-                    <div>
-                      <span className="text-[10px] uppercase font-bold tracking-[1.5px] text-white/40 block mb-1">
-                        {article.category}
-                      </span>
-                      <h3 className="text-lg md:text-xl font-bold tracking-tight text-white mb-2 line-clamp-1">
-                        {article.title}
-                      </h3>
-                    </div>
-                  </div>
+                  {category}
                 </button>
               ))}
             </div>
+          </Reveal>
+        </div>
 
-            {/* Right Morphing Showcase Area */}
-            <div className="lg:col-span-7 flex">
-              <div className="relative w-full p-8 sm:p-12 bg-white/[0.02] border border-white/5 rounded-3xl backdrop-blur-2xl flex flex-col justify-between overflow-hidden">
-                
-                {/* Colorful Floating Glow Sphere */}
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeArticle}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute -top-12 -right-12 w-64 h-64 rounded-full blur-[80px] pointer-events-none opacity-40"
-                    style={{ backgroundColor: articles[activeArticle].color }}
-                  />
-                </AnimatePresence>
+        {/* Improved TORN PAPER DIVIDER SVG */}
+        <div className="absolute bottom-0 left-0 right-0 w-full z-10 pointer-events-none">
+          <svg
+            viewBox="0 0 1440 60"
+            fill="none"
+            preserveAspectRatio="none"
+            className="w-full h-[40px] md:h-[60px]"
+          >
+            <path
+              d="M0,30 L60,10 L110,40 L200,5 L280,35 L350,15 L410,45 L490,10 L580,30 L640,5 L710,40 L790,20 L850,50 L940,15 L1020,45 L1090,10 L1170,35 L1250,5 L1320,40 L1390,20 L1440,35 L1440,60 L0,60 Z"
+              fill="var(--secondary-bg)"
+            />
+            <path
+              d="M0,30 L60,10 L110,40 L200,5 L280,35 L350,15 L410,45 L490,10 L580,30 L640,5 L710,40 L790,20 L850,50 L940,15 L1020,45 L1090,10 L1170,35 L1250,5 L1320,40 L1390,20 L1440,35"
+              fill="none"
+              stroke="rgba(255,255,255,0.1)"
+              strokeWidth="2"
+            />
+          </svg>
+        </div>
+      </section>
 
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeArticle}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.4, ease: 'easeOut' }}
-                    className="space-y-8 flex-1 flex flex-col justify-between z-10"
-                  >
-                    <div>
-                      <div className="flex justify-between items-center mb-6">
-                        <span
-                          className="text-xs font-bold uppercase tracking-[2px] font-mono"
-                          style={{ color: articles[activeArticle].color }}
-                        >
-                          {articles[activeArticle].category}
-                        </span>
-                        <span className="text-xs text-white/40 uppercase tracking-[1px]">
-                          {articles[activeArticle].readTime}
-                        </span>
-                      </div>
-                      
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white mb-6">
-                        {articles[activeArticle].title}
-                      </h3>
-                      <p className="text-white/60 text-sm sm:text-base leading-relaxed tracking-[0.2px]">
-                        {articles[activeArticle].description}
-                      </p>
-                    </div>
-
-                    {/* Interactive Simulated Metric Module */}
-                    <div className="p-6 bg-black/40 border border-white/5 rounded-2xl flex items-center justify-between">
-                      <span className="text-[12px] font-bold text-white tracking-[0.5px]">
-                        Read full breakdown & deploy resources
-                      </span>
-                      <Link
-                        href="#"
-                        className="px-6 py-3 rounded-full text-xs font-bold tracking-[1.5px] uppercase transition-all duration-300"
-                        style={{
-                          backgroundColor: articles[activeArticle].color,
-                          color: '#000',
-                        }}
-                      >
-                        Launch Intel &rarr;
-                      </Link>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-
-              </div>
-            </div>
-
+      {/* ============================================
+         2. EDITORIAL ARTICLE FEED SECTION (NEW GRID)
+         ============================================ */}
+      <section className="relative w-full py-16 lg:py-24 px-6 md:px-12 lg:px-20 bg-[var(--secondary-bg)] min-h-[50vh]">
+        <div className="max-w-[1400px] mx-auto w-full">
+          
+          <div className="mb-12 flex justify-between items-end border-b border-white/5 pb-4">
+             <h2 className="text-xl md:text-3xl font-extrabold uppercase tracking-tight">
+               <span className="text-[var(--neon)]">Latest</span> Intel
+             </h2>
+             <span className="text-sm font-mono text-white/50">{filteredArticles.length} Results</span>
           </div>
+
+          <AnimatePresence mode="popLayout">
+            {filteredArticles.length > 0 ? (
+              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredArticles.map((article) => (
+                  <StaggerItem key={article.id}>
+                    <Link href={`/blog/${article.id}`} className="block h-full group">
+                      <div className="h-full flex flex-col p-5 rounded-2xl bg-[var(--background)] border border-white/5 group-hover:border-[var(--neon)]/30 group-hover:bg-white/[0.02] transition-all duration-500 shadow-lg relative overflow-hidden">
+                        
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--neon)]/10 blur-[40px] rounded-full translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        <div className="flex justify-between items-start mb-3">
+                          <span className="text-[10px] font-bold uppercase tracking-[1.5px] font-mono text-[var(--neon)]">
+                            {article.category}
+                          </span>
+                          <span className="text-[10px] text-white/40 uppercase tracking-[1px] font-mono">
+                            {article.readTime}
+                          </span>
+                        </div>
+                        
+                        <h3 className="text-base font-extrabold uppercase tracking-tight text-white mb-2 group-hover:text-[var(--neon)] transition-colors duration-300 leading-snug">
+                          {article.title}
+                        </h3>
+                        
+                        <p className="text-[var(--light-text)] text-xs leading-relaxed mb-4 flex-1 line-clamp-3">
+                          {article.description}
+                        </p>
+
+                        <div className="flex items-center text-[10px] font-bold tracking-[1.5px] uppercase text-white/50 group-hover:text-[var(--neon)] transition-colors">
+                          Read Article 
+                          <svg className="w-3.5 h-3.5 ml-1.5 -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </div>
+                      </div>
+                    </Link>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            ) : (
+              <motion.div 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                exit={{ opacity: 0 }}
+                className="py-20 text-center w-full border border-white/5 rounded-3xl bg-white/[0.01]"
+              >
+                <div className="text-[var(--neon)] text-4xl mb-4">⊙</div>
+                <h3 className="text-xl font-bold uppercase mb-2">No Articles Found</h3>
+                <p className="text-white/50 text-sm">We couldn't find any intel matching "{searchQuery}" in {selectedCategory}.</p>
+                <button 
+                  onClick={() => {setSearchQuery(''); setSelectedCategory('All');}}
+                  className="mt-6 px-6 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-[var(--neon)] hover:text-black hover:border-[var(--neon)] transition-colors"
+                >
+                  Clear Filters
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
         </div>
       </section>
 
       {/* ============================================
-         3. PRICING & TIERS SECTION
+         3. SEO KEYWORD BLOG CARDS
          ============================================ */}
-      <section id="subscription" className="relative w-full py-20 lg:py-32 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-gradient-to-b from-[#060606] to-[#0a0a0a]">
+      <section className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 bg-[var(--background)] border-t border-white/5">
         <div className="max-w-[1400px] mx-auto w-full">
-          
-          <div className="flex flex-col items-center text-center mb-16">
+          <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 md:mb-16 gap-6">
             <Reveal>
               <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-                Editorial Insider Circles
+                Keyword Strategy
               </span>
-              <h2 className="text-[32px] md:text-[56px] font-extrabold tracking-[-2px] leading-[1] uppercase mb-6">
-                SUBSCRIBE TO DIRECT <br />
-                INTEL DISPATCHES
+              <h2 className="text-[32px] md:text-[56px] font-extrabold tracking-[-2px] leading-[1] uppercase mb-2">
+                ORGANIC GROWTH <br />
+                BLUEPRINTS
               </h2>
             </Reveal>
-
-            {/* billing switch toggle */}
-            <Reveal delay={0.1}>
-              <div className="inline-flex items-center p-1 bg-white/[0.03] border border-white/5 rounded-full relative z-10 backdrop-blur-xl">
-                <button
-                  onClick={() => setBillingCycle('monthly')}
-                  className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-[1.5px] uppercase transition-all duration-300 cursor-pointer ${
-                    billingCycle === 'monthly'
-                      ? 'bg-[var(--neon)] text-black shadow-md'
-                      : 'text-white/60 hover:text-white'
-                  }`}
-                >
-                  Monthly
-                </button>
-                <button
-                  onClick={() => setBillingCycle('yearly')}
-                  className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-[1.5px] uppercase transition-all duration-300 relative cursor-pointer ${
-                    billingCycle === 'yearly'
-                      ? 'bg-[var(--neon)] text-black shadow-md'
-                      : 'text-white/60 hover:text-white'
-                  }`}
-                >
-                  Yearly
-                  <span className="absolute -top-3 -right-3 px-2 py-0.5 rounded-full bg-[#ff007f] text-white text-[8px] font-bold tracking-[1px] shadow-sm uppercase animate-bounce">
-                    -20%
-                  </span>
-                </button>
-              </div>
+            <Reveal delay={0.2} className="max-w-[420px] text-[var(--light-text)] text-sm">
+              High-impact blog topics built to capture relevant search demand and boost your authority in marketing, branding, and growth.
             </Reveal>
           </div>
 
-          {/* Pricing Grid */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch max-w-[1240px] mx-auto">
-            {subscriptionTiers.map((tier, idx) => (
-              <StaggerItem key={tier.name} className="flex">
-                <div
-                  className={`w-full p-8 rounded-3xl border flex flex-col justify-between relative transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl ${
-                    tier.popular
-                      ? 'bg-white/[0.03] border-[var(--neon)] shadow-[0_0_30px_rgba(200,240,0,0.15)]'
-                      : 'bg-white/[0.01] border-white/5 hover:border-white/20'
-                  }`}
-                >
-                  {tier.popular && (
-                    <div className="absolute top-0 right-8 -translate-y-1/2 bg-[var(--neon)] text-black px-4 py-1.5 rounded-full text-[9px] font-bold tracking-[1.5px] uppercase shadow-md">
-                      Highly Requested
-                    </div>
-                  )}
-
-                  <div>
-                    <div className="mb-6">
-                      <h3 className="text-xl font-bold tracking-tight text-white mb-2">{tier.name}</h3>
-                      <p className="text-xs text-white/50 leading-relaxed min-h-[48px]">{tier.description}</p>
-                    </div>
-
-                    <div className="flex items-baseline gap-2 mb-8">
-                      <span className="text-[14px] text-white/40 font-medium">$</span>
-                      <motion.span
-                        key={tier.price}
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-[48px] font-black text-white tracking-[-1.5px] leading-none"
-                      >
-                        {tier.price}
-                      </motion.span>
-                      <span className="text-[12px] text-white/40 tracking-[1px] uppercase">/ month</span>
-                    </div>
-
-                    <ul className="space-y-4 mb-8 list-none p-0 m-0 border-t border-white/5 pt-6">
-                      {tier.features.map((feat) => (
-                        <li key={feat} className="flex items-center gap-3 text-sm text-white/80">
-                          <svg
-                            className={`w-4 h-4 shrink-0 ${tier.popular ? 'text-[var(--neon)]' : 'text-white/40'}`}
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span className="tracking-[0.2px]">{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Link
-                    href="#"
-                    className={`w-full py-4 text-center text-[12px] font-bold tracking-[1.5px] uppercase rounded-[50%/80%] transition-all duration-300 cursor-pointer ${
-                      tier.popular
-                        ? 'bg-[var(--neon)] text-black hover:scale-[1.02] shadow-[0_0_20px_rgba(200,240,0,0.2)]'
-                        : 'border border-white/20 text-white hover:bg-white/5'
-                    }`}
-                  >
-                    {tier.cta}
-                  </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {seoKeywordBlogs.map((item, idx) => (
+              <div
+                key={idx}
+                className="group p-5 rounded-2xl border border-white/5 bg-[var(--secondary-bg)] hover:border-[var(--neon)]/50 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-white/30 font-mono text-xs font-bold">{`0${idx + 1}`}</span>
+                  <div className="h-1.5 w-1.5 rounded-full bg-[var(--neon)] shadow-[0_0_6px_rgba(155,206,36,0.8)]" />
                 </div>
-              </StaggerItem>
+                <h3 className="text-base font-extrabold tracking-tight text-white leading-snug mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-xs leading-relaxed text-[var(--light-text)] mb-4 line-clamp-3">
+                  {item.description}
+                </p>
+                <div className="pt-3 border-t border-white/5 flex flex-col gap-0.5">
+                   <span className="text-[9px] text-white/40 uppercase tracking-widest">Target Keyword</span>
+                   <span className="text-[11px] font-mono text-[var(--neon)]">{item.keyword}</span>
+                </div>
+              </div>
             ))}
-          </StaggerContainer>
-
+          </div>
         </div>
       </section>
 
       {/* ============================================
          4. PERSISTENT CONVERTING CTA FOOTER BLOCK
          ============================================ */}
-      <section className="relative w-full py-16 lg:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-black">
-        <div className="max-w-[1000px] mx-auto w-full text-center relative">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[var(--neon)]/10 rounded-full blur-[100px] pointer-events-none" />
-          
+      <section className="relative w-full py-20 lg:py-28 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--secondary-bg)] overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--neon)_0%,transparent_50%)] opacity-[0.03] pointer-events-none mix-blend-screen" />
+        
+        <div className="max-w-[800px] mx-auto w-full text-center relative z-10">
           <Reveal>
-            <h2 className="text-[36px] sm:text-[48px] lg:text-[60px] font-extrabold tracking-[-1.5px] leading-none uppercase mb-6">
-              LET'S START <br />
-              YOUR INTEL LOOP
+            <h2 className="text-[40px] sm:text-[56px] font-black tracking-tighter leading-none uppercase mb-6">
+              READY TO DOMINATE <br />
+              <span className="text-[var(--neon)]">SEARCH?</span>
             </h2>
-            <p className="text-white/60 text-sm sm:text-base max-w-[500px] mx-auto mb-10 leading-relaxed">
-              Unlock our direct dispatch network. Learn the codes, the layout optimizations, and direct organic velocity hooks.
+            <p className="text-[var(--light-text)] text-base max-w-[500px] mx-auto mb-10 leading-relaxed">
+              Unlock the keyword-led editorial framework designed to make your brand a search magnet and a lead-generating asset.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <Link
-                href="#subscription"
-                className="w-full sm:w-auto px-8 py-4 bg-[var(--neon)] text-black font-bold text-[13px] tracking-[1px] uppercase rounded-[50%/80%] hover:scale-[1.03] transition-all duration-300 shadow-[0_0_30px_rgba(200,240,0,0.15)]"
+                href="#feed"
+                className="w-full sm:w-auto px-8 py-4 bg-[var(--neon)] text-black font-bold text-sm tracking-wider uppercase rounded-full hover:scale-105 hover:shadow-[0_0_30px_rgba(155,206,36,0.3)] transition-all duration-300"
               >
-                Claim Free Newsletter Blueprint
+                Back to Intel
               </Link>
               <Link
-                href="/"
-                className="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-bold text-[13px] tracking-[1px] uppercase rounded-[50%/80%] hover:bg-white/5 transition-all duration-300"
+                href="/contact"
+                className="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-bold text-sm tracking-wider uppercase rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300"
               >
-                Return Home
+                Start a Project
               </Link>
             </div>
           </Reveal>
