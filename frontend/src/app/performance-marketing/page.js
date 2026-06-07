@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ExploreDocks from '@/components/ExploreDocks';
 import Reveal, { StaggerContainer, StaggerItem } from '@/components/Reveal';
+import Pricing from '@/components/Pricing';
 
 export default function PerformanceMarketingPage() {
   const [billingCycle, setBillingCycle] = useState('monthly');
@@ -83,21 +85,23 @@ export default function PerformanceMarketingPage() {
   const pricingTiers = [
     {
       name: 'Launch ROAS',
-      price: billingCycle === 'monthly' ? 1499 : 1199,
+      priceMonthly: 120000,
+      priceYearly: 95000,
       description: 'Engineered for growing businesses looking to kickstart their customer acquisition pipeline.',
       features: [
         'Dedicated Campaign Manager',
         'Search & Social Ad Management',
         'Basic A/B Creative Testing',
         'Weekly Dashboard Reports',
-        'Up to $10k/mo Ad Spend Cap',
+        'Up to ₹8L/mo Ad Spend Cap',
       ],
       popular: false,
       cta: 'Start Scaling',
     },
     {
       name: 'Scale Engine',
-      price: billingCycle === 'monthly' ? 2999 : 2399,
+      priceMonthly: 240000,
+      priceYearly: 190000,
       description: 'Our most sought-after package. Multi-channel scaling with programmatic retargeting and funnel design.',
       features: [
         'All Launch ROAS Features',
@@ -105,14 +109,16 @@ export default function PerformanceMarketingPage() {
         'Advanced Attribution Modeling',
         'Custom Conversion Funnel Optimization',
         'Bi-weekly Strategy Syncs',
-        'Up to $50k/mo Ad Spend Cap',
+        'Up to ₹40L/mo Ad Spend Cap',
       ],
       popular: true,
+      popularText: 'Highly Recommended',
       cta: 'Accelerate Growth',
     },
     {
       name: 'Dominator Suite',
-      price: billingCycle === 'monthly' ? 5999 : 4799,
+      priceMonthly: 480000,
+      priceYearly: 380000,
       description: 'Full-funnel custom media buying suite with direct data pipeline integration and white-glove service.',
       features: [
         'All Scale Engine Features',
@@ -174,57 +180,6 @@ export default function PerformanceMarketingPage() {
             </h1>
           </div>
 
-          {/* Floating Glassmorphic Performance Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="absolute right-0 bottom-[-5vh] z-20 backdrop-blur-xl bg-white/[0.01] border border-white/5 p-6 rounded-2xl w-[280px] md:w-[320px] shadow-[0_20px_50px_rgba(0,0,0,0.4)] hidden md:block"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-3">
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[var(--neon)] animate-pulse" />
-                <span className="text-[10px] font-mono tracking-[2px] text-white/50 uppercase">LIVE ATTRIBUTION</span>
-              </div>
-              <span className="text-[10px] font-mono text-[var(--neon)] font-bold">ROAS 4.8x</span>
-            </div>
-
-            {/* Data Row */}
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <div>
-                <span className="block text-[9px] font-mono text-white/35 uppercase tracking-[1.5px] mb-1">CONVERSIONS</span>
-                <span className="text-xl font-bold tracking-tight text-white">4,812 / mo</span>
-              </div>
-              <div>
-                <span className="block text-[9px] font-mono text-white/35 uppercase tracking-[1.5px] mb-1">VELOCITY</span>
-                <span className="text-xl font-bold tracking-tight text-[var(--neon)]">+98.2%</span>
-              </div>
-            </div>
-
-            {/* Sparkline chart */}
-            <div className="h-16 w-full flex items-end">
-              <svg className="w-full h-full" viewBox="0 0 200 60" fill="none">
-                <path
-                  d="M0 45 C20 40, 40 20, 60 30 C80 40, 100 10, 120 25 C140 40, 160 5, 180 15 L200 2"
-                  stroke="var(--neon)"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M0 45 C20 40, 40 20, 60 30 C80 40, 100 10, 120 25 C140 40, 160 5, 180 15 L200 2 L200 60 L0 60 Z"
-                  fill="url(#sparkline-grad)"
-                  opacity="0.1"
-                />
-                <defs>
-                  <linearGradient id="sparkline-grad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--neon)" />
-                    <stop offset="100%" stopColor="transparent" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          </motion.div>
         </div>
 
         {/* Bottom Sub-bar */}
@@ -337,125 +292,12 @@ export default function PerformanceMarketingPage() {
       {/* ============================================
          4. PRICING & TIERS SECTION
          ============================================ */}
-      <section id="pricing" className="relative w-full py-24 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--background)]">
-        <div className="max-w-[1300px] mx-auto w-full">
-          
-          <div className="flex flex-col items-center text-center mb-16">
-            <Reveal>
-              <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-                ROI Pricing Models
-              </span>
-              <h2 className="text-[28px] md:text-[44px] font-extrabold tracking-[-2px] leading-[1.05] uppercase mb-6">
-                PLANS FITTED FOR<br />
-                YOUR GROWTH CYCLE
-              </h2>
-            </Reveal>
-
-            {/* Billing Cycle Switch */}
-            <Reveal delay={0.15}>
-              <div className="inline-flex items-center p-1 bg-white/[0.03] border border-white/5 rounded-full relative z-10">
-                <button
-                  onClick={() => setBillingCycle('monthly')}
-                  className={`px-6 py-2 rounded-full text-[10px] font-mono tracking-[1.5px] uppercase transition-all duration-300 cursor-pointer ${
-                    billingCycle === 'monthly'
-                      ? 'bg-[var(--neon)] text-black font-bold shadow-md'
-                      : 'text-white/60 hover:text-white'
-                  }`}
-                >
-                  Monthly
-                </button>
-                <button
-                  onClick={() => setBillingCycle('yearly')}
-                  className={`px-6 py-2 rounded-full text-[10px] font-mono tracking-[1.5px] uppercase transition-all duration-300 relative cursor-pointer ${
-                    billingCycle === 'yearly'
-                      ? 'bg-[var(--neon)] text-black font-bold shadow-md'
-                      : 'text-white/60 hover:text-white'
-                  }`}
-                >
-                  Yearly
-                  <span className="absolute -top-3.5 -right-3.5 px-2 py-0.5 rounded-full bg-[var(--neon)] text-black text-[8px] font-black tracking-[1px] shadow-sm uppercase">
-                    -20%
-                  </span>
-                </button>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Pricing Cards */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1150px] mx-auto items-stretch">
-            {pricingTiers.map((tier) => (
-              <StaggerItem key={tier.name} className="flex">
-                <div
-                  className={`w-full p-8 rounded-2xl border flex flex-col justify-between relative transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl ${
-                    tier.popular
-                      ? 'bg-white/[0.03] border-[var(--neon)] shadow-[0_0_30px_rgba(156,190,36,0.1)]'
-                      : 'bg-white/[0.01] border-white/5 hover:border-white/20'
-                  }`}
-                >
-                  {tier.popular && (
-                    <div className="absolute top-0 right-8 -translate-y-1/2 bg-[var(--neon)] text-black px-4 py-1 rounded-full text-[8px] font-black tracking-[1.5px] uppercase shadow-md">
-                      Highly Recommended
-                    </div>
-                  )}
-
-                  <div>
-                    {/* Header */}
-                    <div className="mb-6">
-                      <h3 className="text-lg font-bold text-white mb-2">{tier.name}</h3>
-                      <p className="text-[11px] text-white/40 leading-relaxed min-h-[45px]">{tier.description}</p>
-                    </div>
-
-                    {/* Price */}
-                    <div className="flex items-baseline gap-1.5 mb-8 border-b border-white/5 pb-6">
-                      <span className="text-[14px] text-white/30">$</span>
-                      <motion.span
-                        key={tier.price}
-                        initial={{ opacity: 0, y: -8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-[34px] font-black text-white tracking-tighter leading-none"
-                      >
-                        {tier.price}
-                      </motion.span>
-                      <span className="text-[11px] text-white/30 uppercase tracking-[1px]">/ mo</span>
-                    </div>
-
-                    {/* Features list */}
-                    <ul className="space-y-4 mb-8 list-none p-0 m-0">
-                      {tier.features.map((feat) => (
-                        <li key={feat} className="flex items-center gap-3 text-xs text-white/70">
-                          <svg
-                            className={`w-4 h-4 shrink-0 ${tier.popular ? 'text-[var(--neon)]' : 'text-white/30'}`}
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span className="tracking-[0.2px]">{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Button */}
-                  <Link
-                    href="#"
-                    className={`w-full py-4 text-center text-[11px] font-bold tracking-[1.5px] uppercase rounded-full transition-all duration-300 cursor-pointer ${
-                      tier.popular
-                        ? 'bg-[var(--neon)] text-black hover:scale-[1.02] shadow-[0_0_25px_rgba(156,190,36,0.25)]'
-                        : 'border border-white/20 text-white hover:bg-white/5'
-                    }`}
-                  >
-                    {tier.cta}
-                  </Link>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-        </div>
-      </section>
+      <Pricing 
+        title="PLANS FITTED FOR<br />YOUR GROWTH CYCLE" 
+        subtitle="ROI Pricing Models" 
+        tiers={pricingTiers} 
+        currency="₹" 
+      />
 
       {/* ============================================
          5. EXPLORE MORE SERVICES SECTION
@@ -464,31 +306,7 @@ export default function PerformanceMarketingPage() {
         <div className="max-w-[1100px] mx-auto w-full text-center relative z-10">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[var(--neon)]/5 rounded-full blur-[100px] pointer-events-none" />
           
-          <Reveal>
-            <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-4 font-mono">
-              Explore Further Capabilities
-            </span>
-            <h2 className="text-[36px] sm:text-[48px] font-extrabold tracking-tight uppercase mb-8">
-              CHOOSE ANOTHER DOCK
-            </h2>
-            <p className="text-white/50 text-sm max-w-[500px] mx-auto mb-12 leading-relaxed">
-              We specialize across the entire digital landscape. Hop over to explore other growth-accelerating services.
-            </p>
-             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-[600px] mx-auto">
-              <Link
-                href="/portfolio"
-                className="w-full px-6 py-4 border border-white/10 hover:border-[var(--neon)]/50 hover:bg-white/[0.02] text-white font-mono text-[11px] tracking-[1.5px] uppercase rounded-xl transition-all duration-300"
-              >
-                Portfolio Showcase
-              </Link>
-              <Link
-                href="/website"
-                className="w-full px-6 py-4 border border-white/10 hover:border-[var(--neon)]/50 hover:bg-white/[0.02] text-white font-mono text-[11px] tracking-[1.5px] uppercase rounded-xl transition-all duration-300"
-              >
-                Website Development
-              </Link>
-            </div>
-          </Reveal>
+      <ExploreDocks />
         </div>
       </section>
 

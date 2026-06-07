@@ -7,6 +7,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Reveal, { StaggerContainer, StaggerItem } from '@/components/Reveal';
+import ExploreDocks from '@/components/ExploreDocks';
 
 const projects = [
   {
@@ -520,6 +521,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      <ExploreDocks />
       <Footer />
     </div>
   );

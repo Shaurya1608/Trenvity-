@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Reveal, { StaggerContainer, StaggerItem } from '@/components/Reveal';
+import ExploreDocks from '@/components/ExploreDocks';
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -329,6 +330,7 @@ export default function BlogPage() {
         </div>
       </section>
 
+      <ExploreDocks />
       <Footer />
     </div>
   );

@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Reveal from '@/components/Reveal';
+import ExploreDocks from '@/components/ExploreDocks';
 
 const allArticles = [
   {
@@ -232,6 +233,7 @@ export default function BlogDetailPage() {
         </div>
       </section>
 
+      <ExploreDocks />
       <Footer />
     </div>
   );

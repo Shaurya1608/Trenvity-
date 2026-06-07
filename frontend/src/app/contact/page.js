@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import ExploreDocks from '@/components/ExploreDocks';
 
 export default function ContactPage() {
   return (
@@ -77,6 +78,7 @@ export default function ContactPage() {
         </div>
 
       </div>
+      <ExploreDocks />
     </main>
   );
 }

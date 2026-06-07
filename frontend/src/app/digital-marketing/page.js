@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Reveal, { StaggerContainer, StaggerItem } from '@/components/Reveal';
+import ExploreDocks from '@/components/ExploreDocks';
 
 export default function DigitalMarketingPage() {
   const [billingCycle, setBillingCycle] = useState('monthly');
@@ -20,9 +21,9 @@ export default function DigitalMarketingPage() {
   ];
 
   const pricingTiers = [
-    { name: 'Starter Growth', price: billingCycle === 'monthly' ? 1299 : 999, description: 'A reliable entry plan to kickstart your acquisition channels.', features: ['Campaign Setup', 'Basic Creative Tests', 'Weekly Reporting', 'Up to $8k/mo Spend'], popular: false, cta: 'Get Started' },
-    { name: 'Growth Engine', price: billingCycle === 'monthly' ? 2499 : 1999, description: 'Multi-channel growth with conversion optimization and reporting.', features: ['All Starter Features', 'A/B Testing', 'Bi-weekly Strategy', 'Up to $40k/mo Spend'], popular: true, cta: 'Scale Now' },
-    { name: 'Enterprise Partner', price: billingCycle === 'monthly' ? 5999 : 4799, description: 'Full-service partnership for rapid expansion and revenue ops.', features: ['White-glove Support', 'Custom Analytics', 'Creative Production', 'Priority SLA'], popular: false, cta: 'Talk To Sales' },
+    { name: 'Starter Growth', price: billingCycle === 'monthly' ? 100000 : 80000, description: 'A reliable entry plan to kickstart your acquisition channels.', features: ['Campaign Setup', 'Basic Creative Tests', 'Weekly Reporting', 'Up to ₹6L/mo Spend'], popular: false, cta: 'Get Started' },
+    { name: 'Growth Engine', price: billingCycle === 'monthly' ? 200000 : 160000, description: 'Multi-channel growth with conversion optimization and reporting.', features: ['All Starter Features', 'A/B Testing', 'Bi-weekly Strategy', 'Up to ₹30L/mo Spend'], popular: true, cta: 'Scale Now' },
+    { name: 'Enterprise Partner', price: billingCycle === 'monthly' ? 480000 : 380000, description: 'Full-service partnership for rapid expansion and revenue ops.', features: ['White-glove Support', 'Custom Analytics', 'Creative Production', 'Priority SLA'], popular: false, cta: 'Talk To Sales' },
   ];
 
   return (
@@ -183,11 +184,11 @@ export default function DigitalMarketingPage() {
             </Reveal>
           </div>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1150px] mx-auto items-stretch">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1150px] mx-auto items-stretch">
             {pricingTiers.map((tier) => (
               <StaggerItem key={tier.name} className="flex">
                 <div
-                  className={`w-full p-8 rounded-2xl border flex flex-col justify-between relative transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl ${
+                  className={`w-full p-6 rounded-2xl border flex flex-col justify-between relative transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl ${
                     tier.popular
                       ? 'bg-white/[0.03] border-[var(--neon)] shadow-[0_0_30px_rgba(156,190,36,0.1)]'
                       : 'bg-white/[0.01] border-white/5 hover:border-white/20'
@@ -205,12 +206,12 @@ export default function DigitalMarketingPage() {
                       <p className="text-[11px] text-white/40 leading-relaxed min-h-[45px]">{tier.description}</p>
                     </div>
 
-                    <div className="flex items-baseline gap-1.5 mb-8 border-b border-white/5 pb-6">
-                      <span className="text-[14px] text-white/30">$</span>
-                      <motion.span key={tier.price} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="text-[34px] font-black text-white tracking-tighter leading-none">
-                        {tier.price}
+                    <div className="flex items-baseline gap-1.5 mb-6 border-b border-white/5 pb-5">
+                      <span className="text-[14px] text-white/30">₹</span>
+                      <motion.span key={tier.price} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="text-[28px] font-black text-white tracking-tighter leading-none">
+                        {tier.price.toLocaleString('en-IN')}
                       </motion.span>
-                      <span className="text-[11px] text-white/30 uppercase tracking-[1px]">/ mo</span>
+                      <span className="text-[10px] text-white/30 uppercase tracking-[1px]">/ mo</span>
                     </div>
 
                     <ul className="space-y-4 mb-8 list-none p-0 m-0">
@@ -225,7 +226,7 @@ export default function DigitalMarketingPage() {
                     </ul>
                   </div>
 
-                  <Link href="#" className={`w-full py-4 text-center text-[11px] font-bold tracking-[1.5px] uppercase rounded-full transition-all duration-300 cursor-pointer ${
+                  <Link href="#" className={`w-full py-3 text-center text-[10px] font-bold tracking-[1.5px] uppercase rounded-full transition-all duration-300 cursor-pointer ${
                     tier.popular ? 'bg-[var(--neon)] text-black hover:scale-[1.02] shadow-[0_0_25px_rgba(156,190,36,0.25)]' : 'border border-white/20 text-white hover:bg-white/5'
                   }`}>
                     {tier.cta}
@@ -238,20 +239,7 @@ export default function DigitalMarketingPage() {
         </div>
       </section>
 
-      <section className="relative w-full py-24 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--background)]">
-        <div className="max-w-[1100px] mx-auto w-full text-center relative z-10">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[var(--neon)]/5 rounded-full blur-[100px] pointer-events-none" />
-          <Reveal>
-            <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-4 font-mono">Explore Further Capabilities</span>
-            <h2 className="text-[36px] sm:text-[48px] font-extrabold tracking-tight uppercase mb-8">CHOOSE ANOTHER DOCK</h2>
-            <p className="text-white/50 text-sm max-w-[500px] mx-auto mb-12 leading-relaxed">We specialize across the entire digital landscape. Hop over to explore other growth-accelerating services.</p>
-             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-[600px] mx-auto">
-              <Link href="/portfolio" className="w-full px-6 py-4 border border-white/10 hover:border-[var(--neon)]/50 hover:bg-white/[0.02] text-white font-mono text-[11px] tracking-[1.5px] uppercase rounded-xl transition-all duration-300">Portfolio Showcase</Link>
-              <Link href="/website" className="w-full px-6 py-4 border border-white/10 hover:border-[var(--neon)]/50 hover:bg-white/[0.02] text-white font-mono text-[11px] tracking-[1.5px] uppercase rounded-xl transition-all duration-300">Website Development</Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <ExploreDocks />
 
       <Footer />
     </div>
