@@ -59,13 +59,6 @@ const stats = [
   { value: '6yr', label: 'Industry Experience' },
 ];
 
-const skills = [
-  { name: 'Brand Identity Systems', level: 98 },
-  { name: 'Headless Web Development', level: 95 },
-  { name: 'Motion & Interaction Design', level: 90 },
-  { name: 'UI/UX Architecture', level: 97 },
-  { name: 'SEO & Technical Optimization', level: 92 },
-];
 
 export default function PortfolioPage() {
   const [hoveredProject, setHoveredProject] = useState(null);
@@ -348,78 +341,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* ============================================
-         4. SKILLS & EXPERTISE SECTION
-         ============================================ */}
-      <section className="relative w-full py-20 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--background)]">
-        <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-          {/* Left Content */}
-          <div className="lg:col-span-5">
-            <Reveal>
-              <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-                Core Competencies
-              </span>
-              <h2 className="text-[28px] md:text-[36px] font-extrabold tracking-[-1.5px] leading-[1.1] uppercase mb-6">
-                SKILLS THAT <br />
-                CONVERT
-              </h2>
-              <p className="text-white/50 text-xs sm:text-sm leading-relaxed mb-8 max-w-[450px]">
-                Each discipline listed is field-proven. Every project is executed with speed, precision, and a relentless commitment to measurable results.
-              </p>
-              <Link
-                href="#"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[var(--neon)] text-black font-bold text-[12px] tracking-[1.5px] uppercase rounded-full hover:scale-[1.03] transition-transform duration-300 shadow-[0_0_30px_rgba(156,190,36,0.15)]"
-              >
-                Start a Project
-              </Link>
-            </Reveal>
-          </div>
-
-          {/* Right Skill Visualization (Premium Segmented Hardware Display) */}
-          <div className="lg:col-span-7 flex flex-col gap-6 w-full">
-            {skills.map((skill, idx) => {
-              const numSegments = 12; // Wider grid of segments for detail
-              const activeCount = Math.round((skill.level / 100) * numSegments);
-
-              return (
-                <div key={skill.name} className="w-full bg-white/[0.01] border border-white/5 rounded-xl p-5 hover:border-white/10 transition-colors duration-300">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-xs font-bold text-white tracking-[0.5px] uppercase">{skill.name}</span>
-                    <span className="text-[10px] font-bold text-[var(--neon)] font-mono tracking-wider">{skill.level}% LEVEL</span>
-                  </div>
-
-                  {/* Custom animated hardware-style segments */}
-                  <div className="flex gap-1.5 w-full">
-                    {Array.from({ length: numSegments }).map((_, i) => {
-                      const isActive = i < activeCount;
-                      return (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0.15, scaleY: 0.8 }}
-                          whileInView={{ 
-                            opacity: isActive ? 1 : 0.15, 
-                            scaleY: 1,
-                            backgroundColor: isActive ? 'var(--neon)' : 'rgba(255,255,255,0.1)'
-                          }}
-                          viewport={{ once: true }}
-                          transition={{ 
-                            duration: 0.35, 
-                            delay: idx * 0.06 + i * 0.03,
-                            ease: 'easeOut'
-                          }}
-                          className="h-2 flex-1 rounded-[1px]"
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-      </section>
 
       {/* ============================================
          5. PROCESS TIMELINE
