@@ -383,7 +383,7 @@ export default function PortfolioPage() {
       {/* ============================================
          6. TESTIMONIAL STRIP
          ============================================ */}
-      <section className="relative w-full py-20 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--secondary-bg)] overflow-hidden">
+      <section className="relative w-full py-20 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--background)] overflow-hidden">
         <div className="max-w-[900px] mx-auto text-center">
           <Reveal>
             <div className="mb-6 flex justify-center gap-1">
