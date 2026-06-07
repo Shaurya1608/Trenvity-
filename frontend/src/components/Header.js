@@ -211,120 +211,102 @@ export default function Header() {
         {mobileOpen && (
           <motion.div
             id="mobile-menu-overlay"
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(32px)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99] md:hidden flex flex-col bg-[#0F1C2E]/98 overflow-y-auto"
+            className="fixed inset-0 z-[99] md:hidden bg-[#0F1C2E]/98 overflow-y-auto backdrop-blur-xl"
           >
             {/* Ambient glow orbs */}
-            <div className="absolute top-[10%] left-[-15%] w-[320px] h-[320px] rounded-full bg-[var(--neon)]/5 blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-[15%] right-[-15%] w-[280px] h-[280px] rounded-full bg-[#00f0ff]/5 blur-[90px] pointer-events-none" />
+            <div className="fixed top-[10%] left-[-15%] w-[320px] h-[320px] rounded-full bg-[var(--neon)]/5 blur-[100px] pointer-events-none" />
+            <div className="fixed bottom-[15%] right-[-15%] w-[280px] h-[280px] rounded-full bg-[#00f0ff]/5 blur-[90px] pointer-events-none" />
             
             {/* Elegant fine grid lines */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:40px_40px]" />
+            <div className="fixed inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:40px_40px]" />
 
-            <div className="w-full flex flex-col p-6 pt-24 pb-12 min-h-full">
-              {/* Menu Header Area */}
-              <div className="flex items-center justify-between w-full z-10 mb-8">
-                <span className="text-[10px] font-mono tracking-[4px] text-white/40 uppercase">Navigation Menu</span>
-                <span className="text-[10px] font-mono tracking-[4px] text-[var(--neon)] uppercase">Trenvity ©</span>
+            <div className="relative z-10 flex flex-col justify-between w-full min-h-screen px-6 py-8 pt-[100px]">
+              
+              <div className="w-full flex flex-col gap-10">
+                {/* Menu Header Area */}
+                <div className="flex items-center justify-between w-full">
+                  <span className="text-[10px] font-mono tracking-[4px] text-white/40 uppercase">Navigation Menu</span>
+                  <span className="text-[10px] font-mono tracking-[4px] text-[var(--neon)] uppercase">Trenvity ©</span>
+                </div>
+
+                {/* Main Links Area */}
+                <nav className="flex flex-col w-full">
+                  {navLinks.map((link, idx) => {
+                    const active = isActive(link.href);
+                    return (
+                      <div
+                        key={link.href}
+                        className="group w-full border-b border-white/5 py-4"
+                      >
+                        <Link
+                          href={link.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="flex items-center gap-4 no-underline w-full"
+                        >
+                          {/* Premium Index Number */}
+                          <span className="text-[11px] font-mono font-bold text-white/20 group-hover:text-[var(--neon)] transition-colors duration-300">
+                            {String(idx + 1).padStart(2, '0')}
+                          </span>
+                          
+                          {/* Big elegant text */}
+                          <span className="text-3xl font-extrabold uppercase tracking-tight text-white group-hover:text-[var(--neon)] transition-all duration-300">
+                            {link.label}
+                          </span>
+                        </Link>
+                      </div>
+                    );
+                  })}
+
+                  {/* Special Contact Us Link */}
+                  <div className="group w-full py-4 mt-2">
+                    <Link
+                      href="/contact"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-4 no-underline w-full"
+                    >
+                      <span className="text-[11px] font-mono font-bold text-[var(--neon)]">07</span>
+                      <span className="text-3xl font-extrabold uppercase tracking-tight text-[var(--neon)] group-hover:text-white transition-all duration-300">
+                        Contact Us
+                      </span>
+                    </Link>
+                  </div>
+                </nav>
               </div>
 
-              {/* Main Links Area */}
-              <nav className="flex flex-col z-10 w-full mb-12 mt-auto">
-                {navLinks.map((link, idx) => {
-                  const active = isActive(link.href);
-                  return (
-                    <div
-                      key={link.href}
-                      className="relative group w-full border-b border-white/5 py-4 first:pt-1"
-                    >
-                      <Link
-                        href={link.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="inline-flex items-baseline gap-4 no-underline group w-full"
-                      >
-                        {/* Premium Index Number */}
-                        <span className="text-[11px] font-mono font-bold text-white/20 group-hover:text-[var(--neon)] transition-colors duration-300">
-                          {String(idx + 1).padStart(2, '0')}
-                        </span>
-                        
-                        {/* Big elegant text */}
-                        <span className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white/80 group-hover:text-white transition-all duration-300 group-hover:translate-x-2 inline-block">
-                          {link.label}
-                        </span>
-
-                        {/* Active dot or hover line */}
-                        {active ? (
-                          <span className="h-2 w-2 rounded-full bg-[var(--neon)] shadow-[0_0_8px_var(--neon)] self-center ml-2" />
-                        ) : (
-                          <span className="h-[2px] w-0 group-hover:w-8 bg-white/40 transition-all duration-300 self-center ml-2 rounded-full" />
-                        )}
-                      </Link>
-                    </div>
-                  );
-                })}
-
-                {/* Special Contact Us Link directly below Portfolio */}
-                <div
-                  className="relative group w-full border-b border-white/5 last:border-b-0 py-4 last:pb-1"
-                >
-                  <Link
-                    href="/contact"
-                    onClick={() => setMobileOpen(false)}
-                    className="inline-flex items-baseline gap-4 no-underline group w-full"
-                  >
-                    <span className="text-[11px] font-mono font-bold text-[var(--neon)]">
-                      07
-                    </span>
-                    
-                    <span className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-[var(--neon)] group-hover:text-white transition-all duration-300 group-hover:translate-x-2 inline-block">
-                      Contact Us
-                    </span>
-
-                    {isActive('/contact') ? (
-                      <span className="h-2 w-2 rounded-full bg-[var(--neon)] shadow-[0_0_8px_var(--neon)] self-center ml-2" />
-                    ) : (
-                      <span className="h-[2px] w-0 group-hover:w-8 bg-[var(--neon)] transition-all duration-300 self-center ml-2 rounded-full" />
-                    )}
-                  </Link>
-                </div>
-              </nav>
-
               {/* Bottom Panel (Socials & Contacts) */}
-              <div 
-                className="flex flex-col gap-6 z-10 border-t border-white/5 pt-6"
-              >
+              <div className="flex flex-col gap-6 w-full mt-12 pb-8 border-t border-white/5 pt-6">
                 {/* Contact info grid */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <span className="block text-[9px] font-mono tracking-[2px] text-white/35 uppercase mb-1">Get In Touch</span>
-                    <a href="mailto:hello@trenvity.com" className="text-xs font-semibold text-white/70 hover:text-[var(--neon)] no-underline transition-colors duration-300">
+                    <span className="block text-[9px] font-mono tracking-[2px] text-white/35 uppercase mb-2">Get In Touch</span>
+                    <a href="mailto:hello@trenvity.com" className="text-xs font-semibold text-white hover:text-[var(--neon)] no-underline transition-colors duration-300">
                       hello@trenvity.com
                     </a>
                   </div>
                   <div>
-                    <span className="block text-[9px] font-mono tracking-[2px] text-white/35 uppercase mb-1">Office</span>
-                    <span className="text-xs text-white/60 font-medium">New Delhi, India</span>
+                    <span className="block text-[9px] font-mono tracking-[2px] text-white/35 uppercase mb-2">Office</span>
+                    <span className="text-xs text-white/80 font-medium">New Delhi, India</span>
                   </div>
                 </div>
 
                 {/* Socials / Secondary links */}
-                <div className="flex items-center justify-between gap-4 mt-2">
-                  <div className="flex items-center gap-4">
-                    {['Instagram', 'LinkedIn', 'Dribbble'].map((soc) => (
-                      <a 
-                        key={soc}
-                        href="#" 
-                        className="text-[11px] font-mono tracking-[1px] text-white/40 hover:text-white transition-colors duration-300 no-underline"
-                      >
-                        {soc}
-                      </a>
-                    ))}
-                  </div>
+                <div className="flex items-center gap-6 mt-4">
+                  {['Instagram', 'LinkedIn', 'Dribbble'].map((soc) => (
+                    <a 
+                      key={soc}
+                      href="#" 
+                      className="text-[10px] font-mono tracking-[1px] text-white/40 hover:text-white transition-colors duration-300 no-underline"
+                    >
+                      {soc}
+                    </a>
+                  ))}
                 </div>
               </div>
+
             </div>
           </motion.div>
         )}
