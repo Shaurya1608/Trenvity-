@@ -105,35 +105,44 @@ export default function BlogPage() {
       {/* ============================================
          1. HERO SECTION (REFINED)
          ============================================ */}
-      <section className="relative w-full pt-32 pb-24 px-6 md:px-12 lg:px-20 z-10 overflow-hidden bg-[var(--background)]">
-        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-60" />
+      <section className="relative w-full min-h-[70vh] flex flex-col justify-center pt-32 pb-24 px-6 md:px-12 lg:px-20 z-10 overflow-hidden bg-[var(--background)]">
+        {/* Subtle grid background */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] [background-size:4rem_4rem] pointer-events-none" />
 
         <div className="relative w-full max-w-[1400px] mx-auto flex flex-col items-center justify-center text-center">
+          
           <Reveal>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter mb-6 leading-tight">
-              INSIGHTS <span className="text-[var(--neon)] italic">&</span> STRATEGY
+            <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-4 font-mono">
+              Editorial Database
+            </span>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <h1 className="text-[clamp(2.5rem,8vw,6.5rem)] font-black uppercase tracking-[-0.04em] mb-6 leading-[0.85]">
+              INSIGHTS <span className="text-[var(--neon)] italic block sm:inline">&</span> STRATEGY
             </h1>
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className="max-w-[600px] mx-auto text-[var(--light-text)] md:text-lg mb-12">
+          
+          <Reveal delay={0.2}>
+            <p className="max-w-[600px] mx-auto text-white/50 text-sm md:text-base mb-12 font-light">
               Deep dives into search architecture, brutalist design psychology, and performance engineering.
             </p>
           </Reveal>
 
-          {/* Logical Section: Search and Filter Bar */}
-          <Reveal delay={0.2} className="w-full max-w-3xl flex flex-col gap-6 z-20 relative">
-            <div className="relative w-full group">
-              <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                <svg className="w-5 h-5 text-white/40 group-focus-within:text-[var(--neon)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          {/* Brutalist Search Bar */}
+          <Reveal delay={0.3} className="w-full max-w-2xl flex flex-col gap-6 z-20 relative">
+            <div className="relative w-full group flex border border-white/10 focus-within:border-[var(--neon)] transition-colors bg-white/[0.02] backdrop-blur-sm">
+              <div className="flex items-center justify-center w-14 border-r border-white/10 text-white/40 group-focus-within:text-[var(--neon)] transition-colors">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
               </div>
               <input
                 type="text"
-                placeholder="Search articles by keyword..."
+                placeholder="SEARCH ARTICLES..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 text-white rounded-full py-4 pl-12 pr-6 focus:outline-none focus:border-[var(--neon)] focus:ring-1 focus:ring-[var(--neon)] transition-all placeholder:text-white/30 backdrop-blur-md shadow-lg"
+                className="w-full bg-transparent text-white font-mono text-sm py-5 px-4 focus:outline-none placeholder:text-white/20 uppercase tracking-widest"
               />
             </div>
 
@@ -142,10 +151,10 @@ export default function BlogPage() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border ${
+                  className={`px-6 py-2.5 text-[10px] font-bold uppercase tracking-[1.5px] transition-all duration-300 border ${
                     selectedCategory === category 
-                      ? 'bg-[var(--neon)] text-black border-[var(--neon)] shadow-[0_0_15px_rgba(155,206,36,0.3)]' 
-                      : 'bg-transparent text-white/60 border-white/10 hover:border-white/30 hover:text-white'
+                      ? 'bg-[var(--neon)] text-black border-[var(--neon)] shadow-[0_0_20px_rgba(155,206,36,0.2)]' 
+                      : 'bg-transparent text-white/40 border-white/10 hover:border-white/30 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {category}
@@ -154,33 +163,12 @@ export default function BlogPage() {
             </div>
           </Reveal>
         </div>
-
-        {/* Improved TORN PAPER DIVIDER SVG */}
-        <div className="absolute bottom-0 left-0 right-0 w-full z-10 pointer-events-none">
-          <svg
-            viewBox="0 0 1440 60"
-            fill="none"
-            preserveAspectRatio="none"
-            className="w-full h-[40px] md:h-[60px]"
-          >
-            <path
-              d="M0,30 L60,10 L110,40 L200,5 L280,35 L350,15 L410,45 L490,10 L580,30 L640,5 L710,40 L790,20 L850,50 L940,15 L1020,45 L1090,10 L1170,35 L1250,5 L1320,40 L1390,20 L1440,35 L1440,60 L0,60 Z"
-              fill="var(--secondary-bg)"
-            />
-            <path
-              d="M0,30 L60,10 L110,40 L200,5 L280,35 L350,15 L410,45 L490,10 L580,30 L640,5 L710,40 L790,20 L850,50 L940,15 L1020,45 L1090,10 L1170,35 L1250,5 L1320,40 L1390,20 L1440,35"
-              fill="none"
-              stroke="rgba(255,255,255,0.1)"
-              strokeWidth="2"
-            />
-          </svg>
-        </div>
       </section>
 
       {/* ============================================
          2. EDITORIAL ARTICLE FEED SECTION (NEW GRID)
          ============================================ */}
-      <section className="relative w-full py-16 lg:py-24 px-6 md:px-12 lg:px-20 bg-[var(--secondary-bg)] min-h-[50vh]">
+      <section className="relative w-full py-16 lg:py-24 px-6 md:px-12 lg:px-20 bg-[var(--background)] min-h-[50vh] border-t border-white/5">
         <div className="max-w-[1400px] mx-auto w-full">
           
           <div className="mb-12 flex justify-between items-end border-b border-white/5 pb-4">
@@ -300,30 +288,45 @@ export default function BlogPage() {
       {/* ============================================
          4. PERSISTENT CONVERTING CTA FOOTER BLOCK
          ============================================ */}
-      <section className="relative w-full py-20 lg:py-28 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--secondary-bg)] overflow-hidden">
+      <section className="relative w-full py-24 lg:py-32 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--background)] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--neon)_0%,transparent_50%)] opacity-[0.03] pointer-events-none mix-blend-screen" />
         
-        <div className="max-w-[800px] mx-auto w-full text-center relative z-10">
+        <div className="max-w-[1000px] mx-auto w-full text-center relative z-10 flex flex-col items-center">
           <Reveal>
-            <h2 className="text-[40px] sm:text-[56px] font-black tracking-tighter leading-none uppercase mb-6">
+            <div className="inline-flex items-center justify-center p-3 mb-8 bg-white/[0.02] border border-white/10 rounded-xl backdrop-blur-md">
+              <svg className="w-8 h-8 text-[var(--neon)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h2 className="text-[clamp(3rem,8vw,5.5rem)] font-black tracking-[-0.04em] leading-[0.9] uppercase mb-8">
               READY TO DOMINATE <br />
               <span className="text-[var(--neon)]">SEARCH?</span>
             </h2>
-            <p className="text-[var(--light-text)] text-base max-w-[500px] mx-auto mb-10 leading-relaxed">
+            <p className="text-white/50 text-sm md:text-lg max-w-[600px] mx-auto mb-12 leading-relaxed font-light">
               Unlock the keyword-led editorial framework designed to make your brand a search magnet and a lead-generating asset.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Link
-                href="#feed"
-                className="w-full sm:w-auto px-8 py-4 bg-[var(--neon)] text-black font-bold text-sm tracking-wider uppercase rounded-full hover:scale-105 hover:shadow-[0_0_30px_rgba(155,206,36,0.3)] transition-all duration-300"
-              >
-                Back to Intel
-              </Link>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 w-full sm:w-auto">
               <Link
                 href="/contact"
-                className="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-bold text-sm tracking-wider uppercase rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300"
+                className="group relative w-full sm:w-auto px-10 py-5 bg-[var(--neon)] text-black font-black text-sm tracking-[2px] uppercase overflow-hidden transition-all hover:scale-105"
               >
-                Start a Project
+                <div className="absolute inset-0 w-full h-full bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  Start a Project
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
+              </Link>
+              <Link
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="w-full sm:w-auto px-10 py-5 border border-white/20 text-white font-bold text-sm tracking-[2px] uppercase hover:bg-white/5 transition-all duration-300"
+              >
+                Back to Top
               </Link>
             </div>
           </Reveal>

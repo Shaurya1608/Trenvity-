@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import ExploreDocks from '@/components/ExploreDocks';
 import Reveal, { StaggerContainer, StaggerItem } from '@/components/Reveal';
 import Pricing from '@/components/Pricing';
+import ResultsShowcase from '@/components/ResultsShowcase';
 
 export default function PerformanceMarketingPage() {
   const [billingCycle, setBillingCycle] = useState('monthly');
@@ -288,6 +289,11 @@ export default function PerformanceMarketingPage() {
 
         </div>
       </section>
+
+      {/* ============================================
+         X. RESULTS SHOWCASE
+         ============================================ */}
+      <ResultsShowcase />
 
       {/* ============================================
          4. PRICING & TIERS SECTION

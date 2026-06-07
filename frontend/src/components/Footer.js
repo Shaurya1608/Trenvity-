@@ -38,7 +38,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
-            className="lg:col-span-1"
+            className="lg:col-span-1 flex flex-col items-center md:items-start text-center md:text-left"
           >
             <p className="text-[var(--neon)] text-[11px] tracking-[3px] uppercase font-mono mb-4">
               Ready to grow?
@@ -63,9 +63,10 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1], delay: 0.1 }}
+            className="flex flex-col items-center md:items-start text-center md:text-left"
           >
             <p className="text-white/30 text-[10px] tracking-[3px] uppercase font-mono mb-6">Navigation</p>
-            <ul className="flex flex-col gap-3 list-none m-0 p-0">
+            <ul className="flex flex-col items-center md:items-start gap-3 list-none m-0 p-0">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -86,9 +87,10 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1], delay: 0.2 }}
+            className="flex flex-col items-center md:items-start text-center md:text-left"
           >
             <p className="text-white/30 text-[10px] tracking-[3px] uppercase font-mono mb-6">Get In Touch</p>
-            <ul className="flex flex-col gap-5 list-none m-0 p-0 mb-8">
+            <ul className="flex flex-col items-center md:items-start gap-5 list-none m-0 p-0 mb-8">
               {contactItems.map((item) => (
                 <li key={item.label}>
                   <span className="block text-white/30 text-[10px] tracking-[2px] uppercase font-mono mb-1">{item.label}</span>
@@ -102,7 +104,7 @@ export default function Footer() {
               ))}
             </ul>
 
-            <div>
+            <div className="flex flex-col items-center md:items-start">
               <span className="block text-white/30 text-[10px] tracking-[2px] uppercase font-mono mb-1">Office</span>
               <span className="text-white/60 text-[13px] font-medium">New Delhi, India</span>
             </div>
