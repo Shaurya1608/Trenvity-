@@ -19,6 +19,7 @@ const projects = [
     description: 'A full premium brand identity system for an AI SaaS platform. Encompassing logomark, typographic guidelines, color tokens, and dark/light variant asset packs.',
     accent: '#c8f000',
     span: 'col-span-2',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
   },
   {
     id: '002',
@@ -29,6 +30,7 @@ const projects = [
     description: 'High-performance social media analytics command center. Custom component library and fully interactive dark-mode data panels.',
     accent: '#00f0ff',
     span: 'col-span-1',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop',
   },
   {
     id: '003',
@@ -39,6 +41,7 @@ const projects = [
     description: 'Ultra-fast headless commerce platform with brutalist aesthetic system. Custom checkout flows and pixel-perfect product staging.',
     accent: '#c8f000',
     span: 'col-span-1',
+    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1000&auto=format&fit=crop',
   },
   {
     id: '004',
@@ -49,6 +52,7 @@ const projects = [
     description: 'A complete motion design reel for a digital fashion house — product-reveal transitions, typographic loops, and 3D billboard renders.',
     accent: '#ff007f',
     span: 'col-span-2',
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop',
   },
 ];
 
@@ -104,24 +108,25 @@ export default function PortfolioPage() {
 
         {/* GIANT HERO TITLE BLOCK */}
         <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-12 lg:px-16 -mt-8">
-          <div className="relative">
+
+          <div className="relative w-full flex flex-col items-center md:items-start">
             {/* The Giant PORTFOLIO text */}
             <motion.h1
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
-              className="font-black uppercase text-white tracking-[-0.03em] leading-[0.85] select-none"
-              style={{ fontSize: 'clamp(72px, 14vw, 200px)' }}
+              className="font-black uppercase text-white tracking-[-0.03em] leading-[0.85] select-none w-full text-center md:text-left"
+              style={{ fontSize: 'clamp(34px, 11vw, 200px)' }}
             >
               PORTFOLIO
             </motion.h1>
 
-            {/* Year Badge — neon pill, floating next to title end */}
+            {/* Year Badge — sits cleanly under title */}
             <motion.div
               initial={{ opacity: 0, scale: 0.7 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.5, type: 'spring', stiffness: 200 }}
-              className="absolute top-3 md:top-4 lg:top-6 right-0 lg:right-6"
+              className="mt-4 md:mt-0 md:absolute md:-top-3 md:right-0"
             >
               <span className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-[var(--neon)] text-black font-black text-sm md:text-base tracking-[1px]">
                 2024
@@ -217,107 +222,75 @@ export default function PortfolioPage() {
           </div>
 
           {/* Projects Grid */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {projects.map((project, idx) => (
               <StaggerItem
                 key={project.id}
-                className={`${project.span === 'col-span-2' ? 'md:col-span-2' : 'md:col-span-1'}`}
               >
                 <motion.div
                   onHoverStart={() => setHoveredProject(project.id)}
                   onHoverEnd={() => setHoveredProject(null)}
-                  className="relative group rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02] cursor-pointer transition-all duration-300 hover:border-white/15"
-                  style={{ minHeight: project.span === 'col-span-2' ? 200 : 160 }}
-                  whileHover={{ y: -3 }}
+                  className="relative group cursor-pointer"
+                  whileHover={{ y: -8 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 >
-                  {/* Animated accent glow on hover */}
-                  <motion.div
-                    animate={{
-                      opacity: hoveredProject === project.id ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.4 }}
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background: `radial-gradient(ellipse at top left, ${project.accent}08, transparent 60%)`,
-                    }}
-                  />
+                  {/* Portrait Media Container */}
+                  <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/30 transition-all duration-300 mb-4">
+                    {/* Placeholder for Images or Videos */}
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+                    />
+                    
+                    {/* Animated accent glow on hover */}
+                    <motion.div
+                      animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="absolute inset-0 pointer-events-none mix-blend-overlay"
+                      style={{ background: `linear-gradient(to top, ${project.accent}80, transparent)` }}
+                    />
+                  </div>
 
-                  <div className="relative z-10 p-5 md:p-6 h-full flex flex-col justify-between">
-                    {/* Top row: ID + Year + Category */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center gap-4">
-                        <span className="font-mono text-[10px] text-white/30 tracking-[2px]">
-                          {project.id}
-                        </span>
-                        <span
-                          className="text-[9px] font-bold uppercase tracking-[1.5px] px-2.5 py-0.5 rounded-full border"
-                          style={{
-                            color: project.accent,
-                            borderColor: `${project.accent}20`,
-                            backgroundColor: `${project.accent}06`,
-                          }}
-                        >
-                          {project.category}
-                        </span>
-                      </div>
-                      <span className="text-[10px] text-white/30 font-mono">{project.year}</span>
+                  {/* Info Section Below Media */}
+                  <div className="px-2">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="font-mono text-[9px] text-white/30 tracking-[2px]">{project.id}</span>
+                      <span
+                        className="text-[8px] font-bold uppercase tracking-[1.5px] px-2 py-0.5 rounded-full border"
+                        style={{
+                          color: project.accent,
+                          borderColor: `${project.accent}30`,
+                          backgroundColor: `${project.accent}10`,
+                        }}
+                      >
+                        {project.category}
+                      </span>
                     </div>
 
-                    {/* Project Title */}
-                    <div className="flex-1 flex flex-col justify-center">
-                      <h3
-                        className={`font-extrabold uppercase tracking-tight text-white leading-[0.95] mb-2 transition-colors duration-300 ${
-                          project.span === 'col-span-2'
-                            ? 'text-[20px] md:text-[28px]'
-                            : 'text-[18px] md:text-[22px]'
-                        }`}
-                      >
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <h3 className="font-extrabold uppercase tracking-tight text-white leading-[1.1] text-lg md:text-xl transition-colors duration-300" style={{ color: hoveredProject === project.id ? project.accent : 'white' }}>
                         {project.title}
                       </h3>
-                      <p className="text-white/50 text-[11px] leading-relaxed max-w-[560px]">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    {/* Bottom tags + View arrow */}
-                    <div className="flex items-end justify-between mt-4">
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-[10px] uppercase font-bold tracking-[1px] text-white/30 px-2.5 py-1 rounded border border-white/8 bg-white/[0.03]"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
+                      
                       {/* Arrow CTA */}
                       <motion.div
-                        animate={{
-                          x: hoveredProject === project.id ? 0 : 8,
-                          opacity: hoveredProject === project.id ? 1 : 0,
-                        }}
+                        animate={{ x: hoveredProject === project.id ? 4 : 0, opacity: hoveredProject === project.id ? 1 : 0.4 }}
                         transition={{ duration: 0.3 }}
-                        className="flex items-center gap-2 shrink-0 ml-4"
+                        className="shrink-0 mt-1"
                         style={{ color: project.accent }}
                       >
-                        <span className="text-xs font-bold uppercase tracking-[1.5px]">View</span>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                       </motion.div>
                     </div>
-                  </div>
+                    
+                    <p className="text-white/50 text-[12px] md:text-[13px] leading-relaxed line-clamp-2 mb-4">
+                      {project.description}
+                    </p>
 
-                  {/* Bottom accent bar that slides in on hover */}
-                  <motion.div
-                    animate={{ scaleX: hoveredProject === project.id ? 1 : 0 }}
-                    transition={{ duration: 0.4, ease: 'easeOut' }}
-                    className="absolute bottom-0 left-0 right-0 h-[3px] origin-left"
-                    style={{ backgroundColor: project.accent }}
-                  />
+                  </div>
                 </motion.div>
               </StaggerItem>
             ))}

@@ -155,14 +155,14 @@ export default function PerformanceMarketingPage() {
           </svg>
         </div>
 
-        <div className="relative w-full max-w-[1400px] mx-auto flex-1 flex flex-col justify-center relative">
+        <div className="relative w-full max-w-[1400px] mx-auto flex-1 flex flex-col justify-center">
           <div className="w-full text-left font-sans select-none">
             {/* Row 1: WE HELP BRANDS + EYE */}
-            <h1 className="text-[7.8vw] font-black tracking-[-0.04em] uppercase text-white leading-[0.85] flex flex-wrap items-center gap-x-[1.5vw] font-sans">
+            <h1 className="text-[clamp(3.5rem,8vw,120px)] font-black tracking-[-0.04em] uppercase text-white leading-[0.9] flex flex-wrap items-center gap-x-[2vw] gap-y-2 md:gap-y-0 font-sans">
               <span>WE HELP</span>
               <span className="text-[var(--neon)]">BRANDS</span>
               <span className="inline-flex items-center">
-                <svg className="w-[12vw] h-auto" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-[18vw] md:w-[12vw] max-w-[150px] h-auto" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                   {/* Outer eye shape */}
                   <path d="M10 30C25 12 50 6 60 6C70 6 95 12 110 30C95 48 70 54 60 54C50 54 25 48 10 30Z" fill="#E5E7EB"/>
                   {/* Iris */}
@@ -176,27 +176,26 @@ export default function PerformanceMarketingPage() {
             </h1>
 
             {/* Row 2: SCALE FAST */}
-            <h1 className="text-[7.8vw] font-black tracking-[-0.04em] uppercase text-white leading-[0.85] font-sans mt-[0.5vw]">
+            <h1 className="text-[clamp(3.5rem,8vw,120px)] font-black tracking-[-0.04em] uppercase text-white leading-[0.9] font-sans mt-2 md:mt-[0.5vw]">
               SCALE FAST.
             </h1>
           </div>
-
         </div>
 
         {/* Bottom Sub-bar */}
-        <div className="w-full max-w-[1400px] mx-auto border-t border-white/10 pt-6 mt-16 grid grid-cols-1 md:grid-cols-12 gap-6 text-[10px] font-mono tracking-[0.5px] uppercase text-white/50">
-          <div className="md:col-span-5 flex items-center gap-2">
+        <div className="w-full max-w-[1400px] mx-auto border-t border-white/10 pt-6 mt-16 md:mt-24 flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-6 text-[9px] md:text-[10px] font-mono tracking-[1px] md:tracking-[0.5px] uppercase text-white/50">
+          <div className="md:col-span-5 flex flex-wrap md:flex-nowrap items-start md:items-center gap-2">
             {/* Globe Icon */}
-            <svg className="w-4 h-4 text-white/30 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-white/30 shrink-0 mt-0.5 md:mt-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
             </svg>
-            <span>/ BASED IN UNITED STATES &amp; WORKING WORLDWIDE</span>
+            <span className="leading-snug">/ BASED IN UNITED STATES &amp; WORKING WORLDWIDE</span>
           </div>
-          <div className="md:col-span-3 flex items-center">
-            <span>/ YEARS OF BLOCK CHAIN EXPERIENCE</span>
+          <div className="md:col-span-4 flex items-center">
+            <span className="leading-snug">/ YEARS OF BLOCK CHAIN EXPERIENCE</span>
           </div>
-          <div className="md:col-span-4 flex items-center md:justify-end">
-            <span>/ ©2022 WEBTHREE ALL RIGHTS RESERVED</span>
+          <div className="md:col-span-3 flex items-center md:justify-end">
+            <span className="leading-snug">/ ©2026 TRENVITY</span>
           </div>
         </div>
       </section>

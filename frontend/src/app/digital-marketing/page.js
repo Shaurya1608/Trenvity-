@@ -39,13 +39,14 @@ export default function DigitalMarketingPage() {
 
         <div className="relative w-full max-w-[1400px] mx-auto flex-1 flex flex-col justify-center">
           <div className="w-full text-left font-sans select-none">
-            <h1 className="text-[7.8vw] font-black tracking-[-0.04em] uppercase text-white leading-[0.85] flex flex-wrap items-center gap-x-[1.5vw] font-sans">
-              <span>WE DELIVER</span>
+            <h1 className="font-black tracking-[-0.04em] uppercase text-white leading-[0.88] font-sans" style={{ fontSize: 'clamp(42px, 9vw, 130px)' }}>
+              <span>WE DELIVER </span>
               <span className="text-[var(--neon)]">DIGITAL</span>
-              <span className="inline-flex items-center">GROWTH</span>
+              <br />
+              <span>GROWTH</span>
             </h1>
 
-            <h1 className="text-[7.8vw] font-black tracking-[-0.04em] uppercase text-white leading-[0.85] font-sans mt-[0.5vw]">
+            <h1 className="font-black tracking-[-0.04em] uppercase text-white leading-[0.88] font-sans mt-2" style={{ fontSize: 'clamp(42px, 9vw, 130px)' }}>
               MEASURABLE RESULTS.
             </h1>
           </div>

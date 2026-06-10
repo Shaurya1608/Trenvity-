@@ -64,7 +64,7 @@ export default function ExploreDocks() {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 text-left">
             <div>
               <span className="text-[var(--neon)] font-bold text-[10px] uppercase tracking-[2px] block mb-3 font-mono">Explore Further Capabilities</span>
-              <h2 className="text-[32px] md:text-[44px] font-black tracking-tighter uppercase leading-none">CHOOSE ANOTHER DOCK</h2>
+              <h2 className="text-[32px] md:text-[44px] font-black tracking-tighter uppercase leading-none">EXPLORE OTHER SERVICES</h2>
             </div>
             <p className="text-white/40 text-[13px] max-w-[380px] leading-relaxed">
               We specialize across the entire digital landscape. Hop over to explore other growth-accelerating services.

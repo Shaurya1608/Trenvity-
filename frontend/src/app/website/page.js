@@ -118,12 +118,14 @@ export default function WebsitePage() {
           </div>
 
           {/* Main Typography */}
-          <div className="flex flex-col w-full my-auto pb-10">
+          <div className="flex flex-col w-full mt-auto pb-10">
             <Reveal delay={0.2}>
-              <h1 className="text-[clamp(2.5rem,8vw,7.5rem)] font-black uppercase leading-[0.85] tracking-[-0.04em] text-white mb-6 flex flex-col">
-                <span className="block opacity-90">WEBSITES</span>
-                <span className="block text-[var(--neon)] italic pr-4">ENGINEERED</span>
-                <span className="block opacity-90">FOR SCALE.</span>
+              <h1 className="font-black uppercase leading-[0.88] tracking-[-0.04em] text-white mb-6 flex flex-col" style={{ fontSize: 'clamp(52px, 9vw, 7.5rem)' }}>
+                <div className="flex flex-wrap gap-x-3 md:gap-x-5">
+                  <span className="opacity-90">WEBSITES</span>
+                  <span className="text-[var(--neon)] italic">ENGINEERED</span>
+                </div>
+                <span className="opacity-90 mt-2">FOR SCALE.</span>
               </h1>
             </Reveal>
             
