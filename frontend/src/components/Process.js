@@ -46,18 +46,19 @@ export default function Process() {
         </p>
       </Reveal>
 
-      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-white/5 max-w-[1200px] mx-auto">
+      {/* Mobile: horizontal scroll | Desktop: grid */}
+      <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-[1px] bg-transparent md:bg-white/5 max-w-[1200px] mx-auto overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-auto md:px-0 pb-6 md:pb-0">
         {steps.map((step) => (
-          <StaggerItem key={step.num}>
-            <div className="group relative bg-[var(--background)] p-8 md:p-10 transition-all duration-500 hover:bg-[var(--neon)]/5 cursor-default">
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-[var(--neon)] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            <span className="block text-[var(--neon)] text-[60px] md:text-[72px] font-black leading-none opacity-20 group-hover:opacity-40 transition-opacity duration-500">{step.num}</span>
-            <h3 className="text-white font-bold text-[15px] md:text-[17px] uppercase tracking-[1px] mt-4 mb-3 group-hover:text-[var(--neon)] transition-colors duration-300">{step.title}</h3>
-            <p className="text-white/40 text-[11px] md:text-[12px] leading-[1.7] group-hover:text-white/60 transition-colors duration-300">{step.desc}</p>
+          <div key={step.num} className="snap-start shrink-0 w-[75vw] sm:w-[45vw] md:w-auto">
+            <div className="group relative bg-[var(--background)] border border-white/10 md:border-0 rounded-2xl md:rounded-none p-6 md:p-10 transition-all duration-500 hover:bg-[var(--neon)]/5 cursor-default h-full">
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-[var(--neon)] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-2xl md:rounded-none" />
+              <span className="block text-[var(--neon)] text-[50px] md:text-[72px] font-black leading-none opacity-20 group-hover:opacity-40 transition-opacity duration-500">{step.num}</span>
+              <h3 className="text-white font-bold text-[15px] md:text-[17px] uppercase tracking-[1px] mt-4 mb-3 group-hover:text-[var(--neon)] transition-colors duration-300">{step.title}</h3>
+              <p className="text-white/40 text-[11px] md:text-[12px] leading-[1.7] group-hover:text-white/60 transition-colors duration-300">{step.desc}</p>
+            </div>
           </div>
-          </StaggerItem>
         ))}
-      </StaggerContainer>
+      </div>
     </section>
   );
 }

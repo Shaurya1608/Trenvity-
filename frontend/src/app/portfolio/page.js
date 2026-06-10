@@ -174,27 +174,25 @@ export default function PortfolioPage() {
       </section>
 
       {/* ============================================
-         2. LIVE STATS ROW
+         2. LIVE STATS MARQUEE
          ============================================ */}
-      <section className="relative w-full border-t border-b border-white/5 bg-[var(--secondary-bg)]">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4">
-          {stats.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 0.1}>
-              <div className={`flex flex-col items-center justify-center py-10 px-6 text-center ${i < stats.length - 1 ? 'border-r border-white/5' : ''}`}>
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 150, delay: i * 0.08 }}
-                  className="text-[40px] md:text-[52px] font-black tracking-[-2px] text-white leading-none mb-2"
-                >
-                  {stat.value}
-                </motion.span>
-                <span className="text-[10px] uppercase tracking-[2px] text-white/40 font-mono">{stat.label}</span>
-              </div>
-            </Reveal>
+      <section className="relative w-full border-t border-b border-white/5 bg-[var(--background)] overflow-hidden py-6">
+        <motion.div
+          className="flex gap-0 w-max"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 20, ease: 'linear', repeat: Infinity }}
+        >
+          {[...stats, ...stats, ...stats, ...stats].map((stat, i) => (
+            <div key={i} className="flex items-center gap-6 px-10 border-r border-white/5 shrink-0">
+              <span className="text-[36px] md:text-[48px] font-black tracking-[-2px] text-white leading-none whitespace-nowrap">
+                {stat.value}
+              </span>
+              <span className="text-[10px] uppercase tracking-[2px] text-white/40 font-mono whitespace-nowrap max-w-[80px] leading-tight">
+                {stat.label}
+              </span>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* ============================================
@@ -222,7 +220,7 @@ export default function PortfolioPage() {
           </div>
 
           {/* Projects Grid */}
-          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 xl:gap-10">
             {projects.map((project, idx) => (
               <StaggerItem
                 key={project.id}
@@ -231,11 +229,14 @@ export default function PortfolioPage() {
                   onHoverStart={() => setHoveredProject(project.id)}
                   onHoverEnd={() => setHoveredProject(null)}
                   className="relative group cursor-pointer"
-                  whileHover={{ y: -8 }}
+                  whileHover={{ y: -10 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 >
                   {/* Portrait Media Container */}
-                  <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/30 transition-all duration-300 mb-4">
+                  <div 
+                    className="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/30 transition-all duration-500 mb-5 md:mb-6"
+                    style={{ boxShadow: hoveredProject === project.id ? `0 20px 40px -15px ${project.accent}40` : '0 10px 30px -15px rgba(0,0,0,0.5)' }}
+                  >
                     {/* Placeholder for Images or Videos */}
                     <img 
                       src={project.image} 
@@ -253,11 +254,11 @@ export default function PortfolioPage() {
                   </div>
 
                   {/* Info Section Below Media */}
-                  <div className="px-2">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="font-mono text-[9px] text-white/30 tracking-[2px]">{project.id}</span>
+                  <div className="px-2 md:px-3">
+                    <div className="flex items-center gap-3 mb-3 md:mb-4">
+                      <span className="font-mono text-[10px] md:text-[11px] text-white/30 tracking-[2px]">{project.id}</span>
                       <span
-                        className="text-[8px] font-bold uppercase tracking-[1.5px] px-2 py-0.5 rounded-full border"
+                        className="text-[9px] md:text-[10px] font-bold uppercase tracking-[1.5px] px-2 py-0.5 rounded-full border"
                         style={{
                           color: project.accent,
                           borderColor: `${project.accent}30`,
@@ -268,8 +269,8 @@ export default function PortfolioPage() {
                       </span>
                     </div>
 
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <h3 className="font-extrabold uppercase tracking-tight text-white leading-[1.1] text-lg md:text-xl transition-colors duration-300" style={{ color: hoveredProject === project.id ? project.accent : 'white' }}>
+                    <div className="flex items-start justify-between gap-3 mb-2 md:mb-3">
+                      <h3 className="font-extrabold uppercase tracking-tight text-white leading-[1.1] text-[19px] md:text-[22px] lg:text-[24px] transition-colors duration-300" style={{ color: hoveredProject === project.id ? project.accent : 'white' }}>
                         {project.title}
                       </h3>
                       
@@ -277,16 +278,16 @@ export default function PortfolioPage() {
                       <motion.div
                         animate={{ x: hoveredProject === project.id ? 4 : 0, opacity: hoveredProject === project.id ? 1 : 0.4 }}
                         transition={{ duration: 0.3 }}
-                        className="shrink-0 mt-1"
+                        className="shrink-0 mt-1 md:mt-1.5"
                         style={{ color: project.accent }}
                       >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                       </motion.div>
                     </div>
                     
-                    <p className="text-white/50 text-[12px] md:text-[13px] leading-relaxed line-clamp-2 mb-4">
+                    <p className="text-white/50 text-[13px] md:text-[14px] leading-relaxed line-clamp-2 mb-4">
                       {project.description}
                     </p>
 
@@ -331,24 +332,22 @@ export default function PortfolioPage() {
             </h2>
           </Reveal>
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Mobile: horizontal scroll | Desktop: 4-col grid */}
+          <div className="flex lg:grid lg:grid-cols-4 gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 lg:mx-0 lg:px-0">
             {[
               { step: '01', title: 'Discovery', desc: 'Deep-dive session to extract brand goals, audience profiling, and competitor landscape audit.' },
               { step: '02', title: 'Strategy', desc: 'We architect a tailored blueprint — wireframes, content scaffolding, and conversion pathway design.' },
               { step: '03', title: 'Creation', desc: 'Headless development with custom component libraries, animation systems, and integrated APIs.' },
               { step: '04', title: 'Launch & Scale', desc: 'Deployed to global edge networks with performance monitoring, A/B testing, and growth loops.' },
             ].map((item) => (
-              <StaggerItem key={item.step}>
-                <div className="relative p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-[var(--neon)]/30 transition-all duration-300 group hover:-translate-y-1">
-                  <span className="font-mono text-[var(--neon)] text-[11px] font-bold tracking-[2px] block mb-4">{item.step}</span>
-                  <h3 className="text-xl font-extrabold uppercase tracking-tight text-white mb-3">{item.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
-                  {/* Decorative corner accent on hover */}
-                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[var(--neon)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-br-2xl" />
-                </div>
-              </StaggerItem>
+              <div key={item.step} className="relative p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-[var(--neon)]/30 transition-all duration-300 group hover:-translate-y-1 snap-start shrink-0 w-[75vw] sm:w-[45vw] lg:w-auto">
+                <span className="font-mono text-[var(--neon)] text-[11px] font-bold tracking-[2px] block mb-4">{item.step}</span>
+                <h3 className="text-xl font-extrabold uppercase tracking-tight text-white mb-3">{item.title}</h3>
+                <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[var(--neon)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-br-2xl" />
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
 
         </div>
       </section>

@@ -1,83 +1,97 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import ExploreDocks from '@/components/ExploreDocks';
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[var(--background)] p-3 md:p-6">
-      {/* The thick neon border framing the page */}
-      <div className="w-full min-h-[calc(100vh-1.5rem)] md:min-h-[calc(100vh-3rem)] rounded-none border-[6px] md:border-[12px] border-[var(--neon)] flex flex-col relative overflow-hidden bg-[var(--background)]">
+    <main className="min-h-screen bg-[var(--background)] pt-24 pb-16 px-6 md:px-12 lg:px-24">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 lg:gap-20">
         
-        {/* Main "CONTACT" Text Block */}
-        <div className="flex flex-col relative z-10 pt-20 md:pt-28">
-           
-           {/* The huge stretched text */}
-           <h1 className="font-sans font-black uppercase text-[var(--neon)] text-[clamp(4rem,15vw,13rem)] leading-[0.8] tracking-[-2px] md:tracking-[-6px] text-center w-full select-none relative z-10">
-             CONTACT
-           </h1>
+        {/* Left Column: Info & Links */}
+        <div className="flex-1 flex flex-col">
+          <h1 className="text-white font-black text-4xl md:text-5xl lg:text-6xl uppercase tracking-[-1px] leading-[1.1] mb-6">
+            Let's build<br />something<br /><span className="text-[var(--neon)]">extraordinary.</span>
+          </h1>
+          <p className="text-white/60 text-sm md:text-base font-medium max-w-md mb-10 leading-relaxed">
+            Whether you're looking to rebrand, build a scalable web application, or dominate search engines, we're ready to partner with you. Drop us a line below or reach out directly.
+          </p>
 
-           {/* Neon Info Bar */}
-           <div className="w-full bg-[var(--neon)] text-[#0A1118] grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 px-5 md:px-10 py-4 md:py-6 relative z-20 mt-1">
-             <div>
-               <h3 className="font-bold text-[12px] md:text-[13px] mb-0.5">New project:</h3>
-               <a href="mailto:sales@trenvity.com" className="text-[11px] md:text-[12px] hover:underline font-medium">sales@trenvity.com</a>
-             </div>
-             <div>
-               <h3 className="font-bold text-[12px] md:text-[13px] mb-0.5">Support:</h3>
-               <a href="mailto:support@trenvity.com" className="text-[11px] md:text-[12px] hover:underline font-medium">support@trenvity.com</a>
-             </div>
-             <div className="col-span-2 md:col-span-1">
-               <h3 className="font-bold text-[12px] md:text-[13px] mb-0.5">Location:</h3>
-               <p className="text-[11px] md:text-[12px] leading-tight font-medium">123 Creative Street<br/>Tech Hub District<br/>United Kingdom</p>
-             </div>
-             <div>
-               <h3 className="font-bold text-[12px] md:text-[13px] mb-0.5">General:</h3>
-               <a href="mailto:info@trenvity.com" className="text-[11px] md:text-[12px] hover:underline font-medium">info@trenvity.com</a>
-             </div>
-             <div>
-               <h3 className="font-bold text-[12px] md:text-[13px] mb-0.5">Call us:</h3>
-               <a href="tel:+441234567890" className="text-[11px] md:text-[12px] hover:underline font-medium">+44 123 456 7890</a>
-             </div>
-           </div>
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <a 
+              href="https://wa.me/1234567890" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 bg-[#25D366] text-black font-bold uppercase tracking-[1px] text-xs px-6 py-4 rounded-none hover:bg-white transition-colors duration-300 w-full sm:w-auto"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.183-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.765-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/></svg>
+              WhatsApp
+            </a>
+            <a 
+              href="mailto:hello@trenvity.com"
+              className="flex items-center justify-center gap-3 border-[2px] border-[var(--neon)] text-[var(--neon)] font-bold uppercase tracking-[1px] text-xs px-6 py-4 rounded-none hover:bg-[var(--neon)] hover:text-black transition-colors duration-300 w-full sm:w-auto"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              Email Us
+            </a>
+          </div>
+
         </div>
 
-        {/* Inquiries Section */}
-        <div className="px-5 md:px-10 lg:px-16 mt-10 md:mt-16 mb-8 flex flex-col md:flex-row items-start md:items-stretch gap-8 md:gap-12">
-           
-           {/* Huge Arrow */}
-           <div className="flex-1 w-full md:w-auto flex items-center pt-2 md:pt-8">
-             <div className="w-full h-[5px] md:h-[8px] bg-[var(--neon)] relative">
-               {/* Arrow head */}
-               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-5 md:w-10 md:h-10 border-t-[5px] border-r-[5px] md:border-t-[8px] md:border-r-[8px] border-[var(--neon)] rotate-45 translate-x-[2px] md:translate-x-[4px]" />
-             </div>
-           </div>
+        {/* Right Column: Clean Contact Form */}
+        <div className="flex-1 bg-white/[0.02] border border-white/10 p-6 md:p-10">
+          <h3 className="text-xl font-black text-white mb-6 uppercase tracking-wide">Send an Inquiry</h3>
+          
+          <form className="flex flex-col gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Your Name</label>
+                <input 
+                  type="text" 
+                  placeholder="John Doe"
+                  className="bg-black/30 border border-white/10 px-4 py-3 text-white placeholder:text-white/20 outline-none focus:border-[var(--neon)] transition-all text-sm rounded-none"
+                />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Email Address</label>
+                <input 
+                  type="email" 
+                  placeholder="john@example.com"
+                  className="bg-black/30 border border-white/10 px-4 py-3 text-white placeholder:text-white/20 outline-none focus:border-[var(--neon)] transition-all text-sm rounded-none"
+                />
+              </div>
+            </div>
 
-           {/* Inquiries Text */}
-           <div className="flex-1 md:max-w-[600px] text-[var(--neon)]">
-             <h2 className="font-sans font-black uppercase text-[clamp(2.5rem,5vw,4rem)] leading-[0.9] tracking-[-1px] mb-5">
-               INQUIRIES
-             </h2>
-             <p className="font-bold text-[13px] md:text-[15px] leading-[1.3] uppercase mb-5 max-w-[500px]">
-               TRENVITY IS AN AWARD-WINNING AGENCY, SPECIALISED IN CREATIVE DESIGN, DEVELOPMENT AND STRATEGY.
-             </p>
-             <p className="text-[11px] md:text-[13px] leading-[1.6] opacity-80 mb-7 max-w-[460px]">
-               If you're ready to build a scalable, data-driven digital presence, fill out an inquiry form. Still need some advice, or another opinion to sound out some ideas? Just drop us a line.
-             </p>
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Services Needed</label>
+              <select defaultValue="" className="bg-black/30 border border-white/10 px-4 py-3 text-white outline-none focus:border-[var(--neon)] transition-all appearance-none cursor-pointer text-sm rounded-none">
+                <option value="" disabled className="text-black">Select a service...</option>
+                <option value="web" className="text-black">Web Development</option>
+                <option value="marketing" className="text-black">Digital Marketing</option>
+                <option value="design" className="text-black">UI/UX Design</option>
+                <option value="other" className="text-black">Other</option>
+              </select>
+            </div>
 
-             <div className="flex flex-col sm:flex-row gap-3">
-               <button className="bg-[var(--neon)] text-[#0A1118] font-black text-[11px] tracking-[1px] px-6 py-2.5 uppercase hover:bg-white transition-colors duration-300 w-fit">
-                 Project Inquiry
-               </button>
-               <button className="border-[2px] border-[var(--neon)] text-[var(--neon)] font-black text-[11px] tracking-[1px] px-6 py-2.5 uppercase hover:bg-[var(--neon)] hover:text-[#0A1118] transition-colors duration-300 w-fit">
-                 Working at Trenvity
-               </button>
-             </div>
-           </div>
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Project Details</label>
+              <textarea 
+                rows="4"
+                placeholder="Tell us about your goals..."
+                className="bg-black/30 border border-white/10 px-4 py-3 text-white placeholder:text-white/20 outline-none focus:border-[var(--neon)] transition-all resize-none text-sm rounded-none"
+              ></textarea>
+            </div>
 
+            <button 
+              type="button"
+              className="mt-2 bg-white text-black font-black uppercase tracking-[1.5px] text-xs py-3.5 px-8 hover:bg-[var(--neon)] transition-colors duration-300 w-full rounded-none"
+            >
+              Submit
+            </button>
+          </form>
         </div>
 
       </div>
+
       <ExploreDocks />
     </main>
   );
