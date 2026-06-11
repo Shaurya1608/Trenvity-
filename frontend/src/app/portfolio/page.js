@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -9,50 +9,60 @@ import Footer from '@/components/Footer';
 import Reveal, { StaggerContainer, StaggerItem } from '@/components/Reveal';
 import ExploreDocks from '@/components/ExploreDocks';
 
-const projects = [
+const showcase = [
   {
     id: '001',
     title: 'Nexus Brand Identity',
     category: 'Brand Design',
     year: '2024',
-    tags: ['Branding', 'Visual Identity', 'Logomark'],
-    description: 'A full premium brand identity system for an AI SaaS platform. Encompassing logomark, typographic guidelines, color tokens, and dark/light variant asset packs.',
+    type: 'image',
+    src: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
     accent: '#c8f000',
-    span: 'col-span-2',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
   },
   {
     id: '002',
-    title: 'Trenvity SMM Dashboard',
-    category: 'UI/UX Design',
-    year: '2024',
-    tags: ['Next.js', 'Dashboard', 'Analytics'],
-    description: 'High-performance social media analytics command center. Custom component library and fully interactive dark-mode data panels.',
+    title: 'Brand Campaign Reel',
+    category: 'Motion',
+    year: '2026',
+    type: 'video',
+    src: '/data/video/WhatsApp Video 2026-06-08 at 12.59.13 AM (1).mp4',
     accent: '#00f0ff',
-    span: 'col-span-1',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop',
   },
   {
     id: '003',
-    title: 'Brutalist E-Commerce Matrix',
-    category: 'Web Development',
+    title: 'Trenvity SMM Dashboard',
+    category: 'UI/UX Design',
     year: '2024',
-    tags: ['Headless', 'Commerce', 'Custom UI'],
-    description: 'Ultra-fast headless commerce platform with brutalist aesthetic system. Custom checkout flows and pixel-perfect product staging.',
-    accent: '#c8f000',
-    span: 'col-span-1',
-    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1000&auto=format&fit=crop',
+    type: 'image',
+    src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop',
+    accent: '#00f0ff',
   },
   {
     id: '004',
+    title: 'Full Production Showcase',
+    category: 'Production',
+    year: '2026',
+    type: 'video',
+    src: '/data/video/WhatsApp Video 2026-06-08 at 12.59.25 AM (2).mp4',
+    accent: '#ff007f',
+  },
+  {
+    id: '005',
+    title: 'Brutalist E-Commerce',
+    category: 'Web Dev',
+    year: '2024',
+    type: 'image',
+    src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1000&auto=format&fit=crop',
+    accent: '#c8f000',
+  },
+  {
+    id: '006',
     title: 'Editorial Motion Reel',
     category: 'Motion Design',
     year: '2023',
-    tags: ['Animation', 'After Effects', 'Branding'],
-    description: 'A complete motion design reel for a digital fashion house — product-reveal transitions, typographic loops, and 3D billboard renders.',
+    type: 'image',
+    src: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop',
     accent: '#ff007f',
-    span: 'col-span-2',
-    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop',
   },
 ];
 
@@ -62,6 +72,106 @@ const stats = [
   { value: '4.8x', label: 'Avg. ROI Lift' },
   { value: '6yr', label: 'Industry Experience' },
 ];
+
+
+function ShowcaseCard({ item }) {
+  const containerRef = useRef(null);
+  const videoRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (item.type !== 'video') return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px 0px', threshold: 0.1 }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [item.type]);
+
+  const handleTogglePlay = () => {
+    if (item.type !== 'video') return;
+    const vid = videoRef.current;
+    if (!vid) return;
+    if (vid.paused) {
+      vid.play();
+      setIsPlaying(true);
+    } else {
+      vid.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className="group relative shrink-0 w-[75vw] sm:w-[280px] md:w-[320px] aspect-[3/4] rounded-2xl md:rounded-[24px] overflow-hidden bg-white/5 border border-white/10 hover:border-[var(--neon)]/50 transition-all duration-500 cursor-pointer snap-center shadow-lg"
+      onClick={handleTogglePlay}
+    >
+      {/* Background Media */}
+      {item.type === 'video' ? (
+        <div className="absolute inset-0 w-full h-full">
+          {isVisible ? (
+            <video
+              ref={videoRef}
+              src={item.src}
+              preload="none"
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              onEnded={() => setIsPlaying(false)}
+            />
+          ) : (
+            <div className="w-full h-full bg-white/[0.03] animate-pulse" />
+          )}
+
+          {/* Play/Pause Button for Video */}
+          <div className={`absolute inset-0 flex items-center justify-center z-20 transition-opacity duration-300 ${isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
+            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200 border border-white/30">
+              {isPlaying ? (
+                <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>
+              ) : (
+                <svg className="w-5 h-5 md:w-6 md:h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              )}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <img
+          src={item.src}
+          alt={item.title}
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+        />
+      )}
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+
+      {/* Card Content Overlay */}
+      <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 flex flex-col pointer-events-none z-10">
+        <h3 className="text-[20px] md:text-[24px] font-extrabold text-white leading-tight mb-2 md:mb-3 drop-shadow-md">
+          {item.title}
+        </h3>
+        
+        <div className="flex items-center gap-3">
+          <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[1.5px] px-2 py-1 rounded-full border bg-white/10 border-white/20 text-white/90 backdrop-blur-sm shadow-sm">
+            {item.category}
+          </span>
+          <span className="text-[11px] md:text-[12px] font-mono text-white/50 tracking-[1px]">
+            {item.year}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 
 export default function PortfolioPage() {
@@ -196,11 +306,10 @@ export default function PortfolioPage() {
       </section>
 
       {/* ============================================
-         3. PROJECT SHOWCASE GRID
+         3. SHOWCASE CAROUSEL — Horizontal Scroll Cards
          ============================================ */}
-      <section className="relative w-full py-14 md:py-16 px-6 md:px-12 lg:px-20 bg-[var(--background)]">
-        <div className="max-w-[1400px] mx-auto w-full">
-
+      <section className="relative w-full py-14 md:py-20 bg-[var(--background)]">
+        <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-20">
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
             <Reveal>
@@ -214,104 +323,39 @@ export default function PortfolioPage() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="max-w-[380px] text-white/50 text-[11px] md:text-[12px] leading-relaxed">
-                Each project is uniquely conceived, designed, and developed to convert visitors into loyal advocates.
+                Swipe through our best work — images and video reels, all in one place.
               </p>
             </Reveal>
           </div>
+        </div>
 
-          {/* Projects Grid */}
-          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 xl:gap-10">
-            {projects.map((project, idx) => (
-              <StaggerItem
-                key={project.id}
-              >
-                <motion.div
-                  onHoverStart={() => setHoveredProject(project.id)}
-                  onHoverEnd={() => setHoveredProject(null)}
-                  className="relative group cursor-pointer"
-                  whileHover={{ y: -10 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                >
-                  {/* Portrait Media Container */}
-                  <div 
-                    className="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/30 transition-all duration-500 mb-5 md:mb-6"
-                    style={{ boxShadow: hoveredProject === project.id ? `0 20px 40px -15px ${project.accent}40` : '0 10px 30px -15px rgba(0,0,0,0.5)' }}
-                  >
-                    {/* Placeholder for Images or Videos */}
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
-                    />
-                    
-                    {/* Animated accent glow on hover */}
-                    <motion.div
-                      animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="absolute inset-0 pointer-events-none mix-blend-overlay"
-                      style={{ background: `linear-gradient(to top, ${project.accent}80, transparent)` }}
-                    />
-                  </div>
-
-                  {/* Info Section Below Media */}
-                  <div className="px-2 md:px-3">
-                    <div className="flex items-center gap-3 mb-3 md:mb-4">
-                      <span className="font-mono text-[10px] md:text-[11px] text-white/30 tracking-[2px]">{project.id}</span>
-                      <span
-                        className="text-[9px] md:text-[10px] font-bold uppercase tracking-[1.5px] px-2 py-0.5 rounded-full border"
-                        style={{
-                          color: project.accent,
-                          borderColor: `${project.accent}30`,
-                          backgroundColor: `${project.accent}10`,
-                        }}
-                      >
-                        {project.category}
-                      </span>
-                    </div>
-
-                    <div className="flex items-start justify-between gap-3 mb-2 md:mb-3">
-                      <h3 className="font-extrabold uppercase tracking-tight text-white leading-[1.1] text-[19px] md:text-[22px] lg:text-[24px] transition-colors duration-300" style={{ color: hoveredProject === project.id ? project.accent : 'white' }}>
-                        {project.title}
-                      </h3>
-                      
-                      {/* Arrow CTA */}
-                      <motion.div
-                        animate={{ x: hoveredProject === project.id ? 4 : 0, opacity: hoveredProject === project.id ? 1 : 0.4 }}
-                        transition={{ duration: 0.3 }}
-                        className="shrink-0 mt-1 md:mt-1.5"
-                        style={{ color: project.accent }}
-                      >
-                        <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </motion.div>
-                    </div>
-                    
-                    <p className="text-white/50 text-[13px] md:text-[14px] leading-relaxed line-clamp-2 mb-4">
-                      {project.description}
-                    </p>
-
-                  </div>
-                </motion.div>
-              </StaggerItem>
+        {/* Horizontal Scroll Track */}
+        <div className="relative group/carousel">
+          <div
+            id="showcase-track"
+            className="flex gap-5 md:gap-7 overflow-x-auto pb-6 px-6 md:px-12 lg:px-20 snap-x snap-mandatory scrollbar-hide"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+          >
+            {showcase.map((item) => (
+              <ShowcaseCard key={item.id} item={item} />
             ))}
-          </StaggerContainer>
+          </div>
 
-          {/* View All CTA */}
-          <Reveal delay={0.3}>
-            <div className="flex justify-center mt-12">
-              <Link
-                href="#"
-                className="inline-flex items-center gap-3 px-10 py-4 border border-white/15 rounded-full text-[12px] font-bold tracking-[2px] uppercase text-white/80 hover:bg-white/5 hover:border-[var(--neon)] hover:text-[var(--neon)] transition-all duration-300"
-              >
-                View All Projects
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
-          </Reveal>
-
+          {/* Left/Right scroll arrows (desktop) */}
+          <button
+            aria-label="Scroll left"
+            onClick={() => { document.getElementById('showcase-track').scrollBy({ left: -320, behavior: 'smooth' }); }}
+            className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 items-center justify-center text-white/70 hover:bg-[var(--neon)] hover:text-black hover:border-[var(--neon)] transition-all duration-300 opacity-0 group-hover/carousel:opacity-100"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <button
+            aria-label="Scroll right"
+            onClick={() => { document.getElementById('showcase-track').scrollBy({ left: 320, behavior: 'smooth' }); }}
+            className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 items-center justify-center text-white/70 hover:bg-[var(--neon)] hover:text-black hover:border-[var(--neon)] transition-all duration-300 opacity-0 group-hover/carousel:opacity-100"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </button>
         </div>
       </section>
 

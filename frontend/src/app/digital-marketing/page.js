@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Reveal, { StaggerContainer, StaggerItem } from '@/components/Reveal';
 import ExploreDocks from '@/components/ExploreDocks';
+import ResultsShowcase from '@/components/ResultsShowcase';
 
 export default function DigitalMarketingPage() {
   const [billingCycle, setBillingCycle] = useState('monthly');
@@ -144,6 +145,8 @@ export default function DigitalMarketingPage() {
         </div>
       </section>
 
+      {/* Results Showcase */}
+      <ResultsShowcase />
       <section id="pricing" className="relative w-full py-24 px-6 md:px-12 lg:px-20 border-t border-white/5 bg-[var(--background)]">
         <div className="max-w-[1300px] mx-auto w-full">
           <div className="flex flex-col items-center text-center mb-16">
