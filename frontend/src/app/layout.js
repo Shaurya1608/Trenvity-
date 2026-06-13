@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Trenvity — Creative Agency",
-  description: "We are a creative studio working at the intersection of design, technology & innovation.",
+  description: "We don't just post. We build brands that people actually feel.",
 };
 
 export const viewport = {

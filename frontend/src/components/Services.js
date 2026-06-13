@@ -8,19 +8,19 @@ const services = [
     id: 'S/1',
     title: 'BRAND STRATEGY',
     description:
-      'We build brands that cut through the noise. From positioning and messaging to visual identity, we create a comprehensive strategy that tells your unique story and attracts the right audience — consistently.',
+      'We build brands that cut through the noise. From positioning and messaging to visual identity — we create a strategy that tells your unique story and attracts the right audience, consistently.',
   },
   {
     id: 'S/2',
     title: 'PERFORMANCE MARKETING',
     description:
-      'Every rupee you spend should work harder. We design and manage paid campaigns across all major platforms — Meta, Google, YouTube — optimised for real business outcomes, not vanity metrics.',
+      'Every rupee you spend should work harder. We design and manage paid campaigns across Meta, Google, and YouTube — optimised for real business outcomes, not vanity metrics.',
   },
   {
     id: 'S/3',
     title: 'CONTENT & CREATIVE',
     description:
-      'Scroll-stopping content that converts. Our in-house creative team produces photography, video, and copy that not only looks premium but drives measurable engagement and builds genuine brand loyalty.',
+      'Scroll-stopping content that converts. Reels, carousels, typography posts, and ad creatives — produced in-house, built to feel premium, and designed to drive real engagement.',
   },
 ];
 

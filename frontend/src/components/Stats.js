@@ -1,8 +1,8 @@
 const stats = [
-  { value: '150+', label: 'Projects Delivered' },
-  { value: '98%', label: 'Client Retention' },
-  { value: '8+', label: 'Years of Experience' },
-  { value: '3X', label: 'Average ROI Growth' },
+  { value: '10+', label: 'Brands Grown' },
+  { value: '100%', label: 'Online Service' },
+  { value: '2+', label: 'Years Experience' },
+  { value: '3X', label: 'Average Lead Growth' },
 ];
 
 export default function Stats() {

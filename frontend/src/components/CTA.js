@@ -46,8 +46,7 @@ export default function CTA() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="text-white/45 text-[13px] md:text-[15px] leading-[1.75] max-w-[520px] mx-auto mb-10 md:mb-14"
         >
-          Whether you&apos;re launching something new or leveling up an existing brand,
-          we&apos;re here to make it happen. Let&apos;s create something extraordinary together.
+          Whether you're launching something new or levelling up an existing brand — we're here to make it happen. Let's build something people actually remember.
         </motion.p>
 
         <motion.div
@@ -69,7 +68,7 @@ export default function CTA() {
             href="/contact"
             className="inline-flex items-center gap-3 text-[12px] font-bold uppercase tracking-[2px] text-white/50 hover:text-white no-underline transition-colors duration-300 group"
           >
-            <span>Or just say hi</span>
+            <span>Or just say hello 👋</span>
             <span className="w-6 h-[1.5px] bg-current group-hover:w-10 transition-all duration-300 inline-block" />
           </a>
         </motion.div>

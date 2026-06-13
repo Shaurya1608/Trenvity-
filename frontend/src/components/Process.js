@@ -11,17 +11,17 @@ const steps = [
   {
     num: '02',
     title: 'Strategize',
-    desc: 'A custom growth plan — creative direction, channels, messaging, and KPIs — built for your goals.',
+    desc: 'A custom growth plan — creative direction, channels, messaging, and KPIs — built specifically for your goals.',
   },
   {
     num: '03',
     title: 'Create',
-    desc: 'We produce all creative assets, launch campaigns, and set everything live — on brief, on time.',
+    desc: 'Posts, reels, ads, and designs — all produced in-house and launched on brief, on time. Every time.',
   },
   {
     num: '04',
     title: 'Scale',
-    desc: 'Data drives every decision. We double down on what works, cut what doesn\'t, and grow your results.',
+    desc: 'We double down on what works, cut what doesn\'t, and grow your results every single month.',
   },
 ];
 

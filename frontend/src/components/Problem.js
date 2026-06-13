@@ -64,8 +64,7 @@ export default function Problem() {
 
         <Reveal delay={0.2}>
           <p className="text-center text-white/50 text-[12px] md:text-[14px] leading-[1.8] max-w-[600px] mx-auto mb-14 md:mb-20">
-            Your competitors are posting every day. Your audience is scrolling past them.
-            The issue isn&apos;t volume — it&apos;s identity. Without a clear brand, you&apos;re just adding to the noise.
+            Every day, brands post content nobody cares about. The problem isn't volume — it's identity. Without a clear brand, you're just adding to the noise.
           </p>
         </Reveal>
 

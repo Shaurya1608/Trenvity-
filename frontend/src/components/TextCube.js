@@ -5,28 +5,27 @@ export default function TextCube() {
         <div className="cube" aria-hidden="true">
           <div className="cube-face face-top">
             <svg viewBox="0 0 400 400" className="w-full h-full overflow-visible">
-              <text x="0" y="90" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="105" fontFamily="Inter, sans-serif">BELIEVE</text>
-              <text x="0" y="190" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="105" fontFamily="Inter, sans-serif">WITHOUT</text>
-              <text x="0" y="290" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="105" fontFamily="Inter, sans-serif">LIMITS IN</text>
-              <text x="0" y="390" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="105" fontFamily="Inter, sans-serif">YOUR MIND</text>
+              <text x="0" y="90" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="105" fontFamily="Inter, sans-serif">WE DON'T</text>
+              <text x="0" y="190" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="105" fontFamily="Inter, sans-serif">JUST POST.</text>
+              <text x="0" y="290" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="105" fontFamily="Inter, sans-serif">WE GROW.</text>
             </svg>
           </div>
           <div className="cube-face face-left">
             <svg viewBox="0 0 400 400" className="w-full h-full overflow-visible">
-              <text x="0" y="75" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="85" fontFamily="Inter, sans-serif">WITHOUT</text>
-              <text x="0" y="155" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="85" fontFamily="Inter, sans-serif">YOUR SELF-</text>
-              <text x="0" y="235" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="85" fontFamily="Inter, sans-serif">DISCIPLINE</text>
-              <text x="0" y="315" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="85" fontFamily="Inter, sans-serif">SUCCESS IS</text>
-              <text x="0" y="395" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="85" fontFamily="Inter, sans-serif">PERIOD</text>
+              <text x="0" y="75" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="72" fontFamily="Inter, sans-serif">PERCEPTION</text>
+              <text x="0" y="155" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="72" fontFamily="Inter, sans-serif">FIRST.</text>
+              <text x="0" y="235" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="72" fontFamily="Inter, sans-serif">STRATEGY</text>
+              <text x="0" y="315" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="72" fontFamily="Inter, sans-serif">ALWAYS.</text>
+              <text x="0" y="395" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="60" fontFamily="Inter, sans-serif">RESULTS.</text>
             </svg>
           </div>
           <div className="cube-face face-right">
             <svg viewBox="0 0 400 400" className="w-full h-full overflow-visible">
-              <text x="0" y="75" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="85" fontFamily="Inter, sans-serif">WITHOUT</text>
-              <text x="0" y="155" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="85" fontFamily="Inter, sans-serif">YOUR SELF-</text>
-              <text x="0" y="235" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="85" fontFamily="Inter, sans-serif">DISCIPLINE</text>
-              <text x="0" y="315" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="85" fontFamily="Inter, sans-serif">SUCCESS IS</text>
-              <text x="0" y="395" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="85" fontFamily="Inter, sans-serif">PERIOD</text>
+              <text x="0" y="75" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="72" fontFamily="Inter, sans-serif">PERCEPTION</text>
+              <text x="0" y="155" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="72" fontFamily="Inter, sans-serif">FIRST.</text>
+              <text x="0" y="235" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="72" fontFamily="Inter, sans-serif">STRATEGY</text>
+              <text x="0" y="315" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="72" fontFamily="Inter, sans-serif">ALWAYS.</text>
+              <text x="0" y="395" textLength="400" lengthAdjust="spacingAndGlyphs" fill="currentColor" fontWeight="900" fontSize="60" fontFamily="Inter, sans-serif">RESULTS.</text>
             </svg>
           </div>
         </div>

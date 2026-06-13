@@ -18,7 +18,7 @@ export default function PerformanceMarketingPage() {
     {
       id: '01',
       title: 'Targeted Ad Campaigns',
-      description: 'Precision targeting across search, social, and programmatic networks to lock onto high-intent customers when they are ready to buy.',
+      description: 'Precision targeting across Facebook, Instagram, and Google — reaching high-intent customers at exactly the right moment.',
       icon: (
         <svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
@@ -28,8 +28,8 @@ export default function PerformanceMarketingPage() {
     },
     {
       id: '02',
-      title: 'ROAS Optimization',
-      description: 'Advanced bidding algorithms and algorithmic budget scaling designed to squeeze maximum return from every dollar spent.',
+      title: 'Ad Spend Optimization',
+      description: 'Every rupee must deliver results. We continuously optimise bids, audiences, and creatives to squeeze maximum return from your budget.',
       icon: (
         <svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -40,7 +40,7 @@ export default function PerformanceMarketingPage() {
     {
       id: '03',
       title: 'Conversion Optimization',
-      description: 'Behavioral heatmapping, custom funnels, and persistent friction reduction to convert clicks into paying leads.',
+      description: 'Turning clicks into leads is the real work. We optimise landing pages and funnels so no visitor goes to waste.',
       icon: (
         <svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -50,8 +50,8 @@ export default function PerformanceMarketingPage() {
     },
     {
       id: '04',
-      title: 'Multi-Touch Attribution',
-      description: 'Complete data visibility pipeline mapping the exact customer journey across search, social, and email with zero data loss.',
+      title: 'Campaign Tracking & Reporting',
+      description: 'Every lead tracked — Meta or Google. Monthly reports with full transparency on where every rupee is going.',
       icon: (
         <svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
@@ -62,7 +62,7 @@ export default function PerformanceMarketingPage() {
     {
       id: '05',
       title: 'Retargeting Funnels',
-      description: 'Smart retargeting sequences tailored dynamically based on on-site behavior, keeping your brand top-of-mind and sealing the conversion.',
+      description: 'People who visited and left — we bring them back. Smart retargeting sequences that seal the conversion.',
       icon: (
         <svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H17" />
@@ -73,7 +73,7 @@ export default function PerformanceMarketingPage() {
     {
       id: '06',
       title: 'Creative A/B Testing',
-      description: 'Rapid iterations of hooks, copy variations, and static assets to combat ad fatigue and identify winning combinations.',
+      description: 'We test different ad creatives, hooks, and copy variations — letting data decide what works best for your audience.',
       icon: (
         <svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -85,52 +85,52 @@ export default function PerformanceMarketingPage() {
 
   const pricingTiers = [
     {
-      name: 'Launch ROAS',
-      priceMonthly: 120000,
-      priceYearly: 95000,
-      description: 'Engineered for growing businesses looking to kickstart their customer acquisition pipeline.',
+      name: 'Starter',
+      priceMonthly: 15000,
+      priceYearly: 12000,
+      description: 'Perfect for small businesses looking to start running ads and generating leads.',
       features: [
-        'Dedicated Campaign Manager',
-        'Search & Social Ad Management',
-        'Basic A/B Creative Testing',
-        'Weekly Dashboard Reports',
-        'Up to ₹8L/mo Ad Spend Cap',
+        'Meta Ads Management (Facebook & Instagram)',
+        'Up to 3 Ad Creatives/month',
+        'Basic Audience Targeting',
+        'Monthly Performance Report',
+        'WhatsApp Support',
       ],
       popular: false,
-      cta: 'Start Scaling',
+      cta: 'Get Started',
     },
     {
-      name: 'Scale Engine',
-      priceMonthly: 240000,
-      priceYearly: 190000,
-      description: 'Our most sought-after package. Multi-channel scaling with programmatic retargeting and funnel design.',
+      name: 'Growth',
+      priceMonthly: 25000,
+      priceYearly: 20000,
+      description: 'For businesses ready to scale with Meta + Google ads and better creative.',
       features: [
-        'All Launch ROAS Features',
-        'Programmatic DSP & Native Ads',
-        'Advanced Attribution Modeling',
-        'Custom Conversion Funnel Optimization',
-        'Bi-weekly Strategy Syncs',
-        'Up to ₹40L/mo Ad Spend Cap',
+        'Meta + Google Ads Management',
+        'Up to 6 Ad Creatives/month',
+        'Advanced Audience & Retargeting',
+        'Bi-weekly Reporting & Strategy Call',
+        'Landing Page Recommendations',
+        'Priority WhatsApp Support',
       ],
       popular: true,
-      popularText: 'Highly Recommended',
-      cta: 'Accelerate Growth',
+      popularText: 'Most Popular',
+      cta: 'Scale Now',
     },
     {
-      name: 'Dominator Suite',
-      priceMonthly: 480000,
-      priceYearly: 380000,
-      description: 'Full-funnel custom media buying suite with direct data pipeline integration and white-glove service.',
+      name: 'Performance',
+      priceMonthly: 40000,
+      priceYearly: 32000,
+      description: 'Full-funnel ads management for brands serious about aggressive growth.',
       features: [
-        'All Scale Engine Features',
-        'Unlimited Ad Spend Cap',
-        'Real-time Slack Channel Sync',
-        'Custom Analytics Pipeline Setup',
-        'Weekly Creative Production Outlets',
-        '24/7 Priority Emergency Coverage',
+        'Meta + Google + YouTube Ads',
+        'Unlimited Ad Creatives',
+        'Full Funnel Strategy & Optimization',
+        'Weekly Reporting & Strategy Calls',
+        'Custom Landing Page Design',
+        'Dedicated Account Manager',
       ],
       popular: false,
-      cta: 'Dominate Markets',
+      cta: 'Dominate Market',
     },
   ];
 
@@ -189,13 +189,13 @@ export default function PerformanceMarketingPage() {
             <svg className="w-4 h-4 text-white/30 shrink-0 mt-0.5 md:mt-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
             </svg>
-            <span className="leading-snug">/ BASED IN UNITED STATES &amp; WORKING WORLDWIDE</span>
+            <span className="leading-snug">/ BASED IN RANCHI, INDIA · SERVING INDIA &amp; INTERNATIONAL</span>
           </div>
           <div className="md:col-span-4 flex items-center">
-            <span className="leading-snug">/ YEARS OF BLOCK CHAIN EXPERIENCE</span>
+            <span className="leading-snug">/ META ADS · GOOGLE ADS · REAL RESULTS</span>
           </div>
           <div className="md:col-span-3 flex items-center md:justify-end">
-            <span className="leading-snug">/ ©2026 TRENVITY</span>
+            <span className="leading-snug">/ ©2026 TRENVITY · ALL RIGHTS RESERVED</span>
           </div>
         </div>
       </section>
@@ -208,26 +208,19 @@ export default function PerformanceMarketingPage() {
         <div className="max-w-[850px] mx-auto w-full text-center relative z-10">
           <Reveal>
             <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
-              SEO INTEGRATION PIPELINE
+              SOCIAL MEDIA + PAID ADS
             </span>
             <h2 className="text-[32px] md:text-[48px] font-extrabold tracking-[-1.5px] leading-[1.05] uppercase mb-8 text-center text-white">
-              Organic Authority Meets Paid Velocity
+              Social Media Meets Paid Advertising
             </h2>
             
             <div className="space-y-6 text-white/60 text-[15px] sm:text-base leading-relaxed tracking-[0.2px] font-light max-w-[700px] mx-auto text-justify sm:text-center">
               <p>
-                True conversion dominance requires a unified acquisition engine. By connecting your <strong className="text-white font-semibold">performance paid ads with organic Search Engine Optimization</strong>, we create a multi-channel funnel that captures prospects at both the discovery and purchasing stages.
+                Real growth doesn't come from one channel. When your <strong className="text-white font-semibold">social media content is strong and targeted ads are running alongside it</strong> — that's when a brand truly scales.
               </p>
               
-              <div className="my-10 p-5 bg-white/[0.02] border border-white/5 rounded-2xl text-center max-w-[550px] mx-auto backdrop-blur-md">
-                <p className="text-[11px] font-mono text-[var(--neon)] mb-2 uppercase tracking-[2px]">Attribution velocity</p>
-                <p className="italic text-white/95 text-sm">
-                  "Targeting paid ads directly to high-authority, SEO-optimized landing pages boosts relevance scores, decreases cost-per-click by up to 34%, and speeds up crawling indexing cycles."
-                </p>
-              </div>
-              
               <p>
-                We build semantically structured pipelines that match keywords from search campaigns directly to landing page metadata and organic tags. This establishes a highly unified brand presence that improves quality scores, enhances Google visibility, and accelerates your path to market domination.
+                Aligning your Meta and Google ads with your brand content reduces ad costs and increases conversions — significantly.
               </p>
             </div>
           </Reveal>

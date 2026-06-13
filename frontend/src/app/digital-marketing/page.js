@@ -13,18 +13,18 @@ export default function DigitalMarketingPage() {
   const [billingCycle, setBillingCycle] = useState('monthly');
 
   const features = [
-    { id: '01', title: 'Audience Research', description: 'Deep audience mapping and persona-led strategies to reach the right people at the right time.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 11c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4zM20 19v-2a4 4 0 00-4-4h-1"/></svg>), colSpan: 'md:col-span-7' },
-    { id: '02', title: 'Omnichannel Campaigns', description: 'Coordinated campaigns across search, social, email and display that keep messaging consistent and measurable.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>), colSpan: 'md:col-span-5' },
-    { id: '03', title: 'Creative Production', description: 'High-converting creative tested across formats and tailored for each channel and placement.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>), colSpan: 'md:col-span-5' },
-    { id: '04', title: 'Analytics & Reporting', description: 'Transparent dashboards, event-level analytics, and actionable insights for continuous growth.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg>), colSpan: 'md:col-span-7' },
-    { id: '05', title: 'Retention Funnels', description: 'Lifecycle messaging and automation that turns one-time customers into repeat buyers.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v8m0 0l3-3m-3 3l-3-3"/></svg>), colSpan: 'md:col-span-7' },
-    { id: '06', title: 'Continuous Optimization', description: 'Test, measure, iterate — a relentless approach to reduce waste and lift performance.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2"/></svg>), colSpan: 'md:col-span-5' },
+    { id: '01', title: 'Content Strategy & Planning', description: 'We build a complete monthly content plan for your brand. Every post, reel, and story has a purpose — no random posting, no guesswork.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 11c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4zM20 19v-2a4 4 0 00-4-4h-1"/></svg>), colSpan: 'md:col-span-7' },
+    { id: '02', title: 'Content Shoot & Video Production', description: 'We come to your location, shoot real content, and edit everything in-house — reels, brand videos, product shots, and behind the scenes. No stock photos. Just real content.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>), colSpan: 'md:col-span-5' },
+    { id: '03', title: 'Graphic Design & Posts', description: 'Premium static posts, carousels, typography designs, and story templates — all matching your brand identity.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>), colSpan: 'md:col-span-5' },
+    { id: '04', title: 'Competitor Research', description: 'We study your top competitors — what they’re posting, what’s working, and where the gap is. Then we position your brand to stand out.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg>), colSpan: 'md:col-span-7' },
+    { id: '05', title: 'Profile Optimisation', description: 'Bio, highlights, grid layout, link in bio — everything set up to convert a visitor into a customer.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v8m0 0l3-3m-3 3l-3-3"/></svg>), colSpan: 'md:col-span-7' },
+    { id: '06', title: 'Monthly Review & Reporting', description: 'Every month we review what worked, what didn’t, and plan the next month smarter. Full transparency. No surprises.', icon: (<svg className="w-5 h-5 text-[var(--neon)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2"/></svg>), colSpan: 'md:col-span-5' },
   ];
 
   const pricingTiers = [
-    { name: 'Starter Growth', price: billingCycle === 'monthly' ? 100000 : 80000, description: 'A reliable entry plan to kickstart your acquisition channels.', features: ['Campaign Setup', 'Basic Creative Tests', 'Weekly Reporting', 'Up to ₹6L/mo Spend'], popular: false, cta: 'Get Started' },
-    { name: 'Growth Engine', price: billingCycle === 'monthly' ? 200000 : 160000, description: 'Multi-channel growth with conversion optimization and reporting.', features: ['All Starter Features', 'A/B Testing', 'Bi-weekly Strategy', 'Up to ₹30L/mo Spend'], popular: true, cta: 'Scale Now' },
-    { name: 'Enterprise Partner', price: billingCycle === 'monthly' ? 480000 : 380000, description: 'Full-service partnership for rapid expansion and revenue ops.', features: ['White-glove Support', 'Custom Analytics', 'Creative Production', 'Priority SLA'], popular: false, cta: 'Talk To Sales' },
+    { name: 'Starter', price: billingCycle === 'monthly' ? 8000 : 6500, description: 'Perfect for small businesses just starting out on social media.', features: ['8 Posts/month (Graphics + Captions)', '2 Reels/month', 'Profile Setup & Optimisation', 'Basic Hashtag Strategy', 'Monthly Report', 'WhatsApp Support'], popular: false, cta: 'Get Started' },
+    { name: 'Growth', price: billingCycle === 'monthly' ? 15000 : 12000, description: 'For brands ready to grow consistently with better content and strategy.', features: ['15 Posts/month', '4 Reels/month', 'Content Strategy & Planning', 'Competitor Research', 'Story Content (10/month)', 'Bi-weekly Check-in Call', 'Priority Support'], popular: true, cta: 'Scale Now' },
+    { name: 'Performance', price: billingCycle === 'monthly' ? 25000 : 20000, description: 'Full social media management for brands serious about dominance.', features: ['Unlimited Posts & Reels', 'Content Shoot (1/month)', 'Full Brand Strategy', 'Ad Creatives Included', 'Weekly Strategy Calls', 'Dedicated Account Manager', '24/7 Priority Support'], popular: false, cta: 'Talk To Us' },
   ];
 
   return (
@@ -58,13 +58,13 @@ export default function DigitalMarketingPage() {
             <svg className="w-4 h-4 text-white/30 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
             </svg>
-            <span>/ BASED IN UNITED STATES &amp; WORKING WORLDWIDE</span>
+            <span>/ BASED IN RANCHI, INDIA · NATIONAL &amp; INTERNATIONAL</span>
           </div>
           <div className="md:col-span-3 flex items-center">
-            <span>/ EXPERTS IN DIGITAL GROWTH</span>
+            <span>/ SOCIAL MEDIA MANAGEMENT</span>
           </div>
           <div className="md:col-span-4 flex items-center md:justify-end">
-            <span>/ ©2024 TRENVITY STUDIO</span>
+            <span>/ ©2026 TRENVITY · ALL RIGHTS RESERVED</span>
           </div>
         </div>
       </section>
@@ -73,27 +73,20 @@ export default function DigitalMarketingPage() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
         <div className="max-w-[850px] mx-auto w-full text-center relative z-10">
           <Reveal>
-            <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
+             <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-3 font-mono">
               STRATEGY & EXECUTION
             </span>
             <h2 className="text-[32px] md:text-[48px] font-extrabold tracking-[-1.5px] leading-[1.05] uppercase mb-8 text-center text-white">
-              Integrated Channels That Drive Revenue
+              Integrated Strategy That Builds Real Brands
             </h2>
 
             <div className="space-y-6 text-white/60 text-[15px] sm:text-base leading-relaxed tracking-[0.2px] font-light max-w-[700px] mx-auto text-justify sm:text-center">
               <p>
-                We blend creative, paid media, and analytics to build acquisition engines that scale. Our teams align messaging, measurement, and creative to reduce cost and increase lifetime value.
+                We blend creative content, paid advertising, and analytics into one unified system — so your brand doesn't just look good, it <strong className="text-white font-semibold">performs</strong>.
               </p>
 
-              <div className="my-10 p-5 bg-white/[0.02] border border-white/5 rounded-2xl text-center max-w-[550px] mx-auto backdrop-blur-md">
-                <p className="text-[11px] font-mono text-[var(--neon)] mb-2 uppercase tracking-[2px]">Cross-channel velocity</p>
-                <p className="italic text-white/95 text-sm">
-                  "Coordinated creative and measurement across channels reduces wasted spend, increases signal quality, and delivers consistent growth." 
-                </p>
-              </div>
-
               <p>
-                From awareness to retention, we build funnels that are measurable and repeatable — then we scale what works.
+                When your content and ads work in the same direction — that's when a brand genuinely grows. That's the Trenvity approach.
               </p>
             </div>
           </Reveal>

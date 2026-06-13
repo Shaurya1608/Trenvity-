@@ -69,6 +69,20 @@ body::before {
   animation: marquee 30s linear infinite;
 }
 
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Hide scrollbar across browsers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Apply subtle boxed/grid overlay and separators to all sections */
 section {
   position: relative;

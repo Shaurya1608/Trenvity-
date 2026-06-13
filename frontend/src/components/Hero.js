@@ -78,10 +78,9 @@ export default function Hero() {
 
       <motion.div variants={itemVariants} className="absolute right-[12px] md:right-[28px] lg:right-[80px] top-[clamp(12rem,25vw,16rem)] md:top-[clamp(18rem,25vw,22rem)] lg:top-[clamp(19rem,22vw,25rem)] z-[15] max-w-[140px] md:max-w-[200px] lg:max-w-[260px] text-right">
         <p className="text-[12px] lg:text-[14px] leading-[1.7] text-white/65 m-0">
-          We are a creative studio working at the
-          intersection of design, technology &amp; innovation.
+          We don't just post. We build brands that people actually feel.
         </p>
-        <span className="font-['Dancing_Script',cursive] text-[24px] text-white/50 mt-[4px] block">Since 2016</span>
+        <span className="font-['Dancing_Script',cursive] text-[24px] text-white/50 mt-[4px] block">Est. 2022 · Ranchi, India</span>
       </motion.div>
 
       <motion.div

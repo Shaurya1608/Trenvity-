@@ -13,12 +13,12 @@ export default function ContactPage() {
             Let's build<br />something<br /><span className="text-[var(--neon)]">extraordinary.</span>
           </h1>
           <p className="text-white/60 text-sm md:text-base font-medium max-w-md mb-10 leading-relaxed">
-            Whether you're looking to rebrand, build a scalable web application, or dominate search engines, we're ready to partner with you. Drop us a line below or reach out directly.
+            Whether you want to grow your brand, start social media, or run ads — we're ready. Fill out the form below or WhatsApp us directly.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <a 
-              href="https://wa.me/1234567890" 
+              href="https://wa.me/919296090941" 
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 bg-[#25D366] text-black font-bold uppercase tracking-[1px] text-xs px-6 py-4 rounded-none hover:bg-white transition-colors duration-300 w-full sm:w-auto"
@@ -27,7 +27,7 @@ export default function ContactPage() {
               WhatsApp
             </a>
             <a 
-              href="mailto:hello@trenvity.com"
+              href="mailto:trenvity@gmail.com"
               className="flex items-center justify-center gap-3 border-[2px] border-[var(--neon)] text-[var(--neon)] font-bold uppercase tracking-[1px] text-xs px-6 py-4 rounded-none hover:bg-[var(--neon)] hover:text-black transition-colors duration-300 w-full sm:w-auto"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
@@ -39,7 +39,10 @@ export default function ContactPage() {
 
         {/* Right Column: Clean Contact Form */}
         <div className="flex-1 bg-white/[0.02] border border-white/10 p-6 md:p-10">
-          <h3 className="text-xl font-black text-white mb-6 uppercase tracking-wide">Send an Inquiry</h3>
+          <h3 className="text-xl font-black text-white mb-2 uppercase tracking-wide">Send an Inquiry</h3>
+          <p className="text-white/40 text-[11px] leading-relaxed mb-6 max-w-[420px]">
+            Ready to grow your brand online? Fill out the form and we'll get back to you within 24 hours. Have a quick question? Just WhatsApp us directly — we're always available.
+          </p>
           
           <form className="flex flex-col gap-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -65,10 +68,13 @@ export default function ContactPage() {
               <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Services Needed</label>
               <select defaultValue="" className="bg-black/30 border border-white/10 px-4 py-3 text-white outline-none focus:border-[var(--neon)] transition-all appearance-none cursor-pointer text-sm rounded-none">
                 <option value="" disabled className="text-black">Select a service...</option>
-                <option value="web" className="text-black">Web Development</option>
-                <option value="marketing" className="text-black">Digital Marketing</option>
-                <option value="design" className="text-black">UI/UX Design</option>
-                <option value="other" className="text-black">Other</option>
+                <option value="social" className="text-black">Social Media Management</option>
+                <option value="meta" className="text-black">Meta Ads</option>
+                <option value="google" className="text-black">Google Ads</option>
+                <option value="reels" className="text-black">Reels &amp; Content</option>
+                <option value="branding" className="text-black">Branding</option>
+                <option value="website" className="text-black">Website Design</option>
+                <option value="full" className="text-black">Full Package</option>
               </select>
             </div>
 

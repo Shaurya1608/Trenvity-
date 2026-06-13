@@ -13,24 +13,24 @@ export default function ExploreDocks() {
       id: '01',
       href: '/portfolio',
       title: 'Portfolio',
-      subtitle: 'Showcase & Work',
-      desc: 'High-converting campaigns and brand transformations.',
+      subtitle: 'Our Work & Results',
+      desc: 'Real campaigns, real results — see exactly what we’ve built for our clients.',
       color: 'var(--neon)',
     },
     {
       id: '02',
       href: '/website',
       title: 'Website',
-      subtitle: 'Custom Development',
-      desc: 'High-performance web experiences built for scale.',
+      subtitle: 'Website Design',
+      desc: 'Clean, fast, mobile-friendly websites built to convert visitors into customers.',
       color: '#00a8ff',
     },
     {
       id: '03',
       href: '/performance-marketing',
       title: 'Performance',
-      subtitle: 'Paid Acquisition',
-      desc: 'ROAS-focused ad campaigns to scale brands fast.',
+      subtitle: 'Meta & Google Ads',
+      desc: 'Targeted ad campaigns that generate real leads and real revenue.',
       color: '#ff0055',
     },
     {
@@ -38,15 +38,15 @@ export default function ExploreDocks() {
       href: '/digital-marketing',
       title: 'Digital',
       subtitle: 'Growth & Strategy',
-      desc: 'Data-driven acquisition and audience building.',
+      desc: 'Social media management, content creation, and brand strategy all in one.',
       color: 'var(--neon)',
     },
     {
       id: '05',
       href: '/blog',
       title: 'Intel',
-      subtitle: 'Industry Blog',
-      desc: 'Search architecture and market deep-dives.',
+      subtitle: 'Blog & Insights',
+      desc: 'Marketing tips, industry insights, and strategies you can actually use.',
       color: '#a855f7',
     }
   ];
@@ -67,7 +67,7 @@ export default function ExploreDocks() {
               <h2 className="text-[32px] md:text-[44px] font-black tracking-tighter uppercase leading-none">EXPLORE OTHER SERVICES</h2>
             </div>
             <p className="text-white/40 text-[13px] max-w-[380px] leading-relaxed">
-              We specialize across the entire digital landscape. Hop over to explore other growth-accelerating services.
+              We cover everything your brand needs to grow online. Explore our services below.
             </p>
           </div>
           

@@ -1,13 +1,14 @@
 const partners = [
-  { name: 'SONOS', className: 'font-bold text-[14px] md:text-[16px] tracking-[2px]' },
-  { name: 'RIMOWA', className: 'font-medium text-[13px] md:text-[15px] tracking-[1.5px] opacity-80' },
-  { name: 'HIGHSNOBIETY', className: 'font-black text-[13px] md:text-[15px] tracking-[1px] border-b-[2px] border-black pb-[1px]' },
-  { name: 'HYEIN SEO', className: 'font-black text-[15px] md:text-[17px] tracking-[-0.5px]' },
-  { name: 'Haeckels', className: 'font-medium text-[14px] md:text-[16px] normal-case opacity-90' },
-  { name: 'MISBHV', className: 'font-black text-[14px] md:text-[16px] tracking-[5px] md:tracking-[8px]' },
-  { name: 'OK-RM', className: 'font-semibold text-[13px] md:text-[15px] tracking-[1.5px]' },
-  { name: 'ACRONYM®', className: 'font-bold text-[13px] md:text-[15px] tracking-[1.5px]' },
-  { name: 'Y/PROJECT', className: 'font-medium text-[13px] md:text-[15px] tracking-[1.5px] opacity-80' },
+  { name: 'TRENVITY', className: 'font-black text-[15px] md:text-[17px] tracking-[1px]' },
+  { name: 'META ADS', className: 'font-bold text-[14px] md:text-[16px] tracking-[2px]' },
+  { name: 'GOOGLE ADS', className: 'font-semibold text-[13px] md:text-[15px] tracking-[1.5px] opacity-90' },
+  { name: 'REELS', className: 'font-black text-[14px] md:text-[16px] tracking-[2px]' },
+  { name: 'BRANDING', className: 'font-bold text-[14px] md:text-[16px] tracking-[1.5px]' },
+  { name: 'SOCIAL MEDIA', className: 'font-medium text-[13px] md:text-[15px] tracking-[1.5px] opacity-80' },
+  { name: 'CONTENT STRATEGY', className: 'font-bold text-[14px] md:text-[16px] tracking-[1px]' },
+  { name: 'RANCHI', className: 'font-black text-[13px] md:text-[15px] tracking-[3px]' },
+  { name: 'INDIA', className: 'font-bold text-[14px] md:text-[16px] tracking-[2px] opacity-90' },
+  { name: 'UAE', className: 'font-black text-[15px] md:text-[17px] tracking-[1px]' },
 ];
 
 export default function Marquee() {

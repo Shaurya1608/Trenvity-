@@ -28,9 +28,9 @@ export default function About() {
             transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
             className="font-black italic uppercase leading-[1.0] tracking-[-1px] md:tracking-[-2px] text-[clamp(1.6rem,4.5vw,3.2rem)]"
           >
-            <span className="block text-white">WE ARE A CREATIVE AGENCY CRAFTING</span>
-            <span className="block text-[var(--neon)]">STRATEGIES WITH REAL IMPACT</span>
-            <span className="block text-white/70">FOR BUSINESSES AT EVERY STAGE</span>
+            <span className="block text-white">WE ARE A CREATIVE DIGITAL MARKETING AGENCY</span>
+            <span className="block text-[var(--neon)]">BUILDING BRANDS THAT DON'T</span>
+            <span className="block text-white/70">LOOK FORGETTABLE ONLINE</span>
           </motion.h2>
         </div>
 
@@ -63,7 +63,7 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="absolute -bottom-5 -right-5 bg-[var(--neon)] text-[#0F1C2E] px-5 py-3 text-center shadow-xl"
             >
-              <span className="block font-black text-2xl leading-none">8+</span>
+              <span className="block font-black text-2xl leading-none">2+</span>
               <span className="block text-[10px] font-bold uppercase tracking-[1px] mt-0.5">Years of Impact</span>
             </motion.div>
           </motion.div>
@@ -77,23 +77,13 @@ export default function About() {
             className="max-w-[380px] lg:max-w-[400px] mr-0 md:mr-6 lg:mr-24"
           >
             <p className="text-[13px] md:text-[14px] leading-[1.85] text-white/60 mb-5">
-              Our mission is simple — deliver creative solutions that
-              drive measurable results and elevate brands
-              with purpose. We combine data-driven insights
-              with bold creative to build campaigns that
-              connect, engage, and convert.
+              Our mission is simple — make your brand feel premium, memorable, and impossible to ignore. We combine strategy, branding, and storytelling to build brands that people actually feel online.
             </p>
             <p className="text-[13px] md:text-[14px] leading-[1.85] text-white/60 mb-5">
-              From startups to established enterprises,
-              we partner with visionary brands to turn
-              challenges into opportunities. Our approach
-              is rooted in strategy, fueled by creativity,
-              and built on transparency and collaboration.
+              From local Ranchi businesses to international clients in UAE — we partner with brands that want real growth, not just pretty posts.
             </p>
             <p className="text-[13px] md:text-[14px] leading-[1.85] text-white/60 mb-8">
-              Our team is made up of thinkers, creators, and
-              innovators who are passionate about what
-              we do and dedicated to your success.
+              Our team is made up of founders — Mahi — and a network of creative professionals who are passionate about brand building and dedicated to your results.
             </p>
 
             <a
