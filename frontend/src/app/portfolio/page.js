@@ -603,6 +603,15 @@ function FloatingParticles() {
    ───────────────────────────────────────────── */
 export default function PortfolioPage() {
   const [selectedItem, setSelectedItem] = useState(null);
+  const processScrollRef = useRef(null);
+
+  const scrollProcess = (direction) => {
+    if (processScrollRef.current) {
+      const cardWidth = processScrollRef.current.offsetWidth * 0.78;
+      const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
+      processScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -632,17 +641,12 @@ export default function PortfolioPage() {
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff04_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none" aria-hidden="true" />
 
         {/* Animated gradient orb behind title */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full pointer-events-none"
+        <div
+          className="absolute top-1/2 left-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full pointer-events-none animate-pulse-glow"
           style={{
             background: 'radial-gradient(circle, rgba(200,240,0,0.06) 0%, rgba(0,240,255,0.03) 40%, transparent 70%)',
             filter: 'blur(80px)',
           }}
-          animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.5, 0.8, 0.5],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
           aria-hidden="true"
         />
 
@@ -744,7 +748,7 @@ export default function PortfolioPage() {
       {/* ============================================
          3. PROCESS TIMELINE  (moved up)
          ============================================ */}
-      <section className="relative z-10 w-full py-20 lg:py-28 px-6 md:px-12 lg:px-20 bg-[var(--background)] border-t border-white/5" role="region" aria-label="Our creative process">
+      <section className="relative z-10 w-full pt-20 pb-32 lg:py-28 px-6 md:px-12 lg:px-20 bg-[var(--background)] border-t border-white/5" role="region" aria-label="Our creative process">
         <div className="max-w-[1400px] mx-auto w-full">
 
           <Reveal className="text-center mb-16">
@@ -760,15 +764,15 @@ export default function PortfolioPage() {
           <div className="relative">
 
 
-            <div className="flex lg:grid lg:grid-cols-4 gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 lg:mx-0 lg:px-0">
+            <div ref={processScrollRef} className="flex lg:grid lg:grid-cols-4 gap-6 overflow-x-auto lg:overflow-visible pb-10 lg:pb-0 snap-x snap-mandatory scrollbar-hide -mx-6 px-[17.5vw] scroll-px-[17.5vw] lg:mx-0 lg:px-0">
               {processSteps.map((item, idx) => (
                 <motion.div
                   key={item.step}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.05 }}
                   transition={{ duration: 0.5, delay: idx * 0.12 }}
-                  className="relative p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-[var(--neon)]/30 transition-all duration-300 group hover:-translate-y-1 snap-start shrink-0 w-[75vw] sm:w-[45vw] lg:w-auto"
+                  className="relative p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-[var(--neon)]/30 transition-all duration-300 group hover:-translate-y-1 snap-center shrink-0 w-[65vw] sm:w-[45vw] lg:w-auto"
                 >
                   <div className="flex items-center gap-3 mb-5">
                     <div className="relative w-10 h-10 rounded-xl bg-[var(--neon)]/10 border border-[var(--neon)]/20 flex items-center justify-center text-[var(--neon)] group-hover:bg-[var(--neon)]/20 group-hover:shadow-[0_0_20px_rgba(200,240,0,0.15)] transition-all duration-300">
@@ -782,6 +786,28 @@ export default function PortfolioPage() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Navigation Arrows for Mobile */}
+            <div className="flex lg:hidden justify-center gap-6 mt-4">
+              <button
+                onClick={() => scrollProcess('left')}
+                className="w-11 h-11 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white active:bg-[var(--neon)] active:text-black hover:border-[var(--neon)]/50 transition-all duration-300"
+                aria-label="Scroll process left"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={() => scrollProcess('right')}
+                className="w-11 h-11 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white active:bg-[var(--neon)] active:text-black hover:border-[var(--neon)]/50 transition-all duration-300"
+                aria-label="Scroll process right"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
 
         </div>
@@ -791,7 +817,7 @@ export default function PortfolioPage() {
          4. 3D CURVED GALLERY  (moved below process)
          ============================================ */}
       <section
-        className="relative w-full pt-14 pb-10 md:pt-20 md:pb-14 bg-[var(--background)] overflow-hidden border-t border-white/5"
+        className="relative w-full pt-14 pb-20 md:pt-20 md:pb-14 bg-[var(--background)] overflow-hidden border-t border-white/5"
         role="region"
         aria-label="Selected works showcase"
       >
@@ -820,7 +846,7 @@ export default function PortfolioPage() {
 
         <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-20">
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-8 gap-6">
             <Reveal>
               <span className="text-[var(--neon)] font-bold text-xs uppercase tracking-[2px] block mb-2 font-mono">
                 Selected Works
