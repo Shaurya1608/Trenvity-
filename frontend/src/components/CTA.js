@@ -4,7 +4,13 @@ import { motion } from 'framer-motion';
 
 export default function CTA() {
   return (
-    <section className="relative w-full bg-[var(--background)] px-6 md:px-10 lg:px-20 py-24 md:py-36 lg:py-44 overflow-hidden">
+    <motion.section 
+      initial={{ clipPath: 'inset(10% 0 0 0)', opacity: 0 }}
+      whileInView={{ clipPath: 'inset(0% 0 0 0)', opacity: 1 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+      className="relative w-full bg-[var(--background)] px-6 md:px-10 lg:px-20 py-24 md:py-36 lg:py-44 overflow-hidden"
+    >
       {/* Deep ambient glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[600px] h-[600px] md:w-[900px] md:h-[900px] rounded-full bg-[var(--neon)] opacity-[0.04] blur-[150px]" />
@@ -83,6 +89,6 @@ export default function CTA() {
           No commitment required &middot; Free consultation
         </motion.p>
       </div>
-    </section>
+    </motion.section>
   );
 }

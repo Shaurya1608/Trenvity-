@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const containerVariants = {
   hidden: {},
@@ -15,12 +16,23 @@ const itemVariants = {
 };
 
 export default function Hero() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Elements fade out as user scrolls away
+  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const imgOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
   return (
     <motion.section
+      ref={containerRef}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="relative w-full min-h-[85vh] md:h-screen pt-16 md:pt-20"
+      className="relative w-full h-screen pt-16 md:pt-20"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -74,7 +86,14 @@ export default function Hero() {
         <div className="absolute top-[48%] left-[-2%] w-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-[25deg]" />
       </div>
 
-      <motion.h1 variants={itemVariants} className="absolute left-1/2 -translate-x-1/2 top-[clamp(5rem,9vw,7rem)] md:top-[clamp(6rem,8vw,8rem)] lg:top-[clamp(6rem,7vw,9rem)] z-10 font-sans font-black text-[clamp(3.8rem,20vw,7rem)] md:text-[clamp(5.5rem,24vw,10rem)] lg:text-[clamp(7rem,16vw,18rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0 text-center w-full">TRENVITY</motion.h1>
+      <motion.div style={{ opacity: textOpacity }} className="absolute left-0 right-0 top-0 z-10 pointer-events-none flex justify-center w-full">
+        <motion.h1 
+          variants={itemVariants} 
+          className="relative top-[clamp(5rem,9vw,7rem)] md:top-[clamp(6rem,8vw,8rem)] lg:top-[clamp(6rem,7vw,9rem)] font-sans font-black text-[clamp(3.8rem,20vw,7rem)] md:text-[clamp(5.5rem,24vw,10rem)] lg:text-[clamp(7rem,16vw,18rem)] text-[var(--neon)] leading-[0.85] tracking-[-2px] lg:tracking-[-4px] uppercase select-none m-0 p-0 text-center w-full pointer-events-auto"
+        >
+          TRENVITY
+        </motion.h1>
+      </motion.div>
 
       <motion.div variants={itemVariants} className="absolute right-[12px] md:right-[28px] lg:right-[80px] top-[clamp(12rem,25vw,16rem)] md:top-[clamp(18rem,25vw,22rem)] lg:top-[clamp(19rem,22vw,25rem)] z-[15] max-w-[140px] md:max-w-[200px] lg:max-w-[260px] text-right">
         <p className="text-[12px] lg:text-[14px] leading-[1.7] text-white/65 m-0">
@@ -83,16 +102,18 @@ export default function Hero() {
         <span className="font-['Dancing_Script',cursive] text-[24px] text-white/50 mt-[4px] block">Est. 2022 · Ranchi, India</span>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: [0, -6, 0, 20, 0] }}
-        transition={{
-          opacity: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
-          y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.8 },
-        }}
-        className="absolute left-[35%] md:left-1/2 bottom-[8vh] md:bottom-[10vh] lg:bottom-[12vh] -translate-x-1/2 w-[clamp(550px,160vw,950px)] md:w-[clamp(420px,70vw,750px)] lg:w-[clamp(520px,58vw,920px)] h-[clamp(75vh,82vh,1000px)] md:h-[clamp(500px,65vh,850px)] lg:h-[clamp(700px,92vh,1080px)] bg-[url('/landing/trenvity-landing.png')] bg-contain bg-no-repeat bg-bottom z-20 pointer-events-none"
-        aria-hidden="true"
-      />
+      <motion.div style={{ opacity: imgOpacity }} className="absolute inset-0 z-20 pointer-events-none flex justify-center items-end">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: [0, -6, 0, 20, 0] }}
+          transition={{
+            opacity: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
+            y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.8 },
+          }}
+          className="relative bottom-[8vh] md:bottom-[10vh] lg:bottom-[12vh] w-[clamp(550px,160vw,950px)] md:w-[clamp(420px,70vw,750px)] lg:w-[clamp(520px,58vw,920px)] h-[clamp(75vh,82vh,1000px)] md:h-[clamp(500px,65vh,850px)] lg:h-[clamp(700px,92vh,1080px)] bg-[url('/landing/trenvity-landing.png')] bg-contain bg-no-repeat bg-bottom pointer-events-none"
+          aria-hidden="true"
+        />
+      </motion.div>
 
       <motion.div variants={itemVariants} className="hidden md:flex absolute left-[20px] md:left-[28px] lg:left-[48px] bottom-[12vh] md:bottom-[16vh] lg:bottom-[clamp(14vh,18vh,22vh)] z-[15] items-center gap-[8px] md:gap-[10px]">
         <div className="w-[36px] h-[36px] md:w-[42px] md:h-[42px] rounded-full border-[1.5px] border-white/25 inline-flex items-center justify-center text-white/55 transition-all duration-300 cursor-pointer bg-transparent p-0 hover:border-[var(--neon)] hover:text-[var(--neon)] hover:-translate-y-[2px]">

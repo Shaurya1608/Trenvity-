@@ -13,19 +13,29 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="relative w-full min-h-screen bg-[var(--background)] overflow-hidden">
+    <div className="relative w-full min-h-screen bg-[var(--background)]">
+      {/* Header is fixed z-[100], always on top */}
       <Header />
-      <Hero />
-      <Marquee />
-      <Problem />
-      <About />
-      <TextCube />
-      <Services />
-      <Process />
-      <Stats />
-      <Testimonial />
-      <CTA />
-      <Footer />
+
+      {/* Hero sits sticky at z-0 — sections above it slide over it */}
+      <div className="sticky top-0 z-0 w-full h-screen">
+        <Hero />
+      </div>
+
+      {/* All other sections at z-10 slide over the hero as user scrolls */}
+      <div className="relative z-10 bg-[var(--background)]">
+        <Problem />
+        <Marquee />
+        <About />
+        <TextCube />
+        <Services />
+        <Process />
+        <Stats />
+        <Testimonial />
+        <CTA />
+        <Footer />
+      </div>
     </div>
   );
 }
+
